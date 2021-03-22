@@ -29,5 +29,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: gjambet/chuck-facts/chuck-facts
+          repository: univ-smb-m1-isc-2020/brutocollinus/brutocollinus
           tag_with_ref: true
