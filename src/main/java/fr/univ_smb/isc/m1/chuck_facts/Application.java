@@ -1,4 +1,4 @@
-package me.guillaume.chuck_facts;
+package fr.univ_smb.isc.m1.chuck_facts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

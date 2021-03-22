@@ -1,6 +1,6 @@
-package me.guillaume.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
 
-import me.guillaume.chuck_facts.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

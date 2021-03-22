@@ -1,7 +1,7 @@
-package me.guillaume.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
 
-import me.guillaume.chuck_facts.application.ChuckFactsService;
-import me.guillaume.chuck_facts.infrastructure.persistence.ChuckFact;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFact;
+import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
