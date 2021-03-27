@@ -1,6 +1,6 @@
-package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFactsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +18,7 @@ public class ChuckFactsController {
     }
 
 
-    @GetMapping(value="/chuck-facts")
+    @GetMapping(value="/api/chuck-facts")
     public List<String> pippos() {
         return chuckFactsService.facts()
                 .stream()

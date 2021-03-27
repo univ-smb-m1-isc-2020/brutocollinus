@@ -1,7 +1,7 @@
-package fr.univ_smb.isc.m1.chuck_facts.adapters.api;
+package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFact;
-import fr.univ_smb.isc.m1.chuck_facts.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFact;
+import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFactsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -31,7 +31,7 @@ class ChuckFactsControllerTest {
         when(chuckFactsService.facts())
                 .thenReturn(of(new ChuckFact("pipo-1"), new ChuckFact("pipo-2")));
 
-        mockMvc.perform(get("/chuck-facts"))
+        mockMvc.perform(get("/api/chuck-facts"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[\"pipo-1\",\"pipo-2\"]"));
     }
