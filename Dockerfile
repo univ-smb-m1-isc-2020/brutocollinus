@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim
 
-COPY ./target/chuck-facts-1.0-SNAPSHOT.jar .
+COPY ./target/brutocollinus-1.0-SNAPSHOT.jar .
 
 EXPOSE 8080
 
