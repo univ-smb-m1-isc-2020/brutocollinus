@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect } from 'react'
 
 function App() {
+  const [facts, setFacts] = useState([])
+
+  useEffect(() => {
+    fetch('/api/chuck-facts').then(res => res.json()).then(setFacts)
+  })
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +24,9 @@ function App() {
         >
           Learn React
         </a>
+        <ul>
+          {facts.map(fact => (<li>{fact}</li>))}
+        </ul>
       </header>
     </div>
   );
