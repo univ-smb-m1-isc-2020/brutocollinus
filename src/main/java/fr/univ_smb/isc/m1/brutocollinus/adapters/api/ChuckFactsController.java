@@ -17,7 +17,6 @@ public class ChuckFactsController {
         this.chuckFactsService = chuckFactsService;
     }
 
-
     @GetMapping(value="/api/chuck-facts")
     public List<String> pippos() {
         return chuckFactsService.facts()

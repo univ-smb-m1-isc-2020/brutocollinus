@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFact;
 import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFactsService;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.ChuckFact;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
