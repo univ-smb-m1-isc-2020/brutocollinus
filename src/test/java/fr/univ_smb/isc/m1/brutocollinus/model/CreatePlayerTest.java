@@ -1,10 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
-public class CreatePlayer {
+public class CreatePlayerTest {
     @Test
     public void createPlayer() {
         Player lili = new Player("lili");

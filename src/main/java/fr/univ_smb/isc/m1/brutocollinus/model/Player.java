@@ -10,6 +10,8 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+        this.brutos = new ArrayList<Bruto>();
+        this.stuffs = new ArrayList<Stuff>();
     }
 
     public void createBruto(String name, IBrutoClass brutoClass) {
