@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     fetch('/api/chuck-facts').then(res => res.json()).then(setFacts)
-  })
+  }, [])
 
   return (
     <div className="App">
