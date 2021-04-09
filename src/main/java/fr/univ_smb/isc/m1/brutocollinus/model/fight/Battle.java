@@ -1,4 +1,6 @@
-package fr.univ_smb.isc.m1.brutocollinus.model;
+package fr.univ_smb.isc.m1.brutocollinus.model.fight;
+
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
 
 public class Battle {
     private Bruto firstOpponent;

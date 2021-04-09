@@ -1,8 +1,6 @@
-package fr.univ_smb.isc.m1.brutocollinus.model;
+package fr.univ_smb.isc.m1.brutocollinus.model.arsenal;
 
 public class Bruto {
-    private Player owner;
-
     private String name;
     private int hp;
     private int atk;

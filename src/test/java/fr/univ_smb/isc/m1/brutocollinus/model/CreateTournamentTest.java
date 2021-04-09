@@ -1,5 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.model;
 
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.*;
+import fr.univ_smb.isc.m1.brutocollinus.model.tournament.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,21 +24,101 @@ public class CreateTournamentTest {
         Bruto liliBruto = lili.brutos().get(0);
         Bruto luluBruto = lulu.brutos().get(0);
 
-        List<Bruto> participants = Arrays.asList(liliBruto, lulu.brutos().get(0));
+        List<Bruto> participants = Arrays.asList(liliBruto, luluBruto);
         Tournament tournament = new Tournament(participants);
 
         List<Tour> tours = tournament.tours();
 
-        assertEquals(1, tours.size());
+        assertEquals(2, tours.size());
 
+        Tour secondTour = tours.get(1);
         Tour finalTour = tours.get(0);
-        List<Match> matches = finalTour.matches();
 
-        assertEquals(1, matches.size());
+        assertEquals(1, finalTour.nodes().size());
+        assertEquals(2, secondTour.nodes().size());
 
-        Match firstMatch = matches.get(0);
+        List<Node> nodes = secondTour.nodes();
+        assertEquals(2, nodes.size());
 
-        assertEquals(firstMatch.leftOpponent(), liliBruto);
-        assertEquals(firstMatch.rightOpponent(), luluBruto);
+        Match match = (Match)finalTour.nodes().get(0);
+        Node secondNode = nodes.get(0);
+        Node thirdNode = nodes.get(1);
+
+        assertEquals(liliBruto, secondNode.selectedBruto());
+        assertEquals(luluBruto, thirdNode.selectedBruto());
+
+        assertEquals(match.leftChild(), secondNode);
+        assertEquals(match.rightChild(), thirdNode);
+    }
+
+    @Test
+    public void create8PlayersTournament() {
+        ArrayList<Bruto> participants = new ArrayList<Bruto>();
+
+        for (int i = 0; i < 8; ++i) {
+            Player player = new Player("player_" + i);
+            player.createBruto("Energy_" + i, new BrutoAssassinClass());
+            Bruto bruto = player.brutos().get(0);
+            participants.add(bruto);
+        }
+
+        Tournament tournament = new Tournament(participants);
+
+        List<Tour> tours = tournament.tours();
+
+        assertEquals(4, tours.size());
+
+        Tour firstTour = tours.get(3);
+        Tour secondTour = tours.get(2);
+        Tour thirdTour = tours.get(1);
+        Tour finalTour = tours.get(0);
+
+        assertEquals(8, firstTour.nodes().size());
+        assertEquals(4, secondTour.nodes().size());
+        assertEquals(2, thirdTour.nodes().size());
+        assertEquals(1, finalTour.nodes().size());
+
+        List<Node> firstTourNodes = firstTour.nodes();
+        for (int i = 0; i < 8; ++i) {
+            assertEquals(participants.get(i), firstTourNodes.get(i).selectedBruto());
+        }
+    }
+
+    @Test
+    public void create5PlayersTournament() {
+        ArrayList<Bruto> participants = new ArrayList<Bruto>();
+
+        for (int i = 0; i < 5; ++i) {
+            Player player = new Player("player_" + i);
+            player.createBruto("Energy_" + i, new BrutoAssassinClass());
+            Bruto bruto = player.brutos().get(0);
+            participants.add(bruto);
+        }
+
+        Tournament tournament = new Tournament(participants);
+
+        List<Tour> tours = tournament.tours();
+
+        assertEquals(4, tours.size());
+
+        Tour firstTour = tours.get(3);
+        Tour secondTour = tours.get(2);
+        Tour thirdTour = tours.get(1);
+        Tour finalTour = tours.get(0);
+
+        assertEquals(2, firstTour.nodes().size());
+        assertEquals(4, secondTour.nodes().size());
+        assertEquals(2, thirdTour.nodes().size());
+        assertEquals(1, finalTour.nodes().size());
+
+        List<Node> firstTourNodes = firstTour.nodes();
+        for (int i = 0; i < 2; ++i) {
+            assertEquals(participants.get(i + 3), firstTourNodes.get(i).selectedBruto());
+        }
+
+        List<Node> secondTourNodes = secondTour.nodes();
+        for (int i = 0; i < 3; ++i) {
+            assertEquals(participants.get(i), secondTourNodes.get(i + 1).selectedBruto());
+        }
     }
 }

@@ -1,5 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.model;
 
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.IBrutoClass;
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Stuff;
+
 import java.util.ArrayList;
 
 public class Player {

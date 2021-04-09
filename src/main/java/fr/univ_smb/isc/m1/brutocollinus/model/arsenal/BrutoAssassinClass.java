@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.brutocollinus.model;
+package fr.univ_smb.isc.m1.brutocollinus.model.arsenal;
 
 public class BrutoAssassinClass implements IBrutoClass {
     @Override
