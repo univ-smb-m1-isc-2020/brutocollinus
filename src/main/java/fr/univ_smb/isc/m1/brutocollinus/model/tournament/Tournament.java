@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
 import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Tournament {

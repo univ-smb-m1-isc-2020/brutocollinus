@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CreateTournamentTest {
+class CreateTournamentTest {
 
     @Test
-    public void createPairTournament() {
+    void createPairTournament() {
         Player lili = new Player("lili");
         lili.createBruto("Energy", new BrutoAssassinClass());
 
@@ -52,7 +52,7 @@ public class CreateTournamentTest {
     }
 
     @Test
-    public void create8PlayersTournament() {
+    void create8PlayersTournament() {
         ArrayList<Bruto> participants = new ArrayList<Bruto>();
 
         for (int i = 0; i < 8; ++i) {
@@ -85,7 +85,7 @@ public class CreateTournamentTest {
     }
 
     @Test
-    public void create5PlayersTournament() {
+    void create5PlayersTournament() {
         ArrayList<Bruto> participants = new ArrayList<Bruto>();
 
         for (int i = 0; i < 5; ++i) {

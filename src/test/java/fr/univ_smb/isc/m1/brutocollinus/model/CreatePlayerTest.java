@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
-public class CreatePlayerTest {
+class CreatePlayerTest {
     @Test
-    public void createPlayer() {
+    void createPlayer() {
         Player lili = new Player("lili");
         IBrutoClass assassinClass = new BrutoAssassinClass();
         IBrutoClass valkyrieClass = new BrutoValkyrieClass();
@@ -24,12 +24,12 @@ public class CreatePlayerTest {
         Bruto eco = brutos.get(1);
 
 
-        assertEquals(energy.name(), "Energy");
+        assertEquals("Energy", energy.name());
         assertEquals(energy.hp(), assassinClass.hp());
         assertEquals(energy.atk(), assassinClass.atk());
         assertEquals(energy.ini(), assassinClass.ini());
 
-        assertEquals(eco.name(), "Eco");
+        assertEquals("Eco", eco.name());
         assertEquals(eco.hp(), valkyrieClass.hp());
         assertEquals(eco.atk(), valkyrieClass.atk());
         assertEquals(eco.ini(), valkyrieClass.ini());

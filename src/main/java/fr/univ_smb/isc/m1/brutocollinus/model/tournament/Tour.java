@@ -1,9 +1,5 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Tour {
@@ -13,9 +9,7 @@ public class Tour {
         this.nodes = nodes;
     }
 
-
     public List<Node> nodes() {
         return this.nodes;
     }
-
 }
