@@ -1,11 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.ArmedBruto;
 
 public abstract class Node {
-    protected Bruto selectedBruto;
+    protected ArmedBruto selectedBruto;
 
-    public Bruto selectedBruto() {
+    public ArmedBruto selectedBruto() {
         return this.selectedBruto;
     }
 }

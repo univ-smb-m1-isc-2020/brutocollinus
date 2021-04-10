@@ -4,35 +4,46 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Player {
+public class Bruto {
 
     @Id
     @GeneratedValue
     private Long id;
 
     private String name;
-    private String email;
 
-    public Player() {
+    @ManyToOne
+    private BrutoClass brutoClass;
+
+    @ManyToOne
+    private Player owner;
+
+    public Bruto() {
         // JPA
     }
 
-    public Player(String name, String email) {
+    public Bruto(String name, BrutoClass brutoClass, Player owner) {
         this.name = name;
-        this.email = email;
+        this.brutoClass = brutoClass;
+        this.owner = owner;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String name() {
         return name;
     }
 
-    public String email() {
-        return email;
+    public Player owner() {
+        return owner;
     }
 }

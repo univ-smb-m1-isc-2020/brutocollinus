@@ -1,30 +1,29 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Brutocollinus {
+public class BrutoClass {
 
     @Id
     @GeneratedValue
     private Long id;
 
     private String name;
-    private int pv;
-    private int atk;
-    private int def;
-    private int ini;
 
-    public Brutocollinus() {
+    @OneToOne
+    private FightStatistics fightStatistics;
+
+    public BrutoClass() {
         // JPA
     }
 
-    public Brutocollinus(String name, String email) {
+    public BrutoClass(String name, FightStatistics fightStatistics) {
         this.name = name;
-        //this.email = email;
+        this.fightStatistics = fightStatistics;
     }
 
     public Long getId() {

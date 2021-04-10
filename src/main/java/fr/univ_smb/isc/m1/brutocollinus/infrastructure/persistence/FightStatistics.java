@@ -6,33 +6,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Player {
+public class FightStatistics {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
-    private String email;
+    private int pv;
+    private int hp;
+    private int ini;
 
-    public Player() {
+    public FightStatistics() {
         // JPA
     }
 
-    public Player(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public FightStatistics(int pv, int hp, int ini) {
+        this.pv = pv;
+        this.hp = hp;
+        this.ini = ini;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String name() {
-        return name;
-    }
-
-    public String email() {
-        return email;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

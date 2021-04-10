@@ -1,20 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.arsenal;
 
-public class Bruto {
-    private String name;
+public class FightStatistics {
     private int hp;
     private int atk;
     private int ini;
 
-    public Bruto(String name, IBrutoClass brutoClass) {
-        this.name = name;
-        this.hp = brutoClass.hp();
-        this.atk = brutoClass.atk();
-        this.ini = brutoClass.ini();
-    }
-
-    public String name() {
-        return this.name;
+    public FightStatistics(int i, int i1, int i2) {
     }
 
     public double hp() {

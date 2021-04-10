@@ -1,16 +1,16 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.ArmedBruto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TourBuilder {
-    private List<Bruto> participants;
+    /*private List<ArmedBruto> participants;
     private ArrayList<Tour> tours;
     private ArrayList<Node> nodes;
 
-    public TourBuilder(List<Bruto> participants) {
+    public TourBuilder(List<ArmedBruto> participants) {
         this.participants = participants;
         this.tours = new ArrayList<>();
         this.nodes = new ArrayList<>();
@@ -66,5 +66,5 @@ public class TourBuilder {
 
     public List<Tour> tours() {
         return this.tours;
-    }
+    }*/
 }

@@ -1,11 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
 
 import java.util.List;
 
 public class Tournament {
-    private List<Bruto> participants;
+    /*private List<Bruto> participants;
     private List<Tour> tours;
 
     public Tournament(List<Bruto> participants) {
@@ -16,5 +16,5 @@ public class Tournament {
 
     public List<Tour> tours() {
         return this.tours;
-    }
+    }*/
 }

@@ -1,17 +1,17 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.fight;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.ArmedBruto;
 
 public class Battle {
-    private Bruto firstOpponent;
-    private Bruto secondOpponent;
+    private ArmedBruto firstOpponent;
+    private ArmedBruto secondOpponent;
 
-    public Battle(Bruto firstOpponent, Bruto secondOpponent) {
+    public Battle(ArmedBruto firstOpponent, ArmedBruto secondOpponent) {
         this.firstOpponent = firstOpponent;
         this.secondOpponent = secondOpponent;
     }
 
-    public Bruto fight() {
+    public ArmedBruto fight() {
         return this.firstOpponent;
     }
 }
