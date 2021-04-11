@@ -1,15 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Match extends Node {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Node leftChild;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Node rightChild;
 
     public void setChildren(Node leftChild, Node rightChild) {

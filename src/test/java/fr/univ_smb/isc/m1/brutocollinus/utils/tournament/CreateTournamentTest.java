@@ -1,30 +1,49 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.tournament;
 
+import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 class CreateTournamentTest {
-    /*@Autowired
+    @Autowired
     private TournamentService tournamentService;
+    @Autowired
+    private BrutoClassService brutoClassService;
+    @Autowired
+    private ArmedBrutoService armedBrutoService;
+    private BrutoClass assassinClass;
+
+    @BeforeEach
+    void setup() {
+        this.assassinClass = this.brutoClassService.findByName("assassin");
+    }
 
     @Test
     void createPairTournament() {
-        Player lili = new Player("lili");
-        lili.createBruto("Energy", new BrutoAssassinClass());
+        Bruto energy = new Bruto("energy", this.assassinClass, null);
+        Bruto eco = new Bruto("eco", this.assassinClass, null);
 
-        Player lulu = new Player("lulu");
-        lulu.createBruto("Eco", new BrutoValkyrieClass());
+        ArmedBruto energyArmed = this.armedBrutoService.create(energy);
+        ArmedBruto ecoArmed = this.armedBrutoService.create(eco);
 
-        Bruto liliBruto = lili.brutos().get(0);
-        Bruto luluBruto = lulu.brutos().get(0);
+        List<ArmedBruto> participants = Arrays.asList(energyArmed, ecoArmed);
 
-        List<Bruto> participants = Arrays.asList(liliBruto, luluBruto);
-        Tournament tournament = new Tournament(participants);
+        Tournament tournament = this.tournamentService.create(participants);
 
         List<Tour> tours = tournament.tours();
 
+        assertEquals(participants, tournament.participants());
         assertEquals(2, tours.size());
 
         Tour secondTour = tours.get(1);
@@ -40,12 +59,12 @@ class CreateTournamentTest {
         Node secondNode = nodes.get(0);
         Node thirdNode = nodes.get(1);
 
-        assertEquals(liliBruto, secondNode.selectedBruto());
-        assertEquals(luluBruto, thirdNode.selectedBruto());
+        assertEquals(energyArmed, secondNode.selectedBruto());
+        assertEquals(ecoArmed, thirdNode.selectedBruto());
 
         assertEquals(match.leftChild(), secondNode);
         assertEquals(match.rightChild(), thirdNode);
-    }*/
+    }
 
     /*@Test
     void create8PlayersTournament() {

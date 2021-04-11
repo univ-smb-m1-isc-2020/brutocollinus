@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
 
 @Entity
 public class BrutoClass {
@@ -14,7 +15,7 @@ public class BrutoClass {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private FightStatistics fightStatistics;
 
     public BrutoClass() {

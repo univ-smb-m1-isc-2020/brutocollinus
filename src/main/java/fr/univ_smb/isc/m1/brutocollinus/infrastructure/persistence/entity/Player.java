@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class Player {
     private String name;
     private String email;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Bruto> brutos = new ArrayList<>();
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Bruto> brutos;
 
     public Player() {
         // JPA
@@ -28,6 +29,7 @@ public class Player {
     public Player(String name, String email) {
         this.name = name;
         this.email = email;
+        this.brutos = new ArrayList<>();
     }
 
     public Long getId() {

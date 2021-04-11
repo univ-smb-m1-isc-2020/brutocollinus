@@ -1,10 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.tournament;
 
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TourBuilder {
-    /*private List<ArmedBruto> participants;
+    private List<ArmedBruto> participants;
     private ArrayList<Tour> tours;
     private ArrayList<Node> nodes;
 
@@ -57,12 +59,12 @@ public class TourBuilder {
     }
 
     private void generateAllEntries() {
-        for (Bruto participant : this.participants) {
+        for (ArmedBruto participant : this.participants) {
             this.nodes.add(new Entry(participant));
         }
     }
 
     public List<Tour> tours() {
         return this.tours;
-    }*/
+    }
 }

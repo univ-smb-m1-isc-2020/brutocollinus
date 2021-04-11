@@ -11,22 +11,18 @@ import javax.annotation.PostConstruct;
 @Service
 public class BrutoClassService {
     private final BrutoClassRepository repository;
-    private final FightStatisticsRepository fightStatisticsRepository;
 
-    public BrutoClassService(BrutoClassRepository repository, FightStatisticsRepository fightStatisticsRepository) {
+    public BrutoClassService(BrutoClassRepository repository) {
         this.repository = repository;
-        this.fightStatisticsRepository = fightStatisticsRepository;
     }
 
     @PostConstruct
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
             FightStatistics assassinStatistics = new FightStatistics(100, 15, 110);
-            this.fightStatisticsRepository.saveAndFlush(assassinStatistics);
             this.repository.saveAndFlush(new BrutoClass("assassin", assassinStatistics));
 
             FightStatistics valkyrieStatistics = new FightStatistics(300, 25, 80);
-            this.fightStatisticsRepository.saveAndFlush(valkyrieStatistics);
             this.repository.saveAndFlush(new BrutoClass("valkyrie", valkyrieStatistics));
         }
     }
