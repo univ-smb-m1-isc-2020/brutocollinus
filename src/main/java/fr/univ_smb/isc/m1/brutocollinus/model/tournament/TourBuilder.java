@@ -1,7 +1,5 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.ArmedBruto;
-
 import java.util.ArrayList;
 import java.util.List;
 

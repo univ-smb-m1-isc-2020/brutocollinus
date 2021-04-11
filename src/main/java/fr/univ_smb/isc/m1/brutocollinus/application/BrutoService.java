@@ -1,6 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoClass;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +17,7 @@ public class BrutoService {
     public Bruto create(String name, BrutoClass brutoClass, Player owner) {
         Bruto bruto = new Bruto(name, brutoClass, owner);
         this.repository.save(bruto);
+        owner.addBruto(bruto);
         return bruto;
     }
 }

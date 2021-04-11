@@ -1,15 +1,16 @@
-package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
+package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.fight.Battle;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Match extends Node {
+    @ManyToOne
     private Node leftChild;
+    @ManyToOne
     private Node rightChild;
-
-    public void resolve() {
-        Battle battle = new Battle(this.leftChild.selectedBruto(), this.rightChild.selectedBruto());
-        this.selectedBruto = battle.fight();
-    }
 
     public void setChildren(Node leftChild, Node rightChild) {
         this.leftChild = leftChild;

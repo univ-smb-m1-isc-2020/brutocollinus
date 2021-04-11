@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
+package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
 

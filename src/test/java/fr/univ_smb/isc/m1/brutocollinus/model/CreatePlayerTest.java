@@ -1,23 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.model;
 
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
-import fr.univ_smb.isc.m1.brutocollinus.application.ChuckFactsService;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoClass;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
-import java.util.ArrayList;
 
 @SpringBootTest
 class CreatePlayerTest {

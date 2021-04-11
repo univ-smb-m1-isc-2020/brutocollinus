@@ -4,6 +4,9 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Player {
@@ -14,6 +17,9 @@ public class Player {
 
     private String name;
     private String email;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Bruto> brutos = new ArrayList<>();
 
     public Player() {
         // JPA
@@ -34,5 +40,13 @@ public class Player {
 
     public String email() {
         return email;
+    }
+
+    public List<Bruto> brutos() {
+        return this.brutos;
+    }
+
+    public void addBruto(Bruto bruto) {
+        this.brutos.add(bruto);
     }
 }

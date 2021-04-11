@@ -1,17 +1,21 @@
 package fr.univ_smb.isc.m1.brutocollinus.model;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.*;
-import fr.univ_smb.isc.m1.brutocollinus.model.tournament.*;
-import org.junit.jupiter.api.BeforeEach;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@SpringBootTest
 class CreateTournamentTest {
+    @Autowired
+    private PlayerService playerService;
+    @Autowired
+    private BrutoClassService brutoClassService;
+    @Autowired
+    private BrutoService brutoService;
 
     /*@Test
     void createPairTournament() {

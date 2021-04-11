@@ -1,6 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.model.fight;
 
-import fr.univ_smb.isc.m1.brutocollinus.model.arsenal.ArmedBruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.ArmedBruto;
 
 public class Battle {
     private ArmedBruto firstOpponent;
