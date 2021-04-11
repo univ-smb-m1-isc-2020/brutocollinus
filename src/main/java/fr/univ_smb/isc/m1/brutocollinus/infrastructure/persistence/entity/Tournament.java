@@ -21,7 +21,8 @@ public class Tournament {
         // JPA
     }
 
-    public Tournament(List<ArmedBruto> participants, List<Tour> tours) {
+    public Tournament(String name, List<ArmedBruto> participants, List<Tour> tours) {
+        this.name = name;
         this.participants = participants;
         this.tours = tours;
     }
@@ -32,5 +33,9 @@ public class Tournament {
 
     public List<ArmedBruto> participants() {
         return this.participants;
+    }
+
+    public String name() {
+        return this.name;
     }
 }
