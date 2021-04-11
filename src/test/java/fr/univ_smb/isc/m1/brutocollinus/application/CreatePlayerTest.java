@@ -1,6 +1,5 @@
-package fr.univ_smb.isc.m1.brutocollinus.model;
+package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

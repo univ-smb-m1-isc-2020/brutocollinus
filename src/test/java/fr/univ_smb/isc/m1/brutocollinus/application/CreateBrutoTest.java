@@ -1,8 +1,5 @@
-package fr.univ_smb.isc.m1.brutocollinus.model;
+package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
-import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoClass;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
