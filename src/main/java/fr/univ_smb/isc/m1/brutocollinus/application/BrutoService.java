@@ -1,9 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoClass;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.BrutoRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BrutoRepository;
 import org.springframework.stereotype.Service;
 
 @Service

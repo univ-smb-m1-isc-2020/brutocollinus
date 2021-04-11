@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
+package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import java.util.List;
 

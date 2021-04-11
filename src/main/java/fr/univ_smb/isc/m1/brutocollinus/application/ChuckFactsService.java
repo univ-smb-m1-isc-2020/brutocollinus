@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.ChuckFact;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.ChuckFactsRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ChuckFact;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.ChuckFactsRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

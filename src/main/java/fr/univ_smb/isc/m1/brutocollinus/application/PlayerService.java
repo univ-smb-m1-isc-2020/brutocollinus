@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Player;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.PlayerRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,4 +1,4 @@
-package fr.univ_smb.isc.m1.brutocollinus.model.tournament;
+package fr.univ_smb.isc.m1.brutocollinus.utils.tournament;
 
 import java.util.ArrayList;
 import java.util.List;

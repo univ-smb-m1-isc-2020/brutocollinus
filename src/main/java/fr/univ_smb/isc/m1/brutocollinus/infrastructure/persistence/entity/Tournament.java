@@ -1,6 +1,6 @@
-package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence;
+package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 
 import java.util.List;
 
