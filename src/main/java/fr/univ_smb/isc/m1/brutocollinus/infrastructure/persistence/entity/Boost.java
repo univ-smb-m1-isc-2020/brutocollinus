@@ -1,13 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 
 @Entity
-public class BrutoClass {
+public class Boost {
 
     @Id
     @GeneratedValue
@@ -18,11 +14,11 @@ public class BrutoClass {
     @OneToOne(cascade = CascadeType.ALL)
     private FightStatistics fightStatistics;
 
-    public BrutoClass() {
+    public Boost() {
         // JPA
     }
 
-    public BrutoClass(String name, FightStatistics fightStatistics) {
+    public Boost(String name, FightStatistics fightStatistics) {
         this.name = name;
         this.fightStatistics = fightStatistics;
     }

@@ -46,4 +46,8 @@ public class Bruto {
     public Player owner() {
         return owner;
     }
+
+    public BrutoClass brutoClass() {
+        return this.brutoClass;
+    }
 }

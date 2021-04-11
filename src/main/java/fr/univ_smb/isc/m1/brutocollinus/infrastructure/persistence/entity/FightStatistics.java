@@ -12,7 +12,7 @@ public class FightStatistics {
     @GeneratedValue
     private Long id;
 
-    private int pv;
+    private int atk;
     private int hp;
     private int ini;
 
@@ -20,8 +20,8 @@ public class FightStatistics {
         // JPA
     }
 
-    public FightStatistics(int pv, int hp, int ini) {
-        this.pv = pv;
+    public FightStatistics(int atk, int hp, int ini) {
+        this.atk = atk;
         this.hp = hp;
         this.ini = ini;
     }
@@ -32,5 +32,17 @@ public class FightStatistics {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int atk() {
+        return this.atk;
+    }
+
+    public int hp() {
+        return this.hp;
+    }
+
+    public int ini() {
+        return this.ini;
     }
 }

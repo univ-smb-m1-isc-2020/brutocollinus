@@ -1,10 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class ArmedBruto {
@@ -18,12 +17,20 @@ public class ArmedBruto {
     @ManyToOne
     private Bruto bruto;
 
+    @OneToMany
+    private List<Stuff> stuffs;
+
+    @OneToMany
+    private List<Boost> boosts;
+
     public ArmedBruto() {
         // JPA
     }
 
-    public ArmedBruto(Bruto bruto) {
+    public ArmedBruto(Bruto bruto, List<Stuff> stuffs, List<Boost> boosts) {
         this.bruto = bruto;
+        this.stuffs = stuffs;
+        this.boosts = boosts;
     }
 
     public Long getId() {
@@ -32,5 +39,17 @@ public class ArmedBruto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Bruto bruto() {
+        return this.bruto;
+    }
+
+    public List<Stuff> stuffs() {
+        return this.stuffs;
+    }
+
+    public List<Boost> boosts() {
+        return this.boosts;
     }
 }

@@ -1,11 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BrutoRepository;
+import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ArmedBrutoService {
@@ -15,9 +16,24 @@ public class ArmedBrutoService {
         this.repository = repository;
     }
 
-    public ArmedBruto create(Bruto bruto) {
-        ArmedBruto armedBruto = new ArmedBruto(bruto);
+    public ArmedBruto create(Bruto bruto, List<Stuff> stuffs, List<Boost> boosts) {
+        ArmedBruto armedBruto = new ArmedBruto(bruto, stuffs, boosts);
         this.repository.save(bruto);
         return armedBruto;
+    }
+
+    public FightStatistics totalStatistics(ArmedBruto armedBruto) {
+        FightStatistics classStatistics = new FightStatistics(armedBruto.bruto().brutoClass().fightStatistics());
+        FightStatistics totalStatistics = classStatistics;
+
+        totalStatistics = armedBruto.stuffs().stream()
+                .map((stuff) -> new FightStatistics(stuff.fightStatistics()))
+                .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
+
+        totalStatistics = armedBruto.boosts().stream()
+                .map((boost) -> new FightStatistics(boost.fightStatistics()))
+                .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
+
+        return totalStatistics;
     }
 }

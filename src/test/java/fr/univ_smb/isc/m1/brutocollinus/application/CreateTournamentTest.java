@@ -32,8 +32,8 @@ class CreateTournamentTest {
         Bruto energy = new Bruto("energy", this.assassinClass, null);
         Bruto eco = new Bruto("eco", this.assassinClass, null);
 
-        ArmedBruto energyArmed = this.armedBrutoService.create(energy);
-        ArmedBruto ecoArmed = this.armedBrutoService.create(eco);
+        ArmedBruto energyArmed = this.armedBrutoService.create(energy, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto ecoArmed = this.armedBrutoService.create(eco, new ArrayList<>(), new ArrayList<>());
 
         List<ArmedBruto> participants = Arrays.asList(energyArmed, ecoArmed);
 
@@ -72,7 +72,7 @@ class CreateTournamentTest {
 
         for (int i = 0; i < 8; ++i) {
             Bruto bruto = new Bruto("Energy_" + i, this.assassinClass, null);
-            ArmedBruto armedBruto = this.armedBrutoService.create(bruto);
+            ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new ArrayList<>(), new ArrayList<>());
             participants.add(armedBruto);
         }
 
@@ -104,7 +104,7 @@ class CreateTournamentTest {
 
         for (int i = 0; i < 5; ++i) {
             Bruto bruto = new Bruto("Energy_" + i, this.assassinClass, null);
-            ArmedBruto armedBruto = this.armedBrutoService.create(bruto);
+            ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new ArrayList<>(), new ArrayList<>());
             participants.add(armedBruto);
         }
 
@@ -141,7 +141,7 @@ class CreateTournamentTest {
 
         for (int i = 0; i < 7; ++i) {
             Bruto bruto = new Bruto("Energy_" + i, this.assassinClass, null);
-            ArmedBruto armedBruto = this.armedBrutoService.create(bruto);
+            ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new ArrayList<>(), new ArrayList<>());
             participants.add(armedBruto);
         }
 
