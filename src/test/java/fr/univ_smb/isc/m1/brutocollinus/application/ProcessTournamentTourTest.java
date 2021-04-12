@@ -30,7 +30,7 @@ class ProcessTournamentTourTest {
     }
 
     @Test
-    void create8PlayersTournament() {
+    void processAllToursOf8ParticipantsTournament() {
         List<ArmedBruto> participants = new ArrayList<>();
 
         for (int i = 0; i < 8; ++i) {
