@@ -5,13 +5,15 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedB
 public class ArmedBrutoFighter {
     private final ArmedBruto armedBruto;
     private final FightStatistics statistics;
+    private final Battle battle;
     private int remainingHp;
     private int accumulatedTimeSinceLastAttack;
     private int timeBeforeAttack;
 
-    public ArmedBrutoFighter(ArmedBruto armedBruto, FightStatistics statistics) {
+    public ArmedBrutoFighter(ArmedBruto armedBruto, FightStatistics statistics, Battle battle) {
         this.armedBruto = armedBruto;
         this.statistics = statistics;
+        this.battle = battle;
 
         this.remainingHp = statistics.hp();
         this.timeBeforeAttack = 1000 / statistics.ini();
@@ -43,18 +45,23 @@ public class ArmedBrutoFighter {
     }
 
     public void attack(ArmedBrutoFighter opponent) {
-        System.out.println(this.armedBruto.bruto().name() + " attack " + this.remainingHp);
-        opponent.defense(this.statistics.atk());
+        final int damage = this.statistics.atk();
+        opponent.defense(damage);
+
+        battle.recordAfterAttack(this, opponent, damage);
     }
 
     public void defense(int atk) {
         this.remainingHp -= atk;
-        System.out.println(this.armedBruto.bruto().name() + " defense " + this.remainingHp);
     }
 
     public void play(int minimumTimeBeforeAttack, ArmedBrutoFighter opponent) {
         if (this.canAttackAfterTime(minimumTimeBeforeAttack)) {
             this.attack(opponent);
         }
+    }
+
+    public int remainingHp() {
+        return this.remainingHp;
     }
 }
