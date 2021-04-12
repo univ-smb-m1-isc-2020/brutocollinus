@@ -3,6 +3,7 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled
 @SpringBootTest
 class CreateBrutoTest {
     @Autowired
