@@ -12,7 +12,7 @@ public abstract class Node {
     private Long id;
 
     @ManyToOne
-    private ArmedBruto selectedBruto;
+    protected ArmedBruto selectedBruto;
 
     public Node() {
         // JPA

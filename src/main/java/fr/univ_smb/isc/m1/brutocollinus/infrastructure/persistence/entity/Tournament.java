@@ -17,6 +17,8 @@ public class Tournament {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tour> tours;
 
+    public int nbTourProcessed;
+
     public Tournament() {
         // JPA
     }
@@ -25,6 +27,7 @@ public class Tournament {
         this.name = name;
         this.participants = participants;
         this.tours = tours;
+        this.nbTourProcessed = 0;
     }
 
     public List<Tour> tours() {

@@ -21,4 +21,8 @@ public class Match extends Node {
     public Node leftChild() {
         return this.leftChild;
     }
+
+    public void setSelectedBruto(ArmedBruto selectedBruto) {
+        this.selectedBruto = selectedBruto;
+    }
 }
