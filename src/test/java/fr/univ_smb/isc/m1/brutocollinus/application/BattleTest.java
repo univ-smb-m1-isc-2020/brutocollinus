@@ -69,5 +69,19 @@ class BattleTest {
         List<AttackRecord> records = battle.attackRecords();
 
         assertEquals(5, records.size());
+
+        for (int i = 0; i < 2; ++i) {
+            AttackRecord record1 = records.get(i * 2);
+            AttackRecord record2 = records.get(i * 2 + 1);
+
+            assertEquals(armedBruto1, record1.attacker());
+            assertEquals(armedBruto2, record2.attacker());
+
+            assertEquals(armedBruto2, record1.defender());
+            assertEquals(armedBruto1, record2.defender());
+
+            assertEquals(100, record1.damage());
+            assertEquals(100, record2.damage());
+        }
     }
 }

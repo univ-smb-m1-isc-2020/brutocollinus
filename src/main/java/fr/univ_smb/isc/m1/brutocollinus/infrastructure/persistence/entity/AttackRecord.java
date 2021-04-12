@@ -41,4 +41,19 @@ public class AttackRecord {
         this.id = id;
     }
 
+    public ArmedBruto attacker() {
+        return this.attacker;
+    }
+
+    public ArmedBruto defender() {
+        return this.defender;
+    }
+
+    public int defenderHp() {
+        return this.defenderHp;
+    }
+
+    public int damage() {
+        return this.damage;
+    }
 }
