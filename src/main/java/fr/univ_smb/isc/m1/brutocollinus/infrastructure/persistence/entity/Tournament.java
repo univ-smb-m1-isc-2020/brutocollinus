@@ -30,6 +30,10 @@ public class Tournament {
         this.nbTourProcessed = 0;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public List<Tour> tours() {
         return this.tours;
     }

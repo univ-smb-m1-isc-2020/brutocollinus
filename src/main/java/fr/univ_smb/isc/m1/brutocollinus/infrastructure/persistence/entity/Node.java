@@ -26,6 +26,10 @@ public abstract class Node {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public ArmedBruto selectedBruto() {
         return this.selectedBruto;
     }

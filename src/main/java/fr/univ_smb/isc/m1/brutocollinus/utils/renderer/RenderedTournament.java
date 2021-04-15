@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class RenderedTournament {
-    private Map<Long, RenderedArmedBruto> participants;
-    private Map<Long, RenderedNode> nodes;
-    private Map<Long, RenderedTour> tours;
+    public Map<Long, RenderedArmedBruto> participants;
+    public Map<Long, RenderedNode> nodes;
+    public Map<Long, RenderedTour> tours;
 
     public RenderedTournament(Tournament tournament) {
         this.participants = new HashMap<>();
@@ -37,7 +37,7 @@ public class RenderedTournament {
                     renderedNode = new RenderedMatch((Match)node);
                 }
                 else {
-                    renderedNode = new RenderEntry((Entry)node);
+                    renderedNode = new RenderedEntry((Entry)node);
                 }
 
                 this.nodes.put(node.getId(), renderedNode);

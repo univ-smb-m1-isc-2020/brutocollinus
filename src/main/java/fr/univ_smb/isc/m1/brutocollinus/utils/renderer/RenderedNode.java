@@ -4,7 +4,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedB
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 
 public class RenderedNode {
-    private Long selectedBruto;
+    public Long selectedBruto;
 
     public RenderedNode(Node node) {
         ArmedBruto selectedBruto = node.selectedBruto();

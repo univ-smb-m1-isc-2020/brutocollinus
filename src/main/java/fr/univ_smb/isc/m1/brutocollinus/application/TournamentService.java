@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tour;
@@ -9,6 +10,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.To
 import fr.univ_smb.isc.m1.brutocollinus.utils.tournament.TourBuilder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,6 +30,10 @@ public class TournamentService {
         Tournament tournament = new Tournament(name, participants, builder.tours());
         this.repository.save(tournament);
         return tournament;
+    }
+
+    public Tournament get(Long id) {
+        return this.repository.findById(id).get();
     }
 
     private void processAllMatchesInTour(Tour tour) {

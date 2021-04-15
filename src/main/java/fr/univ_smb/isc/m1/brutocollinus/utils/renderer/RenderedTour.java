@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RenderedTour {
-    private List<String> nodes;
+    public List<String> nodes;
 
     public RenderedTour(Tour tour) {
         this.nodes = tour.nodes().stream().map(node -> node.getId().toString()).collect(Collectors.toList());
