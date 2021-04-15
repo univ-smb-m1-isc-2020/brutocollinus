@@ -1,7 +1,11 @@
-package fr.univ_smb.isc.m1.brutocollinus.application;
+package fr.univ_smb.isc.m1.brutocollinus.application.tdd;
 
+import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.application.StuffService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BoostService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
-import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics;
+import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -52,7 +56,7 @@ class CreateArmedBrutoTest {
         assertEquals(0, armedBruto.stuffs().size());
         assertEquals(0, armedBruto.boosts().size());
 
-        FightStatistics statistics = this.armedBrutoService.totalStatistics(armedBruto);
+        FightStatisticsVector statistics = this.armedBrutoService.totalStatistics(armedBruto);
         assertEquals(this.assassinClass.fightStatistics().atk(), statistics.atk());
         assertEquals(this.assassinClass.fightStatistics().hp(), statistics.hp());
         assertEquals(this.assassinClass.fightStatistics().ini(), statistics.ini());
@@ -66,7 +70,7 @@ class CreateArmedBrutoTest {
         assertEquals(2, armedBruto.stuffs().size());
         assertEquals(0, armedBruto.boosts().size());
 
-        FightStatistics statistics = this.armedBrutoService.totalStatistics(armedBruto);
+        FightStatisticsVector statistics = this.armedBrutoService.totalStatistics(armedBruto);
         assertEquals(this.assassinClass.fightStatistics().atk() +
                     this.bow.fightStatistics().atk() +
                     this.shield.fightStatistics().atk(), statistics.atk());
@@ -89,7 +93,7 @@ class CreateArmedBrutoTest {
         assertEquals(1, armedBruto.stuffs().size());
         assertEquals(1, armedBruto.boosts().size());
 
-        FightStatistics statistics = this.armedBrutoService.totalStatistics(armedBruto);
+        FightStatisticsVector statistics = this.armedBrutoService.totalStatistics(armedBruto);
         assertEquals(this.assassinClass.fightStatistics().atk() +
                 this.bow.fightStatistics().atk() +
                 this.benediction.fightStatistics().atk(), statistics.atk());

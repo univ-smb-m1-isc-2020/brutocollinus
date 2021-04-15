@@ -4,13 +4,13 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedB
 
 public class ArmedBrutoFighter {
     private final ArmedBruto armedBruto;
-    private final FightStatistics statistics;
+    private final FightStatisticsVector statistics;
     private final Battle battle;
     private int remainingHp;
     private int accumulatedTimeSinceLastAttack;
     private int timeBeforeAttack;
 
-    public ArmedBrutoFighter(ArmedBruto armedBruto, FightStatistics statistics, Battle battle) {
+    public ArmedBrutoFighter(ArmedBruto armedBruto, FightStatisticsVector statistics, Battle battle) {
         this.armedBruto = armedBruto;
         this.statistics = statistics;
         this.battle = battle;

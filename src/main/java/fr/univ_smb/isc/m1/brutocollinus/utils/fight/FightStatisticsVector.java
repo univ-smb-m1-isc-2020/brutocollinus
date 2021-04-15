@@ -1,18 +1,18 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.fight;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Stuff;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics;
 
-public class FightStatistics {
+public class FightStatisticsVector {
     private int atk;
     private int hp;
     private int ini;
 
 
-    public FightStatistics(fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics fightStatistics) {
+    public FightStatisticsVector(FightStatistics fightStatistics) {
         this(fightStatistics.atk(), fightStatistics.hp(), fightStatistics.ini());
     }
 
-    public FightStatistics(int atk, int hp, int ini) {
+    public FightStatisticsVector(int atk, int hp, int ini) {
         this.atk = atk;
         this.hp = hp;
         this.ini = ini;
@@ -30,7 +30,7 @@ public class FightStatistics {
         return this.ini;
     }
 
-    public FightStatistics plus(FightStatistics other) {
-        return new FightStatistics(this.atk + other.atk, this.hp + other.hp, this.ini + other.ini);
+    public FightStatisticsVector plus(FightStatisticsVector other) {
+        return new FightStatisticsVector(this.atk + other.atk, this.hp + other.hp, this.ini + other.ini);
     }
 }

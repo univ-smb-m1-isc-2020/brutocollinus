@@ -11,7 +11,7 @@ public class Battle {
     private ArmedBrutoFighter secondFighter;
     private List<AttackRecord> attackRecords;
 
-    public Battle(ArmedBruto firstOpponent, FightStatistics firstOpponentStatistics, ArmedBruto secondOpponent, FightStatistics secondOpponentStatistics) {
+    public Battle(ArmedBruto firstOpponent, FightStatisticsVector firstOpponentStatistics, ArmedBruto secondOpponent, FightStatisticsVector secondOpponentStatistics) {
         this.firstFighter = new ArmedBrutoFighter(firstOpponent, firstOpponentStatistics, this);
         this.secondFighter = new ArmedBrutoFighter(secondOpponent, secondOpponentStatistics, this);
         this.attackRecords = new ArrayList<>();

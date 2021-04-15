@@ -1,5 +1,6 @@
-package fr.univ_smb.isc.m1.brutocollinus.application;
+package fr.univ_smb.isc.m1.brutocollinus.application.tdd;
 
+import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

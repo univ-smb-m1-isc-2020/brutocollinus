@@ -1,5 +1,8 @@
-package fr.univ_smb.isc.m1.brutocollinus.application;
+package fr.univ_smb.isc.m1.brutocollinus.application.tdd;
 
+import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -12,12 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 @Disabled
 @SpringBootTest
-class ProcessTournamentTourTest {
+class CreateTournamentTest {
     @Autowired
     private TournamentService tournamentService;
     @Autowired
@@ -32,7 +33,46 @@ class ProcessTournamentTourTest {
     }
 
     @Test
-    void processAllToursOf8ParticipantsTournament() {
+    void createPairTournament() {
+        Bruto energy = new Bruto("energy", this.assassinClass, null);
+        Bruto eco = new Bruto("eco", this.assassinClass, null);
+
+        ArmedBruto energyArmed = this.armedBrutoService.create(energy, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto ecoArmed = this.armedBrutoService.create(eco, new ArrayList<>(), new ArrayList<>());
+
+        List<ArmedBruto> participants = Arrays.asList(energyArmed, ecoArmed);
+
+        Tournament tournament = this.tournamentService.create("tournoi 1", participants);
+
+        assertEquals("tournoi 1", tournament.name());
+
+        List<Tour> tours = tournament.tours();
+
+        assertEquals(participants, tournament.participants());
+        assertEquals(2, tours.size());
+
+        Tour secondTour = tours.get(1);
+        Tour finalTour = tours.get(0);
+
+        assertEquals(1, finalTour.nodes().size());
+        assertEquals(2, secondTour.nodes().size());
+
+        List<Node> nodes = secondTour.nodes();
+        assertEquals(2, nodes.size());
+
+        Match match = (Match)finalTour.nodes().get(0);
+        Node secondNode = nodes.get(0);
+        Node thirdNode = nodes.get(1);
+
+        assertEquals(energyArmed, secondNode.selectedBruto());
+        assertEquals(ecoArmed, thirdNode.selectedBruto());
+
+        assertEquals(match.leftChild(), secondNode);
+        assertEquals(match.rightChild(), thirdNode);
+    }
+
+    @Test
+    void create8PlayersTournament() {
         List<ArmedBruto> participants = new ArrayList<>();
 
         for (int i = 0; i < 8; ++i) {
@@ -45,21 +85,25 @@ class ProcessTournamentTourTest {
 
         List<Tour> tours = tournament.tours();
 
-        for (int i = 0; i < 3; ++i) {
-            this.tournamentService.processNextTour(tournament);
+        assertEquals(4, tours.size());
 
-            Tour lastTour = tours.get(2 - i);
-            for (Node node : lastTour.nodes()) {
-                assertNotNull(node.selectedBruto());
-            }
+        Tour firstTour = tours.get(3);
+        Tour secondTour = tours.get(2);
+        Tour thirdTour = tours.get(1);
+        Tour finalTour = tours.get(0);
+
+        assertEquals(8, firstTour.nodes().size());
+        assertEquals(4, secondTour.nodes().size());
+        assertEquals(2, thirdTour.nodes().size());
+        assertEquals(1, finalTour.nodes().size());
+
+        List<Node> firstTourNodes = firstTour.nodes();
+        for (int i = 0; i < 8; ++i) {
+            assertEquals(participants.get(i), firstTourNodes.get(i).selectedBruto());
         }
-
-        assertNotNull(this.tournamentService.winner(tournament));
-
-        assertTrue("finished", this.tournamentService.isFinished(tournament));
     }
 
-    /*@Test
+    @Test
     void create5PlayersTournament() {
         List<ArmedBruto> participants = new ArrayList<>();
 
@@ -131,5 +175,5 @@ class ProcessTournamentTourTest {
         for (int i = 0; i < 1; ++i) {
             assertEquals(participants.get(i), secondTourNodes.get(i + 3).selectedBruto());
         }
-    }*/
+    }
 }

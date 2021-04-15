@@ -1,7 +1,6 @@
-package fr.univ_smb.isc.m1.brutocollinus.application;
+package fr.univ_smb.isc.m1.brutocollinus.utils.fight;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
-import fr.univ_smb.isc.m1.brutocollinus.utils.fight.Battle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,18 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BattleTest {
 
-    private fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics lowPvStatistic;
-    private fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics highPvStatistic;
-    private fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics lowIniStatistic;
-    private fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics highIniStatistic;
+    private FightStatisticsVector lowPvStatistic;
+    private FightStatisticsVector highPvStatistic;
+    private FightStatisticsVector lowIniStatistic;
+    private FightStatisticsVector highIniStatistic;
 
     @BeforeEach
     void setup() {
-        this.lowPvStatistic = new fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics(100, 100, 100);
-        this.highPvStatistic = new fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics(100, 300, 100);
+        this.lowPvStatistic = new FightStatisticsVector(100, 100, 100);
+        this.highPvStatistic = new FightStatisticsVector(100, 300, 100);
 
-        this.lowIniStatistic = new fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics(100, 100, 100);
-        this.highIniStatistic = new fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatistics(100, 100, 200);
+        this.lowIniStatistic = new FightStatisticsVector(100, 100, 100);
+        this.highIniStatistic = new FightStatisticsVector(100, 100, 200);
     }
 
     @Test

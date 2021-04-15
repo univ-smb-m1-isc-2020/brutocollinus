@@ -1,5 +1,8 @@
-package fr.univ_smb.isc.m1.brutocollinus.application;
+package fr.univ_smb.isc.m1.brutocollinus.application.tdd;
 
+import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.RenderedTournament;
 import org.junit.jupiter.api.BeforeEach;
