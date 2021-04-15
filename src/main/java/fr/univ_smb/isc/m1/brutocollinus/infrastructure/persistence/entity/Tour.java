@@ -16,6 +16,10 @@ public class Tour {
         // JPA
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Tour(List<Node> nodes) {
         this.nodes = nodes;
     }
