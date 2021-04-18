@@ -16,7 +16,7 @@ class CreatePlayerTest {
 
     @Test
     void createEmptyPlayer() {
-        Player lili = playerService.create("lili", "email");
+        Player lili = playerService.create("lili", "email", "");
 
         assertEquals("lili", lili.name());
         assertEquals("email", lili.email());

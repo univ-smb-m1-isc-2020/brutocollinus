@@ -27,7 +27,7 @@ class CreateBrutoTest {
 
     @Test
     void createPlayerWithTwoBrutos() {
-        Player lili = playerService.create("lili", "email");
+        Player lili = playerService.create("lili", "email", "");
 
         BrutoClass assasinClass = brutoClassService.findByName("assassin");
         Bruto energy = brutoService.create("energy", assasinClass, lili);

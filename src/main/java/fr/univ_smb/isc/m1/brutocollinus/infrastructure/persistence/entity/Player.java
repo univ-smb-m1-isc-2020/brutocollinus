@@ -18,6 +18,7 @@ public class Player {
 
     private String name;
     private String email;
+    private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Bruto> brutos;
@@ -26,9 +27,10 @@ public class Player {
         // JPA
     }
 
-    public Player(String name, String email) {
+    public Player(String name, String email, String password) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.brutos = new ArrayList<>();
     }
 

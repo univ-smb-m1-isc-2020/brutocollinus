@@ -13,8 +13,8 @@ public class PlayerService {
     }
 
 
-    public Player create(String name, String email) {
-        Player player = new Player(name, email);
+    public Player create(String name, String email, String password) {
+        Player player = new Player(name, email, password);
         this.repository.save(player);
         return player;
     }
