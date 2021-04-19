@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
-@Disabled
+/*@Disabled
 @SpringBootTest
 class ProcessTournamentTourTest {
     @Autowired
@@ -61,4 +61,4 @@ class ProcessTournamentTourTest {
 
         assertTrue("finished", this.tournamentService.isFinished(tournament));
     }
-}
+}*/

@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Disabled
+/*@Disabled
 @SpringBootTest
 class CreateTournamentTest {
     @Autowired
@@ -176,4 +176,4 @@ class CreateTournamentTest {
             assertEquals(participants.get(i), secondTourNodes.get(i + 3).selectedBruto());
         }
     }
-}
+}*/

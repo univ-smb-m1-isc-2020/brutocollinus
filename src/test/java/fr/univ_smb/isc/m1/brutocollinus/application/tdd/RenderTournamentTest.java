@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Disabled
+/*@Disabled
 @SpringBootTest
 class RenderTournamentTest {
     @Autowired
@@ -55,4 +55,4 @@ class RenderTournamentTest {
         final String render = gson.toJson(renderedTournament);
         System.out.println(render);
     }
-}
+}*/

@@ -17,10 +17,10 @@ public class ArmedBruto {
     @ManyToOne
     private Bruto bruto;
 
-    @OneToMany
+    @ManyToMany
     private List<Stuff> stuffs;
 
-    @OneToMany
+    @ManyToMany
     private List<Boost> boosts;
 
     public ArmedBruto() {

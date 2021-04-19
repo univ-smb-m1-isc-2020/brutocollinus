@@ -1,9 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tour;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.TournamentRepository;
