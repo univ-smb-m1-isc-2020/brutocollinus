@@ -4,9 +4,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-public class TournamenCreateForm {
+public class TournamenRequestCreateForm {
     @NotBlank
     public String name;
     @NotEmpty
-    public List<Long> participants;
+    public List<Long> guests;
 }

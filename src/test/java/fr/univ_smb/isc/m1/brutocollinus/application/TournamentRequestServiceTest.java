@@ -31,7 +31,7 @@ public class TournamentRequestServiceTest {
 
         this.player1 = new Player("billy", "", "");
         this.player2 = new Player("roger", "", "");
-        this.request = this.tournamentRequestService.request("un pont trop loin", of(player1, player2));
+        this.request = this.tournamentRequestService.create("un pont trop loin", of(player1, player2));
     }
 
     @Test

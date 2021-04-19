@@ -18,4 +18,8 @@ public class PlayerService {
         this.repository.save(player);
         return player;
     }
+
+    public Player get(Long id) {
+        return this.repository.findById(id).get();
+    }
 }

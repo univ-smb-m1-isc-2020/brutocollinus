@@ -16,7 +16,7 @@ public class TournamentRequestService {
         this.repository = repository;
     }
 
-    public TournamentRequest request(String name, Set<Player> guests) {
+    public TournamentRequest create(String name, Set<Player> guests) {
         TournamentRequest request = new TournamentRequest(name, guests);
         this.repository.save(request);
         return request;
@@ -30,5 +30,9 @@ public class TournamentRequestService {
 
     public boolean allGuestAccepted(TournamentRequest request) {
         return request.acceptedGuests().equals(request.guests());
+    }
+
+    public TournamentRequest get(Long id) {
+        return this.repository.findById(id).get();
     }
 }
