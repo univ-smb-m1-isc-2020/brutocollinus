@@ -31,7 +31,7 @@ class AuthControllerTest {
     }
 
     @Test
-    public void shouldPippoTwice() throws Exception {
+    public void shouldRegisterReturnsPlayer() throws Exception {
 
         when(playerService.create(anyString(), anyString(), anyString()))
                 .thenAnswer(invocation -> new Player(invocation.getArgument(0), invocation.getArgument(1), invocation.getArgument(2)));

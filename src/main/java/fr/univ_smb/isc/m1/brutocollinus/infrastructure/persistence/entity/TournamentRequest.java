@@ -31,6 +31,10 @@ public class TournamentRequest {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Set<Player> guests() {
         return this.guests;
     }

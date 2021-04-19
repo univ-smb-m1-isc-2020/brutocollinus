@@ -8,11 +8,18 @@ import fr.univ_smb.isc.m1.brutocollinus.application.TournamentRequestService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.TournamentRequest;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.springframework.hateoas.Link;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
 
 @RestController
 public class TournamentRequestController {
@@ -27,16 +34,25 @@ public class TournamentRequestController {
 
     @PostMapping(value="/api/tournament/request/create")
     @ResponseBody
-    public TournamentRequestCreateResponse request(@RequestBody @Valid TournamenRequestCreateForm form) {
+    public TournamentRequestCreateResponse create(@RequestBody @Valid TournamenRequestCreateForm form) {
         Set<Player> guests = form.guests.stream().map((id) -> this.playerService.get(id)).collect(Collectors.toSet());
         TournamentRequest request = this.tournamentService.create(form.name, guests);
-        return new TournamentRequestCreateResponse(request);
+
+        TournamentRequestCreateResponse response = new TournamentRequestCreateResponse();
+        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(request.getId())).withSelfRel();
+        response.add(getLink);
+
+        return response;
     }
 
     @GetMapping(value="/api/tournament/request/{id}")
     @ResponseBody
     public TournamentRequestResponse get(@PathVariable Long id) {
         TournamentRequest request = this.tournamentService.get(id);
-        return new TournamentRequestResponse(request);
+
+        TournamentRequestResponse response = new TournamentRequestResponse(request);
+        //Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept()).withRel("accept");
+        return response;
     }
+
 }
