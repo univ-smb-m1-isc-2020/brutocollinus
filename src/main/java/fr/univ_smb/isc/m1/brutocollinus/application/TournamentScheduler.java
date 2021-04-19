@@ -26,6 +26,8 @@ public class TournamentScheduler {
     @Scheduled(fixedDelay = 5000)
     public void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.all();
+        this.log.info(requests.size() + " awaiting requests");
+
         for (TournamentRequest request : requests) {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
                 this.log.info("Create tournament for request :" + request.name());
@@ -36,7 +38,9 @@ public class TournamentScheduler {
 
     @Scheduled(fixedDelay = 5000)
     public void processNextTournamentsTour() {
-        List<Tournament> tournaments = this.tournamentService.all();
+        List<Tournament> tournaments = this.tournamentService.allInProgress();
+        this.log.info(tournaments.size() + " tournaments in progress");
+
         for (Tournament tournament : tournaments) {
             this.log.info("Process next tour for tournament :" + tournament.name());
             if (!this.tournamentService.isFinished(tournament)) {

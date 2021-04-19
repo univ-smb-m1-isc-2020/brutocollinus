@@ -5,6 +5,13 @@ import java.util.List;
 
 @Entity
 public class Tournament extends Identifiable {
+    public enum State {
+        ACTIVE,
+        OVER
+    };
+
+    public State state;
+
     public String name;
 
     @OneToMany(cascade = CascadeType.ALL)
