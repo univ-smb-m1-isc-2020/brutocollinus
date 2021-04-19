@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+
 import static java.util.List.of;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -39,6 +41,19 @@ class AuthControllerTest {
         mockMvc.perform(post("/api/player/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"titi\", \"email\": \"titi@gmail.com\", \"password\": \"root\"}"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{\"name\": \"titi\", \"email\": \"titi@gmail.com\"}"));
+    }
+
+    @Test
+    public void shouldLoginReturnsPlayer() throws Exception {
+
+        when(playerService.findByEmailAndPassword(anyString(), anyString()))
+                .thenReturn(Optional.of(new Player("titi", "titi@gmail.com", "root")));
+
+        mockMvc.perform(post("/api/player/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"email\": \"titi@gmail.com\", \"password\": \"root\"}"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"name\": \"titi\", \"email\": \"titi@gmail.com\"}"));
     }
