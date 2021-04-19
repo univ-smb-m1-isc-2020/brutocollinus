@@ -51,8 +51,21 @@ public class TournamentRequestController {
         TournamentRequest request = this.tournamentService.get(id);
 
         TournamentRequestResponse response = new TournamentRequestResponse(request);
-        //Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept()).withRel("accept");
+        Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(id)).withRel("accept");
+        response.add(acceptLink);
+
         return response;
     }
 
+    @PostMapping(value="/api/tournament/accept/{id}")
+    @ResponseBody
+    public TournamentRequestResponse accept(@PathVariable Long id) {
+        TournamentRequest request = this.tournamentService.get(id);
+
+        TournamentRequestResponse response = new TournamentRequestResponse(request);
+        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(id)).withSelfRel();
+        response.add(getLink);
+
+        return response;
+    }
 }
