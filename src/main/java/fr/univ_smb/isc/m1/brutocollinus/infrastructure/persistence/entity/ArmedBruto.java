@@ -6,14 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class ArmedBruto {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-
+public class ArmedBruto extends Identifiable {
     @ManyToOne
     private Bruto bruto;
 
@@ -31,14 +24,6 @@ public class ArmedBruto {
         this.bruto = bruto;
         this.stuffs = stuffs;
         this.boosts = boosts;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Bruto bruto() {

@@ -4,20 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Tour {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class Tour extends Identifiable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Node> nodes;
 
     public Tour() {
         // JPA
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Tour(List<Node> nodes) {

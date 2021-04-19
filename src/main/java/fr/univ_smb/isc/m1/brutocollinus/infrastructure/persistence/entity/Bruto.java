@@ -7,12 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Bruto {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class Bruto extends Identifiable {
     private String name;
 
     @ManyToOne
@@ -29,14 +24,6 @@ public class Bruto {
         this.name = name;
         this.brutoClass = brutoClass;
         this.owner = owner;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String name() {

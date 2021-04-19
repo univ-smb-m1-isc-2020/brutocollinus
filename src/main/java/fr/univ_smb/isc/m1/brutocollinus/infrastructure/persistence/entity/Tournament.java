@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Tournament {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class Tournament extends Identifiable {
     public String name;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -28,10 +24,6 @@ public class Tournament {
         this.participants = participants;
         this.tours = tours;
         this.nbTourProcessed = 0;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public List<Tour> tours() {

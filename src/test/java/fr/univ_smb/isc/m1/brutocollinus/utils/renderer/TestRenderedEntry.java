@@ -16,7 +16,6 @@ public class TestRenderedEntry {
     @BeforeEach
     void setup() {
         this.bruto = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
-        this.bruto.setId(1L);
     }
 
     @Test
@@ -25,7 +24,7 @@ public class TestRenderedEntry {
 
         RenderedEntry renderedEntry = new RenderedEntry(entry);
 
-        assertEquals(1L, renderedEntry.selectedBruto);
+        assertEquals(this.bruto.uuid(), renderedEntry.selectedBruto);
         assertTrue(renderedEntry.isEntry);
     }
 }

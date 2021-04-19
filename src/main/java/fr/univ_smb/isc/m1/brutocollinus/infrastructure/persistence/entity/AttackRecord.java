@@ -7,12 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class AttackRecord {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class AttackRecord extends Identifiable {
     @ManyToOne
     private ArmedBruto attacker;
 
@@ -31,14 +26,6 @@ public class AttackRecord {
         this.defender = defender;
         this.damage = damage;
         this.defenderHp = defenderHp;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public ArmedBruto attacker() {

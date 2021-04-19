@@ -19,21 +19,18 @@ public class TestRenderedMatch {
     void setup() {
         ArmedBruto bruto = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
         this.dummyEntry1 = new Entry(bruto);
-        this.dummyEntry1.setId(1L);
         this.dummyEntry2 = new Entry(bruto);
-        this.dummyEntry2.setId(2L);
     }
 
     @Test
     void shouldHaveSameDataWhenCreatedAndNotResolved() {
         Match match = new Match();
-        match.setId(3L);
         match.setChildren(this.dummyEntry1, this.dummyEntry2);
 
         RenderedMatch renderedMatch = new RenderedMatch(match);
 
-        assertEquals(1L, renderedMatch.leftChild);
-        assertEquals(2L, renderedMatch.rightChild);
+        assertEquals(this.dummyEntry1.uuid(), renderedMatch.leftChild);
+        assertEquals(this.dummyEntry2.uuid(), renderedMatch.rightChild);
         assertTrue(renderedMatch.isMatch);
     }
 }

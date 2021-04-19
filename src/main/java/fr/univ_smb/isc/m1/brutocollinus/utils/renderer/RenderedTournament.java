@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class RenderedTournament {
-    public Map<Long, RenderedArmedBruto> participants;
-    public Map<Long, RenderedNode> nodes;
-    public Map<Long, RenderedTour> tours;
+    public Map<String, RenderedArmedBruto> participants;
+    public Map<String, RenderedNode> nodes;
+    public Map<String, RenderedTour> tours;
 
     public RenderedTournament(Tournament tournament) {
         this.participants = new HashMap<>();
@@ -40,7 +40,7 @@ public class RenderedTournament {
                     renderedNode = new RenderedEntry((Entry)node);
                 }
 
-                this.nodes.put(node.getId(), renderedNode);
+                this.nodes.put(node.uuid(), renderedNode);
             }
         }
     }
@@ -48,14 +48,14 @@ public class RenderedTournament {
     private void renderTours(List<Tour> tours) {
         for (Tour tour : tours) {
             RenderedTour renderTour = new RenderedTour(tour);
-            this.tours.put(tour.getId(), renderTour);
+            this.tours.put(tour.uuid(), renderTour);
         }
     }
 
     private void renderParticipants(List<ArmedBruto> participants) {
         for (ArmedBruto participant : participants) {
             RenderedArmedBruto renderedParticipants = new RenderedArmedBruto(participant);
-            this.participants.put(participant.getId(), renderedParticipants);
+            this.participants.put(participant.uuid(), renderedParticipants);
         }
     }
 }

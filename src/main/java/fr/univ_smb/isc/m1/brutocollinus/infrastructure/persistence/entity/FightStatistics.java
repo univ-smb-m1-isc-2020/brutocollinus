@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class FightStatistics {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -24,14 +23,6 @@ public class FightStatistics {
         this.atk = atk;
         this.hp = hp;
         this.ini = ini;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public int atk() {

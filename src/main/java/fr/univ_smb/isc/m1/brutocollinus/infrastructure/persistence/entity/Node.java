@@ -6,11 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public abstract class Node {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public abstract class Node extends Identifiable {
     @ManyToOne
     protected ArmedBruto selectedBruto;
 
@@ -20,14 +16,6 @@ public abstract class Node {
 
     public Node(ArmedBruto selectedBruto) {
         this.selectedBruto = selectedBruto;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public ArmedBruto selectedBruto() {

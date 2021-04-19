@@ -10,6 +10,6 @@ public class RenderedTour {
     public List<String> nodes;
 
     public RenderedTour(Tour tour) {
-        this.nodes = tour.nodes().stream().map(node -> node.getId().toString()).collect(Collectors.toList());
+        this.nodes = tour.nodes().stream().map(node -> node.uuid().toString()).collect(Collectors.toList());
     }
 }
