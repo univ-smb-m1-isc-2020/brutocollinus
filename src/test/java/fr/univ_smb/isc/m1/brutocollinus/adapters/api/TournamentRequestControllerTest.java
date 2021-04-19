@@ -39,7 +39,6 @@ class TournamentRequestControllerTest {
         Set<Player> guests = Set.of(new Player("toto", "", ""), new Player("titi", "", ""));
 
         TournamentRequest request = new TournamentRequest("un pont trop loin", guests);
-        request.setId(23L);
         when(tournamentRequestService.create(anyString(), anySet()))
                 .thenReturn(request);
 
@@ -47,6 +46,6 @@ class TournamentRequestControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"un pont trop loin\", \"guests\": [1, 2]}"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"links\":[{\"rel\":\"self\",\"href\":\"http://localhost/api/tournament/request/23\"}]}"));
+                .andExpect(content().json("{\"links\":[{\"rel\":\"self\",\"href\":\"http://localhost/api/tournament/request/" + request.uuid() + "\"}]}"));
     }
 }

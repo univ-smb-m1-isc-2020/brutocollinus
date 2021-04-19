@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class TournamentRequest {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class TournamentRequest extends Identifiable {
     public String name;
 
     @ManyToMany
@@ -25,14 +21,6 @@ public class TournamentRequest {
         this.name = name;
         this.guests = guests;
         this.acceptedGuestToArmedBrutos = new HashMap<>();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Set<Player> guests() {

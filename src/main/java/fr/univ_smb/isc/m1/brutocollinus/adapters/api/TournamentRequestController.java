@@ -35,35 +35,35 @@ public class TournamentRequestController {
     @PostMapping(value="/api/tournament/request/create")
     @ResponseBody
     public TournamentRequestCreateResponse create(@RequestBody @Valid TournamenRequestCreateForm form) {
-        Set<Player> guests = form.guests.stream().map((id) -> this.playerService.get(id)).collect(Collectors.toSet());
+        Set<Player> guests = form.guests.stream().map((uuid) -> this.playerService.get(uuid)).collect(Collectors.toSet());
         TournamentRequest request = this.tournamentService.create(form.name, guests);
 
         TournamentRequestCreateResponse response = new TournamentRequestCreateResponse();
-        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(request.getId())).withSelfRel();
+        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(request.uuid())).withSelfRel();
         response.add(getLink);
 
         return response;
     }
 
-    @GetMapping(value="/api/tournament/request/{id}")
+    @GetMapping(value="/api/tournament/request/{uuid}")
     @ResponseBody
-    public TournamentRequestResponse get(@PathVariable Long id) {
-        TournamentRequest request = this.tournamentService.get(id);
+    public TournamentRequestResponse get(@PathVariable String uuid) {
+        TournamentRequest request = this.tournamentService.get(uuid);
 
         TournamentRequestResponse response = new TournamentRequestResponse(request);
-        Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(id)).withRel("accept");
+        Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(uuid)).withRel("accept");
         response.add(acceptLink);
 
         return response;
     }
 
-    @PostMapping(value="/api/tournament/accept/{id}")
+    @PostMapping(value="/api/tournament/accept/{uuid}")
     @ResponseBody
-    public TournamentRequestResponse accept(@PathVariable Long id) {
-        TournamentRequest request = this.tournamentService.get(id);
+    public TournamentRequestResponse accept(@PathVariable String uuid) {
+        TournamentRequest request = this.tournamentService.get(uuid);
 
         TournamentRequestResponse response = new TournamentRequestResponse(request);
-        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(id)).withSelfRel();
+        Link getLink = linkTo(methodOn(TournamentRequestController.class).get(uuid)).withSelfRel();
         response.add(getLink);
 
         return response;

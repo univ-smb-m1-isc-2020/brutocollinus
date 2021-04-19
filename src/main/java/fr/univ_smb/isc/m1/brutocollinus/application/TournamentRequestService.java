@@ -32,7 +32,7 @@ public class TournamentRequestService {
         return request.acceptedGuests().equals(request.guests());
     }
 
-    public TournamentRequest get(Long id) {
-        return this.repository.findById(id).get();
+    public TournamentRequest get(String uuid) {
+        return this.repository.findByUuid(uuid).get();
     }
 }

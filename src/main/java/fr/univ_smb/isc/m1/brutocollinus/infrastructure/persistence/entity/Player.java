@@ -1,6 +1,8 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,12 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Player {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class Player extends Identifiable {
     private String name;
     private String email;
     private String password;
@@ -32,10 +29,6 @@ public class Player {
         this.email = email;
         this.password = password;
         this.brutos = new ArrayList<>();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String name() {
