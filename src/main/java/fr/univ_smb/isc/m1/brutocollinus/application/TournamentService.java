@@ -70,4 +70,8 @@ public class TournamentService {
 
         return finalNode.selectedBruto();
     }
+
+    public List<Tournament> all() {
+        return this.repository.findAll();
+    }
 }

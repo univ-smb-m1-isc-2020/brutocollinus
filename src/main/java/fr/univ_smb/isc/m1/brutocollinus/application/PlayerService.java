@@ -21,8 +21,8 @@ public class PlayerService {
         return player;
     }
 
-    public Player get(Long id) {
-        return this.repository.findById(id).get();
+    public Player get(String uuid) {
+        return this.repository.findByUuid(uuid).get();
     }
 
     public Optional<Player> findByEmailAndPassword(String email, String password) {

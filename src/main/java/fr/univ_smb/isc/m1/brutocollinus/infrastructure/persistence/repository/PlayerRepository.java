@@ -5,6 +5,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tourna
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -13,4 +14,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     Player findByName(String name);
 
     Optional<Player> findByEmailAndPassword(String email, String password);
+
+    Optional<Player> findByUuid(String uuid);
 }

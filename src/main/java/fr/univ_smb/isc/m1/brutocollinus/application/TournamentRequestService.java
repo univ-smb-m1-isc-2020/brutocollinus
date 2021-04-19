@@ -6,6 +6,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tourna
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.TournamentRequestRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -34,5 +35,9 @@ public class TournamentRequestService {
 
     public TournamentRequest get(String uuid) {
         return this.repository.findByUuid(uuid).get();
+    }
+
+    public List<TournamentRequest> all() {
+        return this.repository.findAll();
     }
 }

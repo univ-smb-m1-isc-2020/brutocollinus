@@ -10,7 +10,7 @@ public class TournamentRequest extends Identifiable {
     @ManyToMany
     private Set<Player> guests;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Map<Player, ArmedBruto> acceptedGuestToArmedBrutos;
 
     public TournamentRequest() {

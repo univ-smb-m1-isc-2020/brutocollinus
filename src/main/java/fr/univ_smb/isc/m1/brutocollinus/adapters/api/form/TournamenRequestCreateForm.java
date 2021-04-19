@@ -8,5 +8,5 @@ public class TournamenRequestCreateForm {
     @NotBlank
     public String name;
     @NotEmpty
-    public List<Long> guests;
+    public List<String> guests;
 }
