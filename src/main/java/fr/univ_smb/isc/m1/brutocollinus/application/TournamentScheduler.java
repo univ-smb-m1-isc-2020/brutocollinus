@@ -20,17 +20,17 @@ public class TournamentScheduler {
     public TournamentScheduler(TournamentRequestService tournamentRequestService, TournamentService tournamentService) {
         this.tournamentRequestService = tournamentRequestService;
         this.tournamentService = tournamentService;
-        this.log.info("Start scheduler");
+        log.info("Start scheduler");
     }
 
     @Scheduled(fixedDelay = 5000)
     public void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.all();
-        this.log.info(requests.size() + " awaiting requests");
+        log.info("{} awaiting requests", requests.size());
 
         for (TournamentRequest request : requests) {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
-                this.log.info("Create tournament for request :" + request.name());
+                log.info("Create tournament for request: {}", request.name());
                 this.tournamentService.create(request.name(), request.armedBrutos());
             }
         }
@@ -39,10 +39,10 @@ public class TournamentScheduler {
     @Scheduled(fixedDelay = 5000)
     public void processNextTournamentsTour() {
         List<Tournament> tournaments = this.tournamentService.allInProgress();
-        this.log.info(tournaments.size() + " tournaments in progress");
+        log.info("{} tournaments in progress", tournaments.size());
 
         for (Tournament tournament : tournaments) {
-            this.log.info("Process next tour for tournament :" + tournament.name());
+            log.info("Process next tour for tournament :{}", tournament.name());
             if (!this.tournamentService.isFinished(tournament)) {
                 this.tournamentService.processNextTour(tournament);
             }

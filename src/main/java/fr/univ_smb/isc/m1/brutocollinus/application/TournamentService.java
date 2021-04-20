@@ -30,7 +30,7 @@ public class TournamentService {
     }
 
     public Tournament get(Long id) {
-        return this.repository.findById(id).get();
+        return this.repository.findById(id).orElse(null);
     }
 
     private void processAllMatchesInTour(Tour tour) {

@@ -22,7 +22,7 @@ public class PlayerService {
     }
 
     public Player get(String uuid) {
-        return this.repository.findByUuid(uuid).get();
+        return this.repository.findByUuid(uuid).orElse(null);
     }
 
     public Optional<Player> findByEmailAndPassword(String email, String password) {

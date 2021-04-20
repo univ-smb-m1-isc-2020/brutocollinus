@@ -34,7 +34,7 @@ public class TournamentRequestService {
     }
 
     public TournamentRequest get(String uuid) {
-        return this.repository.findByUuid(uuid).get();
+        return this.repository.findByUuid(uuid).orElse(null);
     }
 
     public List<TournamentRequest> all() {
