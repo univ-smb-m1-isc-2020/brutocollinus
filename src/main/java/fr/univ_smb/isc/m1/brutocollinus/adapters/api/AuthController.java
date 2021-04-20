@@ -23,7 +23,7 @@ public class AuthController {
         this.playerService = playerService;
     }
 
-    private PlayerResponse playerResponseWithLinks(Player player) {
+    private PlayerResponse meResponseWithLinks(Player player) {
         PlayerResponse response = new PlayerResponse(player);
 
         String uuid = player.uuid();
@@ -38,7 +38,7 @@ public class AuthController {
     @ResponseBody
     public PlayerResponse register(@RequestBody @Valid RegisterForm form) {
         Player player = this.playerService.create(form.name, form.email, form.password);
-        return new PlayerResponse(player);
+        return this.meResponseWithLinks(player);
     }
 
     @PostMapping(value="/api/player/login")
@@ -46,7 +46,7 @@ public class AuthController {
     public PlayerResponse register(@RequestBody @Valid LoginForm form) {
         Optional<Player> player = this.playerService.findByEmailAndPassword(form.email, form.password);
         if (player.isPresent()) {
-            return this.playerResponseWithLinks(player.get());
+            return this.meResponseWithLinks(player.get());
         }
 
         return null;
