@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TournamentRequestResponse extends RepresentationModel<TournamentRequestResponse> {
-    public String name;
+    public final String uuid;
+    public final String name;
 
     public TournamentRequestResponse(TournamentRequest request) {
+        this.uuid = request.uuid();
         this.name = request.name();
     }
 }
