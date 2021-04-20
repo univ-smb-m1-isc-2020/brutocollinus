@@ -3,12 +3,9 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -19,6 +16,12 @@ public class Player extends Identifiable {
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Bruto> brutos;
+
+    @ManyToMany
+    private List<Stuff> stuffs;
+
+    @ManyToMany
+    private List<Boost> boosts;
 
     public Player() {
         // JPA
@@ -45,5 +48,13 @@ public class Player extends Identifiable {
 
     public void addBruto(Bruto bruto) {
         this.brutos.add(bruto);
+    }
+
+    public List<Stuff> stuffs() {
+        return this.stuffs;
+    }
+
+    public List<Boost> boosts() {
+        return this.boosts;
     }
 }

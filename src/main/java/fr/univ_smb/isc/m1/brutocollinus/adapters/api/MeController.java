@@ -1,15 +1,17 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BoostResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeCreateBrutoResponse;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeAllBrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.CreateBrutoForm;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.StuffResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Stuff;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,22 +34,40 @@ public class MeController {
         this.brutoClassService = brutoClassService;
     }
 
-    private BrutoResponse brutoReponseWithLinks(Bruto bruto) {
-        BrutoResponse response = new BrutoResponse(bruto);
-        return response;
-    }
-
     @GetMapping(value="/api/me/{uuid}/bruto/all")
     @ResponseBody
-    public MeAllBrutoResponse allBruto(@PathVariable String uuid) {
+    public List<BrutoResponse> allBruto(@PathVariable String uuid) {
         Player me = this.playerService.get(uuid);
 
-        List<BrutoResponse> brutoResponses = me.brutos().stream()
-                .map((bruto) -> this.brutoReponseWithLinks(bruto))
+        List<BrutoResponse> responses = me.brutos().stream()
+                .map(BrutoResponse::new)
                 .collect(Collectors.toList());
 
-        MeAllBrutoResponse response = new MeAllBrutoResponse(brutoResponses);
-        return response;
+        return responses;
+    }
+
+    @GetMapping(value="/api/me/{uuid}/stuff/all")
+    @ResponseBody
+    public List<StuffResponse> allStuff(@PathVariable String uuid) {
+        Player me = this.playerService.get(uuid);
+
+        List<StuffResponse> responses = me.stuffs().stream()
+                .map(StuffResponse::new)
+                .collect(Collectors.toList());
+
+        return responses;
+    }
+
+    @GetMapping(value="/api/me/{uuid}/boost/all")
+    @ResponseBody
+    public List<BoostResponse> allBoost(@PathVariable String uuid) {
+        Player me = this.playerService.get(uuid);
+
+        List<BoostResponse> responses = me.boosts().stream()
+                .map(BoostResponse::new)
+                .collect(Collectors.toList());
+
+        return responses;
     }
 
     @PostMapping(value="/api/player/{uuid}/bruto/create")
@@ -57,7 +77,7 @@ public class MeController {
         BrutoClass brutoClass = this.brutoClassService.findByName(form.className);
         Bruto bruto = this.brutoService.create(form.name, brutoClass, me);
 
-        MeCreateBrutoResponse response = new MeCreateBrutoResponse(this.brutoReponseWithLinks(bruto));
+        MeCreateBrutoResponse response = new MeCreateBrutoResponse(new BrutoResponse(bruto));
         return response;
     }
 }
