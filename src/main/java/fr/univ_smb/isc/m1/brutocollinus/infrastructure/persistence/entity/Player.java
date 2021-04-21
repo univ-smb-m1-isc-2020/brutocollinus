@@ -17,14 +17,6 @@ public class Player extends Identifiable {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Bruto> brutos;
 
-    @ManyToMany
-    @JoinTable(name="player_stuff")
-    private List<Stuff> stuffs;
-
-    @ManyToMany
-    @JoinTable(name="player_boost")
-    private List<Boost> boosts;
-
     public Player() {
         // JPA
     }
@@ -50,13 +42,5 @@ public class Player extends Identifiable {
 
     public void addBruto(Bruto bruto) {
         this.brutos.add(bruto);
-    }
-
-    public List<Stuff> stuffs() {
-        return this.stuffs;
-    }
-
-    public List<Boost> boosts() {
-        return this.boosts;
     }
 }

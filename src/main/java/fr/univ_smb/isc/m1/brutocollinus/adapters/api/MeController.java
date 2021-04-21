@@ -45,7 +45,7 @@ public class MeController {
         return responses;
     }
 
-    @GetMapping(value="/api/me/{uuid}/stuff/all")
+    /*@GetMapping(value="/api/me/{uuid}/stuff/all")
     @ResponseBody
     public List<StuffResponse> allStuff(@PathVariable String uuid) {
         Player me = this.playerService.get(uuid);
@@ -67,7 +67,7 @@ public class MeController {
                 .collect(Collectors.toList());
 
         return responses;
-    }
+    }*/
 
     @PostMapping(value="/api/player/{uuid}/bruto/create")
     @ResponseBody
