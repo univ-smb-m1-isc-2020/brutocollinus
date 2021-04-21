@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.TournamenRequestCreateForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.TournamentRequestAcceptForm;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestAcceptResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestCreateResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;
@@ -55,7 +56,7 @@ public class TournamentRequestController {
 
     @PostMapping(value="/api/tournament/request/accept/{uuid}")
     @ResponseBody
-    public TournamentRequestResponse accept(@PathVariable String uuid, @RequestBody @Valid TournamentRequestAcceptForm form) {
+    public TournamentRequestAcceptResponse accept(@PathVariable String uuid, @RequestBody @Valid TournamentRequestAcceptForm form) {
         TournamentRequest request = this.tournamentService.get(uuid);
 
         Bruto bruto = this.brutoService.get(form.selectedBruto);
@@ -64,7 +65,7 @@ public class TournamentRequestController {
         ArmedBruto armedBruto = this.armedBrutoService.create(bruto, boosts);
         this.tournamentService.accept(request, bruto.owner(), armedBruto);
 
-        TournamentRequestResponse response = new TournamentRequestResponse(request);
+        TournamentRequestAcceptResponse response = new TournamentRequestAcceptResponse(request, armedBruto);
         return response;
     }
 }
