@@ -4,13 +4,14 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class TourBuilder {
-    private List<ArmedBruto> participants;
+    private Set<ArmedBruto> participants;
     private ArrayList<Tour> tours;
     private ArrayList<Node> nodes;
 
-    public TourBuilder(List<ArmedBruto> participants) {
+    public TourBuilder(Set<ArmedBruto> participants) {
         this.participants = participants;
         this.tours = new ArrayList<>();
         this.nodes = new ArrayList<>();

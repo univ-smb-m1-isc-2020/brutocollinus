@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Tournament extends Identifiable {
@@ -16,7 +17,7 @@ public class Tournament extends Identifiable {
 
     @ManyToMany
     @JoinTable(name = "tournament_armedbruto")
-    private List<ArmedBruto> participants;
+    private Set<ArmedBruto> participants;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tour> tours;
@@ -27,7 +28,7 @@ public class Tournament extends Identifiable {
         // JPA
     }
 
-    public Tournament(String name, List<ArmedBruto> participants, List<Tour> tours) {
+    public Tournament(String name, Set<ArmedBruto> participants, List<Tour> tours) {
         this.state = State.ACTIVE;
         this.name = name;
         this.participants = participants;
@@ -39,7 +40,7 @@ public class Tournament extends Identifiable {
         return this.tours;
     }
 
-    public List<ArmedBruto> participants() {
+    public Set<ArmedBruto> participants() {
         return this.participants;
     }
 

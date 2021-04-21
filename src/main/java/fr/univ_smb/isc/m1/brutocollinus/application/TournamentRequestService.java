@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.TournamentRequest;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.TournamentRequestRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,11 @@ import java.util.Set;
 @Service
 public class TournamentRequestService {
     private final TournamentRequestRepository repository;
+    private final TournamentService tournamentService;
 
-    public TournamentRequestService(TournamentRequestRepository repository) {
+    public TournamentRequestService(TournamentRequestRepository repository, TournamentService tournamentService) {
         this.repository = repository;
+        this.tournamentService = tournamentService;
     }
 
     public TournamentRequest create(String name, Set<Player> guests) {
@@ -41,5 +44,11 @@ public class TournamentRequestService {
 
     public List<TournamentRequest> allWithoutTournament() {
         return this.repository.findByTournamentIsNull();
+    }
+
+    public Tournament transformToTournament(TournamentRequest request) {
+        //request TODO
+        Tournament tournament = this.tournamentService.create(request.name(), request.armedBrutos());
+        return tournament;
     }
 }

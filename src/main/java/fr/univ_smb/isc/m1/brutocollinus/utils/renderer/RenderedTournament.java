@@ -10,6 +10,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class RenderedTournament {
     public Map<String, RenderedArmedBruto> participants;
@@ -52,7 +53,7 @@ public class RenderedTournament {
         }
     }
 
-    private void renderParticipants(List<ArmedBruto> participants) {
+    private void renderParticipants(Set<ArmedBruto> participants) {
         for (ArmedBruto participant : participants) {
             RenderedArmedBruto renderedParticipants = new RenderedArmedBruto(participant);
             this.participants.put(participant.uuid(), renderedParticipants);

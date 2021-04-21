@@ -34,7 +34,7 @@ public class TournamentScheduler {
         for (TournamentRequest request : requests) {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
                 log.info("Create tournament for request: {}", request.name());
-                this.tournamentService.create(request.name(), new ArrayList<>(request.armedBrutos())); // TODO set
+                //this.tournamentRequestService.transformToTournament(request));
             }
         }
     }

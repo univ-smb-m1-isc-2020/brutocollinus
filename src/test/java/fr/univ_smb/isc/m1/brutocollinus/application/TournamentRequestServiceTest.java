@@ -27,7 +27,7 @@ public class TournamentRequestServiceTest {
     @BeforeEach
     void setup() {
         TournamentRequestRepository repository = mock(TournamentRequestRepository.class);
-        this.tournamentRequestService = new TournamentRequestService(repository);
+        this.tournamentRequestService = new TournamentRequestService(repository, null);
 
         this.player1 = new Player("billy", "", "");
         this.player2 = new Player("roger", "", "");

@@ -7,8 +7,8 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.To
 import fr.univ_smb.isc.m1.brutocollinus.utils.tournament.TourBuilder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TournamentService {
@@ -22,7 +22,7 @@ public class TournamentService {
         this.matchService = matchService;
     }
 
-    public Tournament create(String name, List<ArmedBruto> participants) {
+    public Tournament create(String name, Set<ArmedBruto> participants) {
         TourBuilder builder = new TourBuilder(participants);
         Tournament tournament = new Tournament(name, participants, builder.tours());
         this.repository.save(tournament);
