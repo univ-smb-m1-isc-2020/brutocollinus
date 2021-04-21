@@ -1,35 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+
+import LoginPage from './pages/Login.js'
+import RegisterPage from './pages/Register.js'
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import React, {useState, useEffect } from 'react'
 
 function App() {
-  const [facts, setFacts] = useState([])
-
-  useEffect(() => {
-    fetch('/api/chuck-facts').then(res => res.json()).then(setFacts)
-  }, [])
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <ul>
-          {facts.map(fact => (<li>{fact}</li>))}
-        </ul>
-      </header>
-    </div>
-  );
+    <Router>
+    <Switch>
+      <Route path="/login" exact><LoginPage /></Route>
+      <Route path="/register" exact><RegisterPage /></Route>
+    </Switch>
+  </Router>
+);
 }
 
 export default App;
