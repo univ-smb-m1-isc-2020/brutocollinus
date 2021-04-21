@@ -45,30 +45,6 @@ public class MeController {
         return responses;
     }
 
-    /*@GetMapping(value="/api/me/{uuid}/stuff/all")
-    @ResponseBody
-    public List<StuffResponse> allStuff(@PathVariable String uuid) {
-        Player me = this.playerService.get(uuid);
-
-        List<StuffResponse> responses = me.stuffs().stream()
-                .map(StuffResponse::new)
-                .collect(Collectors.toList());
-
-        return responses;
-    }
-
-    @GetMapping(value="/api/me/{uuid}/boost/all")
-    @ResponseBody
-    public List<BoostResponse> allBoost(@PathVariable String uuid) {
-        Player me = this.playerService.get(uuid);
-
-        List<BoostResponse> responses = me.boosts().stream()
-                .map(BoostResponse::new)
-                .collect(Collectors.toList());
-
-        return responses;
-    }*/
-
     @PostMapping(value="/api/player/{uuid}/bruto/create")
     @ResponseBody
     public MeCreateBrutoResponse createBruto(@PathVariable String uuid, @RequestBody @Valid MeCreateBrutoForm form) {

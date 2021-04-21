@@ -23,30 +23,19 @@ public class AuthController {
         this.playerService = playerService;
     }
 
-    private PlayerResponse meResponseWithLinks(Player player) {
-        PlayerResponse response = new PlayerResponse(player);
-
-        String uuid = player.uuid();
-        Link allBruto = linkTo(methodOn(MeController.class).allBruto(uuid)).withRel("all_bruto");
-        Link createBruto = linkTo(methodOn(MeController.class).createBruto(uuid, null)).withRel("create_bruto");
-        response.add(allBruto, createBruto);
-
-        return response;
-    }
-
     @PostMapping(value="/api/player/register")
     @ResponseBody
     public PlayerResponse register(@RequestBody @Valid RegisterForm form) {
         Player player = this.playerService.create(form.name, form.email, form.password);
-        return this.meResponseWithLinks(player);
+        return new PlayerResponse(player);
     }
 
     @PostMapping(value="/api/player/login")
     @ResponseBody
-    public PlayerResponse register(@RequestBody @Valid LoginForm form) {
+    public PlayerResponse login(@RequestBody @Valid LoginForm form) {
         Optional<Player> player = this.playerService.findByEmailAndPassword(form.email, form.password);
         if (player.isPresent()) {
-            return this.meResponseWithLinks(player.get());
+            return new PlayerResponse(player.get());
         }
 
         return null;
