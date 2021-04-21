@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.AttackRecord;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Entry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestRenderedAttackRecord {
+public class TestAttackRecordRenderer {
     private ArmedBruto attacker;
     private ArmedBruto defender;
 
@@ -25,7 +24,7 @@ public class TestRenderedAttackRecord {
     void shouldHaveSameDataWhenCreated() {
         AttackRecord record = new AttackRecord(this.attacker, this.defender, 100, 1300);
 
-        RenderedAttackRecord rendered = new RenderedAttackRecord(record);
+        AttackRecordRenderer rendered = new AttackRecordRenderer(record);
 
         assertEquals(this.attacker.uuid(), rendered.attacker);
         assertEquals(this.defender.uuid(), rendered.defender);

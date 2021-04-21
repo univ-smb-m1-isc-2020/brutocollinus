@@ -17,16 +17,20 @@ public class TournamentService {
 
     private final TournamentRepository repository;
     private final MatchService matchService;
+    private final TournamentRenderService tournamentRenderService;
 
-    public TournamentService(TournamentRepository repository, MatchService matchService) {
+    public TournamentService(TournamentRepository repository, MatchService matchService, TournamentRenderService tournamentRenderService) {
         this.repository = repository;
         this.matchService = matchService;
+        this.tournamentRenderService = tournamentRenderService;
     }
 
     public Tournament create(String name, Set<ArmedBruto> participants) {
         TourBuilder builder = new TourBuilder(participants);
         Tournament tournament = new Tournament(name, participants, builder.tours());
         this.repository.save(tournament);
+        this.tournamentRenderService.render(tournament);
+
         return tournament;
     }
 
@@ -57,18 +61,13 @@ public class TournamentService {
         this.matchService.processAll(matches);
 
         ++tournament.nbTourProcessed;
+
+        this.tournamentRenderService.render(tournament);
     }
 
     public boolean isFinished(Tournament tournament) {
         final int processableTours = tournament.tours().size() - STARTING_TOUR;
         return processableTours == tournament.nbTourProcessed;
-    }
-
-    public ArmedBruto winner(Tournament tournament) {
-        Tour finalTour = tournament.tours().get(0);
-        Node finalNode = finalTour.nodes().get(0);
-
-        return finalNode.selectedBruto();
     }
 
     public List<Tournament> allInProgress() {

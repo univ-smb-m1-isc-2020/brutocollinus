@@ -6,10 +6,10 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RenderedTour {
+public class TourRenderer {
     public List<String> nodes;
 
-    public RenderedTour(Tour tour) {
+    public TourRenderer(Tour tour) {
         this.nodes = tour.nodes().stream().map(node -> node.uuid().toString()).collect(Collectors.toList());
     }
 }

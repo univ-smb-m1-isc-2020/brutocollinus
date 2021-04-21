@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestRenderedEntry {
+public class TestEntryRenderer {
     private ArmedBruto bruto;
 
     @BeforeEach
@@ -22,9 +22,9 @@ public class TestRenderedEntry {
     void shouldHaveSameDataWhenCreated() {
         Entry entry = new Entry(this.bruto);
 
-        RenderedEntry renderedEntry = new RenderedEntry(entry);
+        EntryRenderer entryRenderer = new EntryRenderer(entry);
 
-        assertEquals(this.bruto.uuid(), renderedEntry.selectedBruto);
-        assertTrue(renderedEntry.isEntry);
+        assertEquals(this.bruto.uuid(), entryRenderer.selectedBruto);
+        assertTrue(entryRenderer.isEntry);
     }
 }

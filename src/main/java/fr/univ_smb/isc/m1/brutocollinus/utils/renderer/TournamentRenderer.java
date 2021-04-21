@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class RenderedTournament {
-    public Map<String, RenderedArmedBruto> participants;
-    public Map<String, RenderedNode> nodes;
-    public Map<String, RenderedTour> tours;
+public class TournamentRenderer {
+    public Map<String, ArmedBrutoRenderer> participants;
+    public Map<String, NodeRenderer> nodes;
+    public Map<String, TourRenderer> tours;
 
-    public RenderedTournament(Tournament tournament) {
+    public TournamentRenderer(Tournament tournament) {
         this.participants = new HashMap<>();
         this.nodes = new HashMap<>();
         this.tours = new HashMap<>();
@@ -33,29 +33,29 @@ public class RenderedTournament {
         for (Tour tour : tours) {
             for (Node node : tour.nodes()) {
 
-                RenderedNode renderedNode;
+                NodeRenderer nodeRenderer;
                 if (node instanceof Match) {
-                    renderedNode = new RenderedMatch((Match)node);
+                    nodeRenderer = new MatchRenderer((Match)node);
                 }
                 else {
-                    renderedNode = new RenderedEntry((Entry)node);
+                    nodeRenderer = new EntryRenderer((Entry)node);
                 }
 
-                this.nodes.put(node.uuid(), renderedNode);
+                this.nodes.put(node.uuid(), nodeRenderer);
             }
         }
     }
 
     private void renderTours(List<Tour> tours) {
         for (Tour tour : tours) {
-            RenderedTour renderTour = new RenderedTour(tour);
+            TourRenderer renderTour = new TourRenderer(tour);
             this.tours.put(tour.uuid(), renderTour);
         }
     }
 
     private void renderParticipants(Set<ArmedBruto> participants) {
         for (ArmedBruto participant : participants) {
-            RenderedArmedBruto renderedParticipants = new RenderedArmedBruto(participant);
+            ArmedBrutoRenderer renderedParticipants = new ArmedBrutoRenderer(participant);
             this.participants.put(participant.uuid(), renderedParticipants);
         }
     }
