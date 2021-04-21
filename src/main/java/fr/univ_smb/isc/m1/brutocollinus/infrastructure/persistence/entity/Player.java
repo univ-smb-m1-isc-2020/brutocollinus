@@ -18,9 +18,11 @@ public class Player extends Identifiable {
     private List<Bruto> brutos;
 
     @ManyToMany
+    @JoinTable(name="player_stuff")
     private List<Stuff> stuffs;
 
     @ManyToMany
+    @JoinTable(name="player_boost")
     private List<Boost> boosts;
 
     public Player() {

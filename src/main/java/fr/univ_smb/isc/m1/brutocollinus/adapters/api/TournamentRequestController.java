@@ -53,7 +53,7 @@ public class TournamentRequestController {
         return response;
     }
 
-    @PostMapping(value="/api/tournament/accept/{uuid}")
+    @PostMapping(value="/api/tournament/request/accept/{uuid}")
     @ResponseBody
     public TournamentRequestResponse accept(@PathVariable String uuid, @RequestBody @Valid TournamentRequestAcceptForm form) {
         TournamentRequest request = this.tournamentService.get(uuid);

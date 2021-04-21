@@ -11,9 +11,11 @@ public class ArmedBruto extends Identifiable {
     private Bruto bruto;
 
     @ManyToMany
+    @JoinTable(name="armedbruto_stuff")
     private List<Stuff> stuffs;
 
     @ManyToMany
+    @JoinTable(name="armedbruto_boost")
     private List<Boost> boosts;
 
     public ArmedBruto() {

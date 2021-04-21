@@ -38,7 +38,8 @@ public class TournamentRequestService {
         return this.repository.findByUuid(uuid).orElse(null);
     }
 
-    public List<TournamentRequest> all() {
-        return this.repository.findAll();
+
+    public List<TournamentRequest> allWithoutTournament() {
+        return this.repository.findByTournamentIsNull();
     }
 }

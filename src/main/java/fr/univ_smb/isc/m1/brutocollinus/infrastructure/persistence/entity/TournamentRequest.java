@@ -9,10 +9,14 @@ public class TournamentRequest extends Identifiable {
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="tournamentrequest_player")
     private Set<Player> guests;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<TournamentRequestPreparedGuest> preparedGuests;
+
+    @ManyToOne
+    private Tournament tournament;
 
     public TournamentRequest() {
         // JPA

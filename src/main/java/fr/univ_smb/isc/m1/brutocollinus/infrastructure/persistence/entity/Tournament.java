@@ -10,14 +10,15 @@ public class Tournament extends Identifiable {
         OVER
     };
 
-    public State state;
+    private State state;
 
-    public String name;
+    private String name;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "tournament_armedbruto")
     private List<ArmedBruto> participants;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tour> tours;
 
     public int nbTourProcessed;
@@ -27,6 +28,7 @@ public class Tournament extends Identifiable {
     }
 
     public Tournament(String name, List<ArmedBruto> participants, List<Tour> tours) {
+        this.state = State.ACTIVE;
         this.name = name;
         this.participants = participants;
         this.tours = tours;
