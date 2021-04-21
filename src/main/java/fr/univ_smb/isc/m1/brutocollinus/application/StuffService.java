@@ -6,6 +6,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.St
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 public class StuffService {
@@ -34,5 +35,9 @@ public class StuffService {
 
     public Stuff findByName(String name) {
         return this.repository.findByName(name);
+    }
+
+    public List<Stuff> findAllByUuid(List<String> uuids) {
+        return this.repository.findByUuidIn(uuids);
     }
 }

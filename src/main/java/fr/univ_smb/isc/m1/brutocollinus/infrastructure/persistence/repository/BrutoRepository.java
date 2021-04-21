@@ -4,9 +4,12 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface BrutoRepository extends JpaRepository<Bruto, Long> {
 
     Bruto findByName(String name);
 
+    Optional<Bruto> findByUuid(String uuid);
 }

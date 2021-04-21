@@ -14,7 +14,7 @@ public class Tournament extends Identifiable {
 
     public String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<ArmedBruto> participants;
 
     @OneToMany(cascade = CascadeType.ALL)

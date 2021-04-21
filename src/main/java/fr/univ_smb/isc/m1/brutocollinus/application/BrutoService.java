@@ -20,4 +20,8 @@ public class BrutoService {
         owner.addBruto(bruto);
         return bruto;
     }
+
+    public Bruto get(String uuid) {
+        return this.repository.findByUuid(uuid).orElse(null);
+    }
 }

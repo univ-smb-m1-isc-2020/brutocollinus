@@ -1,5 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.TournamentRequest;
 import org.slf4j.Logger;
@@ -8,8 +9,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TournamentScheduler {
@@ -31,7 +34,7 @@ public class TournamentScheduler {
         for (TournamentRequest request : requests) {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
                 log.info("Create tournament for request: {}", request.name());
-                this.tournamentService.create(request.name(), request.armedBrutos());
+                this.tournamentService.create(request.name(), new ArrayList<>(request.armedBrutos())); // TODO set
             }
         }
     }

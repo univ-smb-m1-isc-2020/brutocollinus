@@ -24,8 +24,9 @@ public class TournamentRequestService {
     }
 
     public void accept(TournamentRequest request, Player player, ArmedBruto armedBruto) {
-        if (!request.acceptedGuests().contains(player)) {
-            request.acceptGuest(player, armedBruto);
+        if (request.guests().contains(player) && !request.acceptedGuests().contains(player)) {
+            request.addAcceptedGuest(player, armedBruto);
+            this.repository.save(request);
         }
     }
 

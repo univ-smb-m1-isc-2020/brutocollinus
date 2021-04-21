@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BrutoRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.ArmedBrutoRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +10,15 @@ import java.util.List;
 
 @Service
 public class ArmedBrutoService {
-    private final BrutoRepository repository;
+    private final ArmedBrutoRepository repository;
 
-    public ArmedBrutoService(BrutoRepository repository) {
+    public ArmedBrutoService(ArmedBrutoRepository repository) {
         this.repository = repository;
     }
 
     public ArmedBruto create(Bruto bruto, List<Stuff> stuffs, List<Boost> boosts) {
         ArmedBruto armedBruto = new ArmedBruto(bruto, stuffs, boosts);
-        this.repository.save(bruto);
+        this.repository.save(armedBruto);
         return armedBruto;
     }
 

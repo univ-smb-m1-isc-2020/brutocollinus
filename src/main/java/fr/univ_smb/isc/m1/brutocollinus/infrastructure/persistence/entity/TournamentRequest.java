@@ -2,16 +2,17 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class TournamentRequest extends Identifiable {
-    public String name;
-
-    @ManyToMany
-    private Set<Player> guests;
+    private String name;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Map<Player, ArmedBruto> acceptedGuestToArmedBrutos;
+    private Set<Player> guests;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<TournamentRequestPreparedGuest> preparedGuests;
 
     public TournamentRequest() {
         // JPA
@@ -20,7 +21,7 @@ public class TournamentRequest extends Identifiable {
     public TournamentRequest(String name, Set<Player> guests) {
         this.name = name;
         this.guests = guests;
-        this.acceptedGuestToArmedBrutos = new HashMap<>();
+        this.preparedGuests = new HashSet<>();
     }
 
     public Set<Player> guests() {
@@ -32,14 +33,14 @@ public class TournamentRequest extends Identifiable {
     }
 
     public Set<Player> acceptedGuests() {
-        return this.acceptedGuestToArmedBrutos.keySet();
+        return this.preparedGuests.stream().map(TournamentRequestPreparedGuest::player).collect(Collectors.toSet());
     }
 
-    public List<ArmedBruto> armedBrutos() {
-        return new ArrayList<ArmedBruto>(this.acceptedGuestToArmedBrutos.values());
+    public Set<ArmedBruto> armedBrutos() {
+        return this.preparedGuests.stream().map(TournamentRequestPreparedGuest::armedBruto).collect(Collectors.toSet());
     }
 
-    public void acceptGuest(Player player, ArmedBruto armedBruto) {
-        this.acceptedGuestToArmedBrutos.put(player, armedBruto);
+    public void addAcceptedGuest(Player player, ArmedBruto armedBruto) {
+        this.preparedGuests.add(new TournamentRequestPreparedGuest(player, armedBruto));
     }
 }

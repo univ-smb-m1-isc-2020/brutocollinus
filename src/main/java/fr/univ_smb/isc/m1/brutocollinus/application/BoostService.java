@@ -6,6 +6,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Bo
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 public class BoostService {
@@ -26,5 +27,9 @@ public class BoostService {
 
     public Boost findByName(String name) {
         return this.repository.findByName(name);
+    }
+
+    public List<Boost> findAllByUuid(List<String> uuids) {
+        return this.repository.findByUuidIn(uuids);
     }
 }

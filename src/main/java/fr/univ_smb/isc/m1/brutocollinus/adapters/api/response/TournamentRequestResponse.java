@@ -20,7 +20,7 @@ public class TournamentRequestResponse extends RepresentationModel<TournamentReq
         this.uuid = request.uuid();
         this.name = request.name();
 
-        Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(uuid)).withRel("accept");
+        Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(uuid, null)).withRel("accept");
         Link getLink = linkTo(methodOn(TournamentRequestController.class).get(uuid)).withSelfRel();
         this.add(getLink, acceptLink);
     }
