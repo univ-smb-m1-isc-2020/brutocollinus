@@ -37,15 +37,12 @@ class AuthService {
       });
   }
 
-  register(email, firstname, lastname, dayofbirth, password, role) {
-    console.log(email, dayofbirth, password)
+  register(email, name, password) {
+    console.log(email, password)
     return this.post(URL + 'register', {
         email,
-        firstname,
-        lastname,
-        dayofbirth,
-        password,
-        role
+        name,
+        password
       })
       .then(response => {
           //if (response) {
