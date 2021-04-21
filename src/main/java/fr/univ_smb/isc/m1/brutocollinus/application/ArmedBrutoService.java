@@ -40,4 +40,8 @@ public class ArmedBrutoService {
 
         return totalStatistics;
     }
+
+    public ArmedBruto get(String uuid) {
+        return this.repository.findByUuid(uuid).orElse(null);
+    }
 }
