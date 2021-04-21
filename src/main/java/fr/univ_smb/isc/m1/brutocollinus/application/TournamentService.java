@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TournamentService {
@@ -33,13 +34,11 @@ public class TournamentService {
         return this.repository.findById(id).orElse(null);
     }
 
-    private void processAllMatchesInTour(Tour tour) {
-        for (Node node : tour.nodes()) {
-            if (node instanceof Match) {
-                Match match = (Match)node;
-                matchService.process(match);
-            }
-        }
+    private List<Match> allMatchesInTour(Tour tour) {
+        return tour.nodes().stream()
+                .filter(node -> node instanceof Match)
+                .map(node -> (Match)node)
+                .collect(Collectors.toList());
     }
 
     private Tour nextTour(Tournament tournament) {
@@ -54,7 +53,8 @@ public class TournamentService {
 
     public void processNextTour(Tournament tournament) {
         Tour nextTour = this.nextTour(tournament);
-        this.processAllMatchesInTour(nextTour);
+        List<Match> matches = this.allMatchesInTour(nextTour);
+        this.matchService.processAll(matches);
 
         ++tournament.nbTourProcessed;
     }

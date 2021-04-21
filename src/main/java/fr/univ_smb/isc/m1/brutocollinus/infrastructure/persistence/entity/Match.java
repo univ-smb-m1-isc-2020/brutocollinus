@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Match extends Node {
@@ -8,6 +9,9 @@ public class Match extends Node {
     private Node leftChild;
     @ManyToOne(cascade = CascadeType.ALL)
     private Node rightChild;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<AttackRecord> attackRecords;
 
     public void setChildren(Node leftChild, Node rightChild) {
         this.leftChild = leftChild;
@@ -24,5 +28,9 @@ public class Match extends Node {
 
     public void setSelectedBruto(ArmedBruto selectedBruto) {
         this.selectedBruto = selectedBruto;
+    }
+
+    public void setAttackRecords(List<AttackRecord> attackRecords) {
+        this.attackRecords = attackRecords;
     }
 }

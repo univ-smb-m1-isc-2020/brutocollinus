@@ -17,7 +17,7 @@ public class Battle {
         this.attackRecords = new ArrayList<>();
     }
 
-    public ArmedBruto fight() {
+    public BattleResult fight() {
         final int firstFighterTimeBeforeAttack = firstFighter.timeBeforeAttack();
         final int secondFighterTimeBeforeAttack = secondFighter.timeBeforeAttack();
 
@@ -30,12 +30,8 @@ public class Battle {
             }
         }
 
-        if (this.firstFighter.alive()) {
-            return this.firstFighter.armedBruto();
-        }
-        else {
-            return this.secondFighter.armedBruto();
-        }
+        ArmedBruto winner = (this.firstFighter.alive()) ? this.firstFighter.armedBruto() : this.secondFighter.armedBruto();
+        return new BattleResult(winner, this.attackRecords);
     }
 
     private boolean allFighterAlive() {
@@ -45,9 +41,5 @@ public class Battle {
     public void recordAfterAttack(ArmedBrutoFighter attacker, ArmedBrutoFighter defender, int damage) {
         AttackRecord record = new AttackRecord(attacker.armedBruto(), defender.armedBruto(), damage, defender.remainingHp());
         this.attackRecords.add(record);
-    }
-
-    public List<AttackRecord> attackRecords() {
-        return this.attackRecords;
     }
 }

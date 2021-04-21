@@ -34,7 +34,7 @@ class BattleTest {
         ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
 
         Battle battle = new Battle(armedBruto1, this.lowPvStatistic, armedBruto2, this.highPvStatistic);
-        ArmedBruto winner = battle.fight();
+        ArmedBruto winner = battle.fight().winner();
 
         assertEquals(winner, armedBruto2);
     }
@@ -48,7 +48,7 @@ class BattleTest {
         ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
 
         Battle battle = new Battle(armedBruto1, this.lowIniStatistic, armedBruto2, this.highIniStatistic);
-        ArmedBruto winner = battle.fight();
+        ArmedBruto winner = battle.fight().winner();
 
         assertEquals(winner, armedBruto2);
     }
@@ -62,10 +62,11 @@ class BattleTest {
         ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
 
         Battle battle = new Battle(armedBruto1, this.highPvStatistic, armedBruto2, this.highPvStatistic);
-        ArmedBruto winner = battle.fight();
+        BattleResult result = battle.fight();
+        ArmedBruto winner = result.winner();
 
         assertEquals(winner, armedBruto1);
-        List<AttackRecord> records = battle.attackRecords();
+        List<AttackRecord> records = result.attackRecords();
 
         assertEquals(5, records.size());
 

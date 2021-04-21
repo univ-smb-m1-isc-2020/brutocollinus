@@ -3,8 +3,11 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.Battle;
+import fr.univ_smb.isc.m1.brutocollinus.utils.fight.BattleResult;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MatchService {
@@ -14,7 +17,7 @@ public class MatchService {
         this.armedBrutoService = armedBrutoService;
     }
 
-    private ArmedBruto processBattle(ArmedBruto firstOpponent, ArmedBruto secondOpponent) {
+    private BattleResult processBattle(ArmedBruto firstOpponent, ArmedBruto secondOpponent) {
         FightStatisticsVector firstOpponentStatistics = this.armedBrutoService.totalStatistics(firstOpponent);
         FightStatisticsVector secondOpponentStatistics = this.armedBrutoService.totalStatistics(secondOpponent);
 
@@ -26,8 +29,16 @@ public class MatchService {
         ArmedBruto firstOpponent = match.leftChild().selectedBruto();
         ArmedBruto secondOpponent = match.rightChild().selectedBruto();
 
-        ArmedBruto selectedBruto = this.processBattle(firstOpponent, secondOpponent);
+        BattleResult battleResult = this.processBattle(firstOpponent, secondOpponent);
 
-        match.setSelectedBruto(selectedBruto);
+
+        match.setSelectedBruto(battleResult.winner());
+        match.setAttackRecords(battleResult.attackRecords());
+    }
+
+    public void processAll(List<Match> matches) {
+        for (Match match : matches) {
+            this.process(match);
+        }
     }
 }
