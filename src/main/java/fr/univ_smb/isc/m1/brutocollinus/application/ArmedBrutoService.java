@@ -11,12 +11,16 @@ import java.util.List;
 @Service
 public class ArmedBrutoService {
     private final ArmedBrutoRepository repository;
+    private final StuffService stuffService;
 
-    public ArmedBrutoService(ArmedBrutoRepository repository) {
+    public ArmedBrutoService(ArmedBrutoRepository repository, StuffService stuffService) {
         this.repository = repository;
+        this.stuffService = stuffService;
     }
 
-    public ArmedBruto create(Bruto bruto, List<Stuff> stuffs, List<Boost> boosts) {
+    public ArmedBruto create(Bruto bruto, List<Boost> boosts) {
+        Stuff firstStuff = this.stuffService.randomStuff();
+        List<Stuff> stuffs = List.of(firstStuff);
         ArmedBruto armedBruto = new ArmedBruto(bruto, stuffs, boosts);
         this.repository.save(armedBruto);
         return armedBruto;

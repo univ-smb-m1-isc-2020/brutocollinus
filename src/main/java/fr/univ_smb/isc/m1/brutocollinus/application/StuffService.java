@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class StuffService {
@@ -44,5 +45,11 @@ public class StuffService {
 
     public List<Stuff> all() {
         return this.repository.findAll();
+    }
+
+    public Stuff randomStuff() {
+        List<Stuff> stuffs = this.all();
+        int randomIndex = new Random().nextInt(stuffs.size());
+        return stuffs.get(randomIndex);
     }
 }

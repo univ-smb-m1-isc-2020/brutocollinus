@@ -59,10 +59,9 @@ public class TournamentRequestController {
         TournamentRequest request = this.tournamentService.get(uuid);
 
         Bruto bruto = this.brutoService.get(form.selectedBruto);
-        List<Stuff> stuffs = this.stuffService.findAllByUuid(form.selectedStuffs);
         List<Boost> boosts = this.boostService.findAllByUuid(form.selectedBoosts);
 
-        ArmedBruto armedBruto = this.armedBrutoService.create(bruto, stuffs, boosts);
+        ArmedBruto armedBruto = this.armedBrutoService.create(bruto, boosts);
         this.tournamentService.accept(request, bruto.owner(), armedBruto);
 
         TournamentRequestResponse response = new TournamentRequestResponse(request);

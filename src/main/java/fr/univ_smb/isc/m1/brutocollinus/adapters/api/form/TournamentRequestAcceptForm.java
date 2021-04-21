@@ -8,7 +8,5 @@ public class TournamentRequestAcceptForm {
     @NotNull
     public String selectedBruto;
     @NotNull
-    public List<String> selectedStuffs;
-    @NotNull
     public List<String> selectedBoosts;
 }
