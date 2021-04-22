@@ -32,8 +32,8 @@ public class DebugController {
         this.armedBrutoService = armedBrutoService;
     }
 
-    private ArmedBruto createArmedBruto(String playeName, String brutoName) {
-        Player me = this.playerService.create(playeName, "toto@gmail.com", "roo");
+    private ArmedBruto createArmedBruto(String playerName, String brutoName) {
+        Player me = this.playerService.create(playerName, playerName + "@gmail.com", "root");
         BrutoClass assassin = this.brutoClassService.findByName("assassin");
         Bruto bruto = this.brutoService.create(brutoName, assassin, me);
         ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new ArrayList<>());

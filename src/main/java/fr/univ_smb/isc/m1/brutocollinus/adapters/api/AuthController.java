@@ -23,6 +23,8 @@ public class AuthController {
         this.playerService = playerService;
     }
 
+
+
     @PostMapping(value="/api/player/register")
     @ResponseBody
     public PlayerResponse register(@RequestBody @Valid RegisterForm form) {

@@ -1,7 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api.response;
 
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.MatchController;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.MeController;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.TournamentController;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -18,8 +22,9 @@ public class PlayerResponse extends RepresentationModel<PlayerResponse> {
         this.name = player.name();
         this.email = player.email();
 
-        Link allBruto = linkTo(methodOn(MeController.class).allBruto(this.uuid)).withRel("all_bruto");
-        Link createBruto = linkTo(methodOn(MeController.class).createBruto(this.uuid, null)).withRel("create_bruto");
-        this.add(allBruto, createBruto);
+        Link allBrutoLink = linkTo(methodOn(MeController.class).allBruto(this.uuid)).withRel("all_bruto");
+        Link createBrutoLink = linkTo(methodOn(MeController.class).createBruto(this.uuid, null)).withRel("create_bruto");
+        Link allTournamentLink = linkTo(methodOn(MeController.class).allTournament(this.uuid)).withRel("all_in_progress_tournament");
+        this.add(allBrutoLink, createBrutoLink, allTournamentLink);
     }
 }

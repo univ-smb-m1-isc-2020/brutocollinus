@@ -17,11 +17,14 @@ public class TournamentService {
     private final TournamentRepository repository;
     private final MatchService matchService;
     private final TournamentRenderService tournamentRenderService;
+    private final ArmedBrutoService armedBrutoService;
 
-    public TournamentService(TournamentRepository repository, MatchService matchService, TournamentRenderService tournamentRenderService) {
+    public TournamentService(TournamentRepository repository, MatchService matchService, TournamentRenderService tournamentRenderService,
+                             ArmedBrutoService armedBrutoService) {
         this.repository = repository;
         this.matchService = matchService;
         this.tournamentRenderService = tournamentRenderService;
+        this.armedBrutoService = armedBrutoService;
     }
 
     public Tournament create(String name, Set<ArmedBruto> participants) {
@@ -71,5 +74,13 @@ public class TournamentService {
 
     public List<Tournament> allInProgress() {
         return this.repository.findAllByState(Tournament.State.ACTIVE);
+    }
+
+    public List<Tournament> allInProgressByParticipant(Player participant) {
+        List<ArmedBruto> armedBrutos = participant.brutos().stream()
+                .map(bruto -> this.armedBrutoService.findByBruto(bruto))
+                .collect(Collectors.toList());
+
+        return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);
     }
 }

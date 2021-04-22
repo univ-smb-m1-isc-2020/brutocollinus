@@ -44,4 +44,8 @@ public class ArmedBrutoService {
     public ArmedBruto get(String uuid) {
         return this.repository.findByUuid(uuid).orElse(null);
     }
+
+    public ArmedBruto findByBruto(Bruto bruto) {
+        return this.repository.findByBruto(bruto).orElse(null);
+    }
 }

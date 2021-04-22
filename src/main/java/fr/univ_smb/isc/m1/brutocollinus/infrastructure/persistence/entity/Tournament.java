@@ -58,4 +58,8 @@ public class Tournament extends Identifiable {
     public String name() {
         return this.name;
     }
+
+    public void setState(State state) {
+        this.state = state;
+    }
 }
