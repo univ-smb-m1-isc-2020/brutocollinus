@@ -2,25 +2,26 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedTournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.RenderedTournamentRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TournamentRenderService {
     private final RenderedTournamentRepository repository;
     private final MatchRenderService matchRenderService;
+    private final RenderService renderService;
 
-    public TournamentRenderService(RenderedTournamentRepository repository, MatchRenderService matchRenderService) {
+    public TournamentRenderService(RenderedTournamentRepository repository, MatchRenderService matchRenderService, RenderService renderService) {
         this.repository = repository;
         this.matchRenderService = matchRenderService;
+        this.renderService = renderService;
     }
 
     public void render(Tournament tournament) {
@@ -28,9 +29,8 @@ public class TournamentRenderService {
 
         TournamentRenderer tournamentRenderer = new TournamentRenderer(tournament);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String content = objectMapper.writeValueAsString(tournamentRenderer);
+            String content = this.renderService.render(tournamentRenderer);
             System.out.println(content);
             RenderedTournament renderedTournament = new RenderedTournament(tournament, content);
 

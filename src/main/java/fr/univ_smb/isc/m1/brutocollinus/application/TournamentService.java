@@ -62,7 +62,10 @@ public class TournamentService {
         List<Match> matches = this.allMatchesInTour(nextTour);
         this.matchService.processAll(matches);
 
-        ++tournament.nbTourProcessed;*/
+        ++tournament.nbTourProcessed;
+        if (this.isFinished(tournament)) {
+            tournament.setState(Tournament.State.OVER);
+        }*/
 
         this.tournamentRenderService.render(tournament);
     }

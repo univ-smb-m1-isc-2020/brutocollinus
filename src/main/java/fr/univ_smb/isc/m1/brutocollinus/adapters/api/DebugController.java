@@ -3,6 +3,7 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.MeCreateBrutoForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeCreateBrutoResponse;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +42,13 @@ public class DebugController {
     }
 
     @PostMapping(value="/api/debug/tournament/create")
-    public void createTournament() {
+    @ResponseBody
+    public TournamentResponse createTournament() {
         ArmedBruto b1 = this.createArmedBruto("toto", "billy");
         ArmedBruto b2 = this.createArmedBruto("tata", "bouboul");
 
         Tournament tournament = this.tournamentService.create("la finale", Set.of(b1, b2));
+
+        return new TournamentResponse(tournament);
     }
 }

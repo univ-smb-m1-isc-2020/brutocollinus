@@ -15,10 +15,12 @@ import java.util.List;
 
 @Service
 public class MatchRenderService {
-    private RenderedMatchRepository repository;
+    private final RenderedMatchRepository repository;
+    private final RenderService renderService;
 
-    public MatchRenderService(RenderedMatchRepository repository) {
+    public MatchRenderService(RenderedMatchRepository repository, RenderService renderService) {
         this.repository = repository;
+        this.renderService = renderService;
     }
 
     public void renderAll(List<Match> matches) {
@@ -32,9 +34,8 @@ public class MatchRenderService {
 
         MatchRenderer matchRenderer = new MatchRenderer(match);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String content = objectMapper.writeValueAsString(matchRenderer);
+            String content = this.renderService.render(matchRenderer);
             System.out.println(content);
             RenderedMatch renderedMatch = new RenderedMatch(match, content);
 
