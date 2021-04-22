@@ -10,7 +10,7 @@ public class RenderedTournament {
     private Long id;
 
     @Lob
-    private String render;
+    private String content;
 
     @ManyToOne
     private Tournament tournament;
@@ -19,7 +19,12 @@ public class RenderedTournament {
         // JPA
     }
 
-    public RenderedTournament(String render) {
-        this.render = render;
+    public RenderedTournament(Tournament tournament, String content) {
+        this.tournament = tournament;
+        this.content = content;
+    }
+
+    public String content() {
+        return this.content;
     }
 }

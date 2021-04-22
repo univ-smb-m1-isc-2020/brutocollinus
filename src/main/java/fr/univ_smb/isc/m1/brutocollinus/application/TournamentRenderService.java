@@ -1,13 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedTournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.RenderedTournamentRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class TournamentRenderService {
@@ -22,12 +21,20 @@ public class TournamentRenderService {
 
         TournamentRenderer tournamentRenderer = new TournamentRenderer(tournament);
 
-        final GsonBuilder builder = new GsonBuilder();
-        final Gson gson = builder.create();
-        String render = gson.toJson(tournamentRenderer);
-        System.out.println(render);
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        RenderedTournament renderedTournament = new RenderedTournament(render);
-        this.repository.save(renderedTournament);
+        try {
+            String content = objectMapper.writeValueAsString(tournamentRenderer);
+            System.out.println(content);
+            RenderedTournament renderedTournament = new RenderedTournament(tournament, content);
+            this.repository.save(renderedTournament);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public RenderedTournament findByTournament(Tournament tournament) {
+        return this.repository.findByTournament(tournament).orElse(null);
     }
 }

@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public class TournamentRequest extends Identifiable {
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="tournamentrequest_player")
     private Set<Player> guests;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<TournamentRequestPreparedGuest> preparedGuests;
 
     @ManyToOne

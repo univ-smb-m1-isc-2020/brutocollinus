@@ -19,7 +19,7 @@ public class Tournament extends Identifiable {
     @JoinTable(name = "tournament_armedbruto")
     private Set<ArmedBruto> participants;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Tour> tours;
 
     public int nbTourProcessed;

@@ -9,7 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface TournamentRepository extends JpaRepository<Tournament, Long> {
-    Optional<Tournament> findById(Long id);
 
     List<Tournament> findAllByState(Tournament.State state);
+
+    Optional<Tournament> findByUuid(String uuid);
 }

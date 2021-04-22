@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class TournamentScheduler {
     }
 
     @Scheduled(fixedDelay = 5000)
+    @Transactional
     public void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.allWithoutTournament();
         log.info("{} awaiting requests", requests.size());
@@ -40,6 +42,7 @@ public class TournamentScheduler {
     }
 
     @Scheduled(fixedDelay = 5000)
+    @Transactional
     public void processNextTournamentsTour() {
         List<Tournament> tournaments = this.tournamentService.allInProgress();
         log.info("{} tournaments in progress", tournaments.size());
@@ -47,7 +50,7 @@ public class TournamentScheduler {
         for (Tournament tournament : tournaments) {
             log.info("Process next tour for tournament :{}", tournament.name());
             if (!this.tournamentService.isFinished(tournament)) {
-                //this.tournamentService.processNextTour(tournament);
+                this.tournamentService.processNextTour(tournament);
             }
         }
     }

@@ -4,7 +4,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedB
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 
 public class ArmedBrutoRenderer {
-    private String name;
+    public String name;
 
     public ArmedBrutoRenderer(ArmedBruto participant) {
         Bruto bruto = participant.bruto();

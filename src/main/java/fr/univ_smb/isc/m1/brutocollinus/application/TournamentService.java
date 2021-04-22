@@ -34,8 +34,8 @@ public class TournamentService {
         return tournament;
     }
 
-    public Tournament get(Long id) {
-        return this.repository.findById(id).orElse(null);
+    public Tournament get(String uuid) {
+        return this.repository.findByUuid(uuid).orElse(null);
     }
 
     private List<Match> allMatchesInTour(Tour tour) {
@@ -56,11 +56,11 @@ public class TournamentService {
     }
 
     public void processNextTour(Tournament tournament) {
-        Tour nextTour = this.nextTour(tournament);
+        /*Tour nextTour = this.nextTour(tournament);
         List<Match> matches = this.allMatchesInTour(nextTour);
         this.matchService.processAll(matches);
 
-        ++tournament.nbTourProcessed;
+        ++tournament.nbTourProcessed;*/
 
         this.tournamentRenderService.render(tournament);
     }
