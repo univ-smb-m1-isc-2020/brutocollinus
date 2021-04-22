@@ -4,6 +4,7 @@ import fr.univ_smb.isc.m1.brutocollinus.application.TournamentRenderService;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedTournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ public class TournamentController {
         this.tournamentRenderService = tournamentRenderService;
     }
 
-    @GetMapping(value="/api/tournament/{uuid}")
+    @GetMapping(value="/api/tournament/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String get(@PathVariable String uuid) {
         Tournament tournament = this.tournamentService.get(uuid);
         RenderedTournament renderedTournament = this.tournamentRenderService.findByTournament(tournament);

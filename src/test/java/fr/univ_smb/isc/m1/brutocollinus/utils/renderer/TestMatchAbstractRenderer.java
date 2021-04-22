@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestMatchRenderer {
+public class TestMatchAbstractRenderer {
     private Entry dummyEntry1;
     private Entry dummyEntry2;
 
@@ -27,10 +27,10 @@ public class TestMatchRenderer {
         Match match = new Match();
         match.setChildren(this.dummyEntry1, this.dummyEntry2);
 
-        MatchRenderer matchRenderer = new MatchRenderer(match);
+        MatchAbstractRenderer matchAbstractRenderer = new MatchAbstractRenderer(match);
 
-        assertEquals(this.dummyEntry1.uuid(), matchRenderer.leftChild);
-        assertEquals(this.dummyEntry2.uuid(), matchRenderer.rightChild);
-        assertTrue(matchRenderer.isMatch);
+        assertEquals(this.dummyEntry1.uuid(), matchAbstractRenderer.leftChild);
+        assertEquals(this.dummyEntry2.uuid(), matchAbstractRenderer.rightChild);
+        assertTrue(matchAbstractRenderer.isMatch);
     }
 }

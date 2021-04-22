@@ -35,7 +35,7 @@ public class TournamentRenderer {
 
                 NodeRenderer nodeRenderer;
                 if (node instanceof Match) {
-                    nodeRenderer = new MatchRenderer((Match)node);
+                    nodeRenderer = new MatchAbstractRenderer((Match)node);
                 }
                 else {
                     nodeRenderer = new EntryRenderer((Entry)node);

@@ -8,6 +8,8 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Re
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class TournamentRenderService {
     private final RenderedTournamentRepository repository;
@@ -34,6 +36,7 @@ public class TournamentRenderService {
 
     }
 
+    @Transactional
     public RenderedTournament findByTournament(Tournament tournament) {
         return this.repository.findByTournament(tournament).orElse(null);
     }
