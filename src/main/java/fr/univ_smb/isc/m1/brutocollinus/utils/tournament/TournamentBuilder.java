@@ -6,15 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class TourBuilder {
+public class TournamentBuilder {
     private Set<ArmedBruto> participants;
-    private ArrayList<Tour> tours;
-    private ArrayList<Node> nodes;
+    private List<Tour> tours;
+    private List<Node> nodes;
+    private List<Match> matches;
+    private List<Entry> entries;
 
-    public TourBuilder(Set<ArmedBruto> participants) {
+    public TournamentBuilder(Set<ArmedBruto> participants) {
         this.participants = participants;
         this.tours = new ArrayList<>();
         this.nodes = new ArrayList<>();
+        this.matches = new ArrayList<>();
+        this.entries = new ArrayList<>();
 
         this.generateAllMatches();
         this.generateAllEntries();
@@ -55,17 +59,29 @@ public class TourBuilder {
         final int nbMatches = nbParticipants - 1;
 
         for (int i = 0; i < nbMatches; ++i) {
-            this.nodes.add(new Match());
+            Match match = new Match();
+            this.nodes.add(match);
+            this.matches.add(match);
         }
     }
 
     private void generateAllEntries() {
         for (ArmedBruto participant : this.participants) {
-            this.nodes.add(new Entry(participant));
+            Entry entry = new Entry(participant);
+            this.nodes.add(entry);
+            this.entries.add(entry);
         }
     }
 
     public List<Tour> tours() {
         return this.tours;
+    }
+
+    public List<Match> matches() {
+        return this.matches;
+    }
+
+    public List<Entry> entries() {
+        return this.entries;
     }
 }

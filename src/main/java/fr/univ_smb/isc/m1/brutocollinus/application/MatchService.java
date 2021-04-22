@@ -1,10 +1,16 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.ArmedBrutoRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.MatchRepository;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.RenderedMatchRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.Battle;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.BattleResult;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
+import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.MatchRenderer;
+import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +18,10 @@ import java.util.List;
 @Service
 public class MatchService {
     public ArmedBrutoService armedBrutoService;
+    private MatchRepository repository;
 
-    public MatchService(ArmedBrutoService armedBrutoService) {
+    public MatchService(MatchRepository repository, ArmedBrutoService armedBrutoService) {
+        this.repository = repository;
         this.armedBrutoService = armedBrutoService;
     }
 
@@ -40,5 +48,9 @@ public class MatchService {
         for (Match match : matches) {
             this.process(match);
         }
+    }
+
+    public Match get(String uuid) {
+        return this.repository.findByUuid(uuid).orElse(null);
     }
 }

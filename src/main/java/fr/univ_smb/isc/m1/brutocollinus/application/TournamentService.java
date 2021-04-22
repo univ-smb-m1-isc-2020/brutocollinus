@@ -2,9 +2,8 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tour;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.TournamentRepository;
-import fr.univ_smb.isc.m1.brutocollinus.utils.tournament.TourBuilder;
+import fr.univ_smb.isc.m1.brutocollinus.utils.tournament.TournamentBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +25,8 @@ public class TournamentService {
     }
 
     public Tournament create(String name, Set<ArmedBruto> participants) {
-        TourBuilder builder = new TourBuilder(participants);
-        Tournament tournament = new Tournament(name, participants, builder.tours());
+        TournamentBuilder builder = new TournamentBuilder(participants);
+        Tournament tournament = new Tournament(name, participants, builder.tours(), builder.matches(), builder.entries());
         this.repository.save(tournament);
         this.tournamentRenderService.render(tournament);
 
