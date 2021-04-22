@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class TournamentRenderer {
-    public Map<String, ArmedBrutoRenderer> participants;
+    public Map<String, ArmedBrutoAbstractRenderer> participants;
     public Map<String, NodeRenderer> nodes;
     public Map<String, TourRenderer> tours;
 
@@ -50,7 +50,7 @@ public class TournamentRenderer {
 
     private void renderParticipants(Set<ArmedBruto> participants) {
         for (ArmedBruto participant : participants) {
-            ArmedBrutoRenderer renderedParticipants = new ArmedBrutoRenderer(participant);
+            ArmedBrutoAbstractRenderer renderedParticipants = new ArmedBrutoAbstractRenderer(participant);
             this.participants.put(participant.uuid(), renderedParticipants);
         }
     }

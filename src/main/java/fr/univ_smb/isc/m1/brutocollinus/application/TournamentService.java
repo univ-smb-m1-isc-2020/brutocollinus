@@ -69,7 +69,7 @@ public class TournamentService {
         this.tournamentRenderService.render(tournament);
     }
 
-    public boolean isFinished(Tournament tournament) {
+    private boolean isFinished(Tournament tournament) {
         final int processableTours = tournament.tours().size() - STARTING_TOUR;
         return processableTours == tournament.nbTourProcessed;
     }
@@ -84,5 +84,10 @@ public class TournamentService {
                 .collect(Collectors.toList());
 
         return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);
+    }
+
+
+    public List<Tournament> all() {
+        return this.repository.findAll();
     }
 }
