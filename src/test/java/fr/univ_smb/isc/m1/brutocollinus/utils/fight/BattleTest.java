@@ -1,6 +1,8 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.fight;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.AttackRecord;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

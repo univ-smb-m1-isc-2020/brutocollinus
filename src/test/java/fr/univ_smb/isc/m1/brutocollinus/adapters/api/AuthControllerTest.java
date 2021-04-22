@@ -1,8 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.RegisterForm;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ChuckFact;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +9,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static java.util.List.of;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

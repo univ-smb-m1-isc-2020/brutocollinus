@@ -1,11 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Entry;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tour;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 
 import java.util.HashMap;
 import java.util.List;

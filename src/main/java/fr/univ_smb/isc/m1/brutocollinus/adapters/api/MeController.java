@@ -1,10 +1,12 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.*;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.MeCreateBrutoForm;
-import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeCreateBrutoResponse;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
 @RestController

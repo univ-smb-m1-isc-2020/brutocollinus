@@ -1,8 +1,10 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.List;
 
 @Entity

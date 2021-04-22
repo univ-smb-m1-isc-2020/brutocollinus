@@ -1,10 +1,8 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class BrutoClass extends Identifiable {

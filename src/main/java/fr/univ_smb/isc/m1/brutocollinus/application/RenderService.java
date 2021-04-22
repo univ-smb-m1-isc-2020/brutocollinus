@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
 import org.springframework.hateoas.mediatype.MessageResolver;
 import org.springframework.hateoas.mediatype.hal.CurieProvider;
 import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;

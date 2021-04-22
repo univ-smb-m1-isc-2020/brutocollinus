@@ -1,12 +1,11 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Boost;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BoostRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
 import java.util.List;
 
 @Service

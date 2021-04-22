@@ -1,7 +1,8 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity

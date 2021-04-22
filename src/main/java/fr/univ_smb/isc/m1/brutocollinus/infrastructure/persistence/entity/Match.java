@@ -1,6 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity

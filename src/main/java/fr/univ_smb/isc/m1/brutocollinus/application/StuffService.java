@@ -6,7 +6,6 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.St
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 

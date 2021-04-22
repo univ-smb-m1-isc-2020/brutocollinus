@@ -1,7 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.fight;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

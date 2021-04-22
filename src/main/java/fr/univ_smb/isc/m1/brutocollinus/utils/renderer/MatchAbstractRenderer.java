@@ -1,7 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.MatchController;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.MeController;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import org.springframework.hateoas.Link;
 

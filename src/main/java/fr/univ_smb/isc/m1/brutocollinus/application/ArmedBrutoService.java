@@ -1,11 +1,13 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Boost;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Stuff;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.ArmedBrutoRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

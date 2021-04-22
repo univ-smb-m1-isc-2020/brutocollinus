@@ -5,14 +5,13 @@ import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.RegisterForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.PlayerResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
-import org.springframework.hateoas.Link;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.Optional;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class AuthController {

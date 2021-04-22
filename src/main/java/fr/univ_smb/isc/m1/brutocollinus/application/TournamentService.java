@@ -1,7 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tour;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.TournamentRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.tournament.TournamentBuilder;
 import org.springframework.stereotype.Service;
