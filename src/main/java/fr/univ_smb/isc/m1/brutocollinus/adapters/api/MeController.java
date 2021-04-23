@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.MeCreateBrutoForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeCreateBrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
@@ -57,11 +56,11 @@ public class MeController {
 
     @PostMapping(value="/api/player/{uuid}/bruto/create")
     @ResponseBody
-    public MeCreateBrutoResponse createBruto(@PathVariable String uuid, @RequestBody @Valid MeCreateBrutoForm form) {
+    public BrutoResponse createBruto(@PathVariable String uuid, @RequestBody @Valid MeCreateBrutoForm form) {
         Player me = this.playerService.get(uuid);
         BrutoClass brutoClass = this.brutoClassService.findByName(form.className);
         Bruto bruto = this.brutoService.create(form.name, brutoClass, me);
 
-        return new MeCreateBrutoResponse(new BrutoResponse(bruto));
+        return new BrutoResponse(bruto);
     }
 }
