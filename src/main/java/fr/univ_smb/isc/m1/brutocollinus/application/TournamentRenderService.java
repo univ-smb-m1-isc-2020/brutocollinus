@@ -15,12 +15,10 @@ import javax.transaction.Transactional;
 public class TournamentRenderService {
     private static final Logger log = LoggerFactory.getLogger(TournamentRenderService.class);
     private final RenderedTournamentRepository repository;
-    private final MatchRenderService matchRenderService;
     private final RenderService renderService;
 
-    public TournamentRenderService(RenderedTournamentRepository repository, MatchRenderService matchRenderService, RenderService renderService) {
+    public TournamentRenderService(RenderedTournamentRepository repository, RenderService renderService) {
         this.repository = repository;
-        this.matchRenderService = matchRenderService;
         this.renderService = renderService;
     }
 
@@ -38,8 +36,6 @@ public class TournamentRenderService {
         } catch (JsonProcessingException e) {
             log.error("Failed render tournament");
         }
-
-        this.matchRenderService.renderAll(tournament.matches());
     }
 
     @Transactional

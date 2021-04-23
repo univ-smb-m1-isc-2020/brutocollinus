@@ -16,12 +16,14 @@ public class TournamentService {
     private final TournamentRepository repository;
     private final MatchService matchService;
     private final TournamentRenderService tournamentRenderService;
+    private final MatchRenderService matchRenderService;
     private final ArmedBrutoService armedBrutoService;
 
     public TournamentService(TournamentRepository repository, MatchService matchService, TournamentRenderService tournamentRenderService,
-                             ArmedBrutoService armedBrutoService) {
+                             MatchRenderService matchRenderService, ArmedBrutoService armedBrutoService) {
         this.repository = repository;
         this.matchService = matchService;
+        this.matchRenderService = matchRenderService;
         this.tournamentRenderService = tournamentRenderService;
         this.armedBrutoService = armedBrutoService;
     }
@@ -31,6 +33,7 @@ public class TournamentService {
         Tournament tournament = new Tournament(name, participants, builder.tours(), builder.matches(), builder.entries());
         this.repository.save(tournament);
         this.tournamentRenderService.render(tournament);
+        this.matchRenderService.renderAll(tournament.matches());
 
         return tournament;
     }
@@ -56,15 +59,17 @@ public class TournamentService {
     }
 
     public void processNextTour(Tournament tournament) {
-        /*Tour nextTour = this.nextTour(tournament);
+        Tour nextTour = this.nextTour(tournament);
         List<Match> matches = this.allMatchesInTour(nextTour);
-        this.matchService.processAll(matches);
+        /*this.matchService.processAll(matches);
 
         ++tournament.nbTourProcessed;
         if (this.isFinished(tournament)) {
             tournament.setState(Tournament.State.OVER);
         }*/
 
+        // Render only matches that were processed in tour
+        this.matchRenderService.renderAll(matches);
         this.tournamentRenderService.render(tournament);
     }
 

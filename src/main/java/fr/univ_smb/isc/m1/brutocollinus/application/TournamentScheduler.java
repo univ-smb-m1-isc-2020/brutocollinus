@@ -40,7 +40,7 @@ public class TournamentScheduler {
     @Scheduled(fixedDelay = 5000)
     @Transactional
     public void processNextTournamentsTour() {
-        List<Tournament> tournaments = this.tournamentService.all();
+        List<Tournament> tournaments = this.tournamentService.allInProgress();
         log.info("{} tournaments in progress", tournaments.size());
 
         for (Tournament tournament : tournaments) {

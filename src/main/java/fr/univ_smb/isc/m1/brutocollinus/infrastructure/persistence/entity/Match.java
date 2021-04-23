@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,12 @@ public class Match extends Node {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<AttackRecord> attackRecords;
+
+    public Match() {
+        super();
+
+        this.attackRecords = new ArrayList<AttackRecord>();
+    }
 
     public void setChildren(Node leftChild, Node rightChild) {
         this.leftChild = leftChild;
