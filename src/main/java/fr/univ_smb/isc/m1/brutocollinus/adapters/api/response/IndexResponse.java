@@ -1,6 +1,8 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api.response;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.AuthController;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.BoostController;
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.StuffController;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -11,6 +13,8 @@ public class IndexResponse extends RepresentationModel<BrutoResponse> {
     public IndexResponse() {
         Link loginLink = linkTo(methodOn(AuthController.class).login(null)).withRel("login");
         Link registerLink = linkTo(methodOn(AuthController.class).register(null)).withRel("register");
-        this.add(loginLink, registerLink);
+        Link allStuffLink = linkTo(methodOn(StuffController.class).allStuff()).withRel("all_stuff");
+        Link allBoostLink = linkTo(methodOn(BoostController.class).allBoost()).withRel("all_boost");
+        this.add(loginLink, registerLink, allStuffLink, allBoostLink);
     }
 }
