@@ -41,8 +41,8 @@ public class TournamentService {
 
     private List<Match> allMatchesInTour(Tour tour) {
         return tour.nodes().stream()
-                .filter(node -> node instanceof Match)
-                .map(node -> (Match)node)
+                .filter(Match.class::isInstance)
+                .map(Match.class::cast)
                 .collect(Collectors.toList());
     }
 
@@ -50,10 +50,9 @@ public class TournamentService {
         List<Tour> tours = tournament.tours();
 
         final int maxTourIndex = tours.size() - 1;
-        final int nextTourIndex = maxTourIndex - tournament.nbTourProcessed - STARTING_TOUR;
+        final int nextTourIndex = maxTourIndex - tournament.nbTourProcessed() - STARTING_TOUR;
 
-        Tour nextTour = tours.get(nextTourIndex);
-        return nextTour;
+        return tours.get(nextTourIndex);
     }
 
     public void processNextTour(Tournament tournament) {
@@ -71,7 +70,7 @@ public class TournamentService {
 
     private boolean isFinished(Tournament tournament) {
         final int processableTours = tournament.tours().size() - STARTING_TOUR;
-        return processableTours == tournament.nbTourProcessed;
+        return processableTours == tournament.nbTourProcessed();
     }
 
     public List<Tournament> allInProgress() {
@@ -80,7 +79,7 @@ public class TournamentService {
 
     public List<Tournament> allInProgressByParticipant(Player participant) {
         List<ArmedBruto> armedBrutos = participant.brutos().stream()
-                .map(bruto -> this.armedBrutoService.findByBruto(bruto))
+                .map(this.armedBrutoService::findByBruto)
                 .collect(Collectors.toList());
 
         return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);

@@ -5,6 +5,8 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedMatch;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.RenderedMatchRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.MatchRenderer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Service
 public class MatchRenderService {
+    private static final Logger log = LoggerFactory.getLogger(MatchRenderService.class);
     private final RenderedMatchRepository repository;
     private final RenderService renderService;
 
@@ -33,12 +36,12 @@ public class MatchRenderService {
 
         try {
             String content = this.renderService.render(matchRenderer);
-            System.out.println(content);
+            log.info(content);
             RenderedMatch renderedMatch = new RenderedMatch(match, content);
 
             this.repository.save(renderedMatch);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("Failed render match");
         }
     }
 

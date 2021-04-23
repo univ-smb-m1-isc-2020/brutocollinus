@@ -21,10 +21,8 @@ public class BoostController {
     @GetMapping(value="/api/boost/all")
     @ResponseBody
     public List<BoostResponse> allBoost() {
-        List<BoostResponse> responses = this.boostService.all().stream()
+        return this.boostService.all().stream()
                 .map(BoostResponse::new)
                 .collect(Collectors.toList());
-
-        return responses;
     }
 }

@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-public class ArmedBrutoServiceTest {
+class ArmedBrutoServiceTest {
     private ArmedBrutoService armedBrutoService;
     private Stuff stuff1;
     private Stuff stuff2;

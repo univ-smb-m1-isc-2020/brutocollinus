@@ -11,7 +11,7 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestAttackRecordRenderer {
+class TestAttackRecordRenderer {
     private ArmedBruto attacker;
     private ArmedBruto defender;
 

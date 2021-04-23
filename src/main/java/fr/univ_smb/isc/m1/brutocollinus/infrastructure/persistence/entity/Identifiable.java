@@ -14,7 +14,7 @@ public class Identifiable {
 
     private String uuid;
 
-    public Identifiable() {
+    protected Identifiable() {
         this.uuid = UUID.randomUUID().toString();
         // JPA
     }

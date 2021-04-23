@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FightStatisticTest {
+class FightStatisticTest {
     @Test
     void shouldHaveSameValueWhenCreatedFromEntity() {
         FightStatistics entity = new FightStatistics(1, 2, 3);

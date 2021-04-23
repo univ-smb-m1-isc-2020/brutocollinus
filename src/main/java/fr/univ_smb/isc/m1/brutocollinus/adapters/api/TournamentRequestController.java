@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,17 +20,15 @@ public class TournamentRequestController {
     private final TournamentRequestService tournamentService;
     private final PlayerService playerService;
     private final BrutoService brutoService;
-    private final StuffService stuffService;
     private final ArmedBrutoService armedBrutoService;
     private final BoostService boostService;
 
     public TournamentRequestController(TournamentRequestService tournamentService, PlayerService playerService,
-                                       BrutoService brutoService, StuffService stuffService, ArmedBrutoService armedBrutoService,
+                                       BrutoService brutoService, ArmedBrutoService armedBrutoService,
                                        BoostService boostService) {
         this.tournamentService = tournamentService;
         this.playerService = playerService;
         this.brutoService = brutoService;
-        this.stuffService = stuffService;
         this.armedBrutoService = armedBrutoService;
         this.boostService = boostService;
     }
@@ -39,11 +36,10 @@ public class TournamentRequestController {
     @PostMapping(value="/api/tournament/request/create")
     @ResponseBody
     public TournamentRequestCreateResponse create(@RequestBody @Valid TournamenRequestCreateForm form) {
-        Set<Player> guests = form.guests.stream().map((uuid) -> this.playerService.get(uuid)).collect(Collectors.toSet());
+        Set<Player> guests = form.guests.stream().map(this.playerService::get).collect(Collectors.toSet());
         TournamentRequest request = this.tournamentService.create(form.name, guests);
 
-        TournamentRequestCreateResponse response = new TournamentRequestCreateResponse(request);
-        return response;
+        return new TournamentRequestCreateResponse(request);
     }
 
     @GetMapping(value="/api/tournament/request/{uuid}")
@@ -51,8 +47,7 @@ public class TournamentRequestController {
     public TournamentRequestResponse get(@PathVariable String uuid) {
         TournamentRequest request = this.tournamentService.get(uuid);
 
-        TournamentRequestResponse response = new TournamentRequestResponse(request);
-        return response;
+        return new TournamentRequestResponse(request);
     }
 
     @PostMapping(value="/api/tournament/request/accept/{uuid}")
@@ -66,7 +61,6 @@ public class TournamentRequestController {
         ArmedBruto armedBruto = this.armedBrutoService.create(bruto, boosts);
         this.tournamentService.accept(request, bruto.owner(), armedBruto);
 
-        TournamentRequestAcceptResponse response = new TournamentRequestAcceptResponse(request, armedBruto);
-        return response;
+        return new TournamentRequestAcceptResponse(request, armedBruto);
     }
 }

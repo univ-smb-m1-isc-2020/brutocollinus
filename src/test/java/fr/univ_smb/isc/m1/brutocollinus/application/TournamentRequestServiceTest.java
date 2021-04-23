@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-public class TournamentRequestServiceTest {
+class TournamentRequestServiceTest {
     TournamentRequestService tournamentRequestService;
     private Player player1;
     private Player player2;

@@ -9,9 +9,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Ar
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ArmedBrutoService {
@@ -32,16 +30,15 @@ public class ArmedBrutoService {
     }
 
     public FightStatisticsVector totalStatistics(ArmedBruto armedBruto) {
-        FightStatisticsVector classStatistics = new FightStatisticsVector(armedBruto.bruto().brutoClass().fightStatistics());
-        FightStatisticsVector totalStatistics = classStatistics;
+        FightStatisticsVector totalStatistics = new FightStatisticsVector(armedBruto.bruto().brutoClass().fightStatistics());
 
         totalStatistics = armedBruto.equipedStuffs().stream()
                 .map((stuff) -> new FightStatisticsVector(stuff.fightStatistics()))
-                .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
+                .reduce(totalStatistics, FightStatisticsVector::plus);
 
         totalStatistics = armedBruto.equipedBoosts().stream()
                 .map((boost) -> new FightStatisticsVector(boost.fightStatistics()))
-                .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
+                .reduce(totalStatistics, FightStatisticsVector::plus);
 
         return totalStatistics;
     }

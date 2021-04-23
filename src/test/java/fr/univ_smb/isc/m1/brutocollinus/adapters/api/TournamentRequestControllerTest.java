@@ -24,7 +24,6 @@ class TournamentRequestControllerTest {
     private TournamentRequestService tournamentRequestService;
     private PlayerService playerService;
     private BrutoService brutoService;
-    private StuffService stuffService;
     private ArmedBrutoService armedBrutoService;
     private BoostService boostService;
     private MockMvc mockMvc;
@@ -34,10 +33,9 @@ class TournamentRequestControllerTest {
         this.tournamentRequestService = mock(TournamentRequestService.class);
         this.playerService = mock(PlayerService.class);
         this.brutoService = mock(BrutoService.class);
-        this.stuffService = mock(StuffService.class);
         this.armedBrutoService = mock(ArmedBrutoService.class);
         this.boostService = mock(BoostService.class);
-        this.mockMvc = standaloneSetup(new TournamentRequestController(tournamentRequestService, playerService, brutoService, stuffService, armedBrutoService, boostService)).build();
+        this.mockMvc = standaloneSetup(new TournamentRequestController(tournamentRequestService, playerService, brutoService, armedBrutoService, boostService)).build();
     }
 
     @Test

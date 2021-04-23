@@ -5,12 +5,15 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Render
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.RenderedTournamentRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.renderer.TournamentRenderer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 @Service
 public class TournamentRenderService {
+    private static final Logger log = LoggerFactory.getLogger(TournamentRenderService.class);
     private final RenderedTournamentRepository repository;
     private final MatchRenderService matchRenderService;
     private final RenderService renderService;
@@ -28,12 +31,12 @@ public class TournamentRenderService {
 
         try {
             String content = this.renderService.render(tournamentRenderer);
-            System.out.println(content);
+            log.info(content);
             RenderedTournament renderedTournament = new RenderedTournament(tournament, content);
 
             this.repository.save(renderedTournament);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("Failed render tournament");
         }
 
         this.matchRenderService.renderAll(tournament.matches());

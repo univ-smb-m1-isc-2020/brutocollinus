@@ -30,7 +30,8 @@ public class TournamentScheduler {
 
         for (TournamentRequest request : requests) {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
-                log.info("Create tournament for request: {}", request.name());
+                String requestName = request.name();
+                log.info("Create tournament for request: {}", requestName);
                 //this.tournamentRequestService.transformToTournament(request));
             }
         }
@@ -43,7 +44,8 @@ public class TournamentScheduler {
         log.info("{} tournaments in progress", tournaments.size());
 
         for (Tournament tournament : tournaments) {
-            log.info("Process next tour for tournament :{}", tournament.name());
+            String tournamentName = tournament.name();
+            log.info("Process next tour for tournament :{}", tournamentName);
             this.tournamentService.processNextTour(tournament);
         }
     }

@@ -21,7 +21,6 @@ public class ArmedBrutoController {
     @ResponseBody
     public ArmedBrutoResponse get(@PathVariable String uuid) {
         ArmedBruto armedBruto = this.armedBrutoService.get(uuid);
-        ArmedBrutoResponse response = new ArmedBrutoResponse(armedBruto);
-        return response;
+        return new ArmedBrutoResponse(armedBruto);
     }
 }

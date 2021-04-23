@@ -39,11 +39,9 @@ public class MeController {
     public List<BrutoResponse> allBruto(@PathVariable String uuid) {
         Player me = this.playerService.get(uuid);
 
-        List<BrutoResponse> responses = me.brutos().stream()
+        return me.brutos().stream()
                 .map(BrutoResponse::new)
                 .collect(Collectors.toList());
-
-        return responses;
     }
 
     @GetMapping(value="/api/me/{uuid}/tournament/allinprogress")
@@ -52,11 +50,9 @@ public class MeController {
         Player me = this.playerService.get(uuid);
         List<Tournament> myActiveTournaments = this.tournamentService.allInProgressByParticipant(me);
 
-        List<TournamentResponse> responses = myActiveTournaments.stream()
+        return myActiveTournaments.stream()
                 .map(TournamentResponse::new)
                 .collect(Collectors.toList());
-
-        return responses;
     }
 
     @PostMapping(value="/api/player/{uuid}/bruto/create")
@@ -66,7 +62,6 @@ public class MeController {
         BrutoClass brutoClass = this.brutoClassService.findByName(form.className);
         Bruto bruto = this.brutoService.create(form.name, brutoClass, me);
 
-        MeCreateBrutoResponse response = new MeCreateBrutoResponse(new BrutoResponse(bruto));
-        return response;
+        return new MeCreateBrutoResponse(new BrutoResponse(bruto));
     }
 }

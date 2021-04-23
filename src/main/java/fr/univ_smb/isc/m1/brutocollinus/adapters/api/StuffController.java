@@ -21,10 +21,8 @@ public class StuffController {
     @GetMapping(value="/api/stuff/all")
     @ResponseBody
     public List<StuffResponse> allStuff() {
-        List<StuffResponse> responses = this.stuffService.all().stream()
+        return this.stuffService.all().stream()
                 .map(StuffResponse::new)
                 .collect(Collectors.toList());
-
-        return responses;
     }
 }

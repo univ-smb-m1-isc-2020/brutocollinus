@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class MatchService {
-    public ArmedBrutoService armedBrutoService;
+    private ArmedBrutoService armedBrutoService;
     private MatchRepository repository;
 
     public MatchService(MatchRepository repository, ArmedBrutoService armedBrutoService) {

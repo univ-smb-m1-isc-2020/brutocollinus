@@ -8,11 +8,11 @@ public abstract class Node extends Identifiable {
     @ManyToOne
     protected ArmedBruto selectedBruto;
 
-    public Node() {
+    protected Node() {
         // JPA
     }
 
-    public Node(ArmedBruto selectedBruto) {
+    protected Node(ArmedBruto selectedBruto) {
         this.selectedBruto = selectedBruto;
     }
 

@@ -6,10 +6,11 @@ import java.util.Set;
 
 @Entity
 public class Tournament extends Identifiable {
+
     public enum State {
         ACTIVE,
         OVER
-    };
+    }
 
     private State state;
 
@@ -28,7 +29,7 @@ public class Tournament extends Identifiable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Entry> entries;
 
-    public int nbTourProcessed;
+    private int nbTourProcessed;
 
     public Tournament() {
         // JPA
@@ -61,5 +62,9 @@ public class Tournament extends Identifiable {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public int nbTourProcessed() {
+        return this.nbTourProcessed;
     }
 }
