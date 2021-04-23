@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,13 +33,12 @@ class BattleTest {
         Bruto bruto1 = new Bruto("bruto1", null, null);
         Bruto bruto2 = new Bruto("bruto2", null, null);
 
-        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new ArrayList<>(), new ArrayList<>());
-        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new HashSet<>(), new HashSet<>());
+        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new HashSet<>(), new HashSet<>());
 
         Battle battle = new Battle(armedBruto1, this.lowPvStatistic, armedBruto2, this.highPvStatistic);
-        ArmedBruto winner = battle.fight().winner();
-
-        assertEquals(winner, armedBruto2);
+        assertEquals(battle.fight().winner(), armedBruto2);
+        assertEquals(battle.fight().looser(), armedBruto1);
     }
 
     @Test
@@ -46,13 +46,13 @@ class BattleTest {
         Bruto bruto1 = new Bruto("bruto1", null, null);
         Bruto bruto2 = new Bruto("bruto2", null, null);
 
-        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new ArrayList<>(), new ArrayList<>());
-        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new HashSet<>(), new HashSet<>());
+        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new HashSet<>(), new HashSet<>());
 
         Battle battle = new Battle(armedBruto1, this.lowIniStatistic, armedBruto2, this.highIniStatistic);
-        ArmedBruto winner = battle.fight().winner();
 
-        assertEquals(winner, armedBruto2);
+        assertEquals(battle.fight().winner(), armedBruto2);
+        assertEquals(battle.fight().looser(), armedBruto1);
     }
 
     @Test
@@ -60,14 +60,14 @@ class BattleTest {
         Bruto bruto1 = new Bruto("bruto1", null, null);
         Bruto bruto2 = new Bruto("bruto2", null, null);
 
-        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new ArrayList<>(), new ArrayList<>());
-        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto armedBruto1 = new ArmedBruto(bruto1, new HashSet<>(), new HashSet<>());
+        ArmedBruto armedBruto2 = new ArmedBruto(bruto2, new HashSet<>(), new HashSet<>());
 
         Battle battle = new Battle(armedBruto1, this.highPvStatistic, armedBruto2, this.highPvStatistic);
         BattleResult result = battle.fight();
-        ArmedBruto winner = result.winner();
 
-        assertEquals(winner, armedBruto1);
+        assertEquals(result.winner(), armedBruto1);
+        assertEquals(result.looser(), armedBruto2);
         List<AttackRecord> records = result.attackRecords();
 
         assertEquals(5, records.size());

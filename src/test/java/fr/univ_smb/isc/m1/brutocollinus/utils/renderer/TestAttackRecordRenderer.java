@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,8 +20,8 @@ public class TestAttackRecordRenderer {
 
         Bruto brutoAttacker = new Bruto("a", null, null);
         Bruto brutoDefender = new Bruto("b", null, null);
-        this.attacker = new ArmedBruto(brutoAttacker, new ArrayList<>(), new ArrayList<>());
-        this.defender = new ArmedBruto(brutoDefender, new ArrayList<>(), new ArrayList<>());
+        this.attacker = new ArmedBruto(brutoAttacker, new HashSet<>(), new HashSet<>());
+        this.defender = new ArmedBruto(brutoDefender, new HashSet<>(), new HashSet<>());
     }
 
     @Test

@@ -30,8 +30,23 @@ public class Battle {
             }
         }
 
-        ArmedBruto winner = (this.firstFighter.alive()) ? this.firstFighter.armedBruto() : this.secondFighter.armedBruto();
-        return new BattleResult(winner, this.attackRecords);
+        return this.buildBattleResult();
+    }
+
+    private BattleResult buildBattleResult() {
+        ArmedBruto winner;
+        ArmedBruto looser;
+
+        if (this.firstFighter.alive()) {
+            winner = this.firstFighter.armedBruto();
+            looser = this.secondFighter.armedBruto();
+        }
+        else {
+            looser = this.firstFighter.armedBruto();
+            winner = this.secondFighter.armedBruto();
+        }
+
+        return new BattleResult(winner, looser, this.attackRecords);
     }
 
     private boolean allFighterAlive() {

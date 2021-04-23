@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +18,7 @@ public class TestMatchAbstractRenderer {
 
     @BeforeEach
     void setup() {
-        ArmedBruto bruto = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto bruto = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
         this.dummyEntry1 = new Entry(bruto);
         this.dummyEntry2 = new Entry(bruto);
     }

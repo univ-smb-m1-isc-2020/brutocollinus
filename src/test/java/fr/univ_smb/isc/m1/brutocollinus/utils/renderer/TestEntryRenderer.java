@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,7 +16,7 @@ public class TestEntryRenderer {
 
     @BeforeEach
     void setup() {
-        this.bruto = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
+        this.bruto = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
     }
 
     @Test

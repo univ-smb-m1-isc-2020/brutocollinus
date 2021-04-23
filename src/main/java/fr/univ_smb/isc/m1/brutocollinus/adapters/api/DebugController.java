@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -33,7 +34,7 @@ public class DebugController {
         Player me = this.playerService.create(playerName, playerName + "@gmail.com", "root");
         BrutoClass assassin = this.brutoClassService.findByName("assassin");
         Bruto bruto = this.brutoService.create(brutoName, assassin, me);
-        ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new ArrayList<>());
+        ArmedBruto armedBruto = this.armedBrutoService.create(bruto, new HashSet<>());
         return armedBruto;
     }
 

@@ -1,5 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
+import com.google.common.collect.Sets;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Boost;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
@@ -9,6 +10,8 @@ import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ArmedBrutoService {
@@ -20,9 +23,9 @@ public class ArmedBrutoService {
         this.stuffService = stuffService;
     }
 
-    public ArmedBruto create(Bruto bruto, List<Boost> boosts) {
+    public ArmedBruto create(Bruto bruto, Set<Boost> boosts) {
         Stuff firstStuff = this.stuffService.randomStuff();
-        List<Stuff> stuffs = List.of(firstStuff);
+        Set<Stuff> stuffs = Set.of(firstStuff);
         ArmedBruto armedBruto = new ArmedBruto(bruto, stuffs, boosts);
         this.repository.save(armedBruto);
         return armedBruto;
@@ -32,11 +35,11 @@ public class ArmedBrutoService {
         FightStatisticsVector classStatistics = new FightStatisticsVector(armedBruto.bruto().brutoClass().fightStatistics());
         FightStatisticsVector totalStatistics = classStatistics;
 
-        totalStatistics = armedBruto.stuffs().stream()
+        totalStatistics = armedBruto.equipedStuffs().stream()
                 .map((stuff) -> new FightStatisticsVector(stuff.fightStatistics()))
                 .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
 
-        totalStatistics = armedBruto.boosts().stream()
+        totalStatistics = armedBruto.equipedBoosts().stream()
                 .map((boost) -> new FightStatisticsVector(boost.fightStatistics()))
                 .reduce(totalStatistics, (s1, s2) -> s1.plus(s2));
 
@@ -49,5 +52,14 @@ public class ArmedBrutoService {
 
     public ArmedBruto findByBruto(Bruto bruto) {
         return this.repository.findByBruto(bruto).orElse(null);
+    }
+
+    public void gainOneStuffFromOther(ArmedBruto receivingArmedBruto, ArmedBruto givingArmedBruto) {
+        Set<Stuff> newStuffs = Sets.difference(givingArmedBruto.gainedStuffs(), receivingArmedBruto.gainedStuffs());
+
+        if (!newStuffs.isEmpty()) {
+            Stuff oneNewStuff = newStuffs.iterator().next();
+            receivingArmedBruto.addGainedStuff(oneNewStuff);
+        }
     }
 }

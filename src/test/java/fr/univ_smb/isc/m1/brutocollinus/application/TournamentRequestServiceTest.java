@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static java.util.Set.of;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -41,7 +42,7 @@ public class TournamentRequestServiceTest {
 
     @Test
     void shouldAddArmedBrutoWhenGuestAccept() {
-        ArmedBruto armedBruto = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto armedBruto = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
         this.tournamentRequestService.accept(this.request, this.player1, armedBruto);
 
         assertThat(this.request.acceptedGuests(), contains(this.player1));
@@ -51,8 +52,8 @@ public class TournamentRequestServiceTest {
 
     @Test
     void shouldAllGuestAcceptedTrueWhenALlGuestAccept() {
-        ArmedBruto armedBruto1 = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
-        ArmedBruto armedBruto2 = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
+        ArmedBruto armedBruto1 = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
+        ArmedBruto armedBruto2 = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
 
         this.tournamentRequestService.accept(this.request, this.player1, armedBruto1);
         this.tournamentRequestService.accept(this.request, this.player2, armedBruto2);

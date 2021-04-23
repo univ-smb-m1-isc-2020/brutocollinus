@@ -7,10 +7,12 @@ import java.util.List;
 
 public class BattleResult {
     private ArmedBruto winner;
+    private ArmedBruto looser;
     private List<AttackRecord> attackRecords;
 
-    public BattleResult(ArmedBruto winner, List<AttackRecord> attackRecords) {
+    public BattleResult(ArmedBruto winner, ArmedBruto looser, List<AttackRecord> attackRecords) {
         this.winner = winner;
+        this.looser = looser;
         this.attackRecords = attackRecords;
     }
 
@@ -20,5 +22,9 @@ public class BattleResult {
 
     public ArmedBruto winner() {
         return this.winner;
+    }
+
+    public ArmedBruto looser() {
+        return this.looser;
     }
 }

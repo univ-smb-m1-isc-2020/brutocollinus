@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class ArmedBruto extends Identifiable {
@@ -13,32 +14,45 @@ public class ArmedBruto extends Identifiable {
     private Bruto bruto;
 
     @ManyToMany
-    @JoinTable(name="armedbruto_stuff")
-    private List<Stuff> stuffs;
+    @JoinTable(name="armedbruto_gained_stuff")
+    private Set<Stuff> gainedStuffs;
 
     @ManyToMany
-    @JoinTable(name="armedbruto_boost")
-    private List<Boost> boosts;
+    @JoinTable(name="armedbruto_equiped_stuff")
+    private Set<Stuff> equipedStuffs;
+
+    @ManyToMany
+    @JoinTable(name="armedbruto_equiped_boost")
+    private Set<Boost> equipedBoosts;
 
     public ArmedBruto() {
         // JPA
     }
 
-    public ArmedBruto(Bruto bruto, List<Stuff> stuffs, List<Boost> boosts) {
+    public ArmedBruto(Bruto bruto, Set<Stuff> equipedStuffs, Set<Boost> equipedBoosts) {
         this.bruto = bruto;
-        this.stuffs = stuffs;
-        this.boosts = boosts;
+        this.equipedStuffs = equipedStuffs;
+        this.gainedStuffs = new HashSet<>(equipedStuffs);
+        this.equipedBoosts = equipedBoosts;
     }
 
     public Bruto bruto() {
         return this.bruto;
     }
 
-    public List<Stuff> stuffs() {
-        return this.stuffs;
+    public Set<Stuff> equipedStuffs() {
+        return this.equipedStuffs;
     }
 
-    public List<Boost> boosts() {
-        return this.boosts;
+    public Set<Boost> equipedBoosts() {
+        return this.equipedBoosts;
+    }
+
+    public Set<Stuff> gainedStuffs() {
+        return this.gainedStuffs;
+    }
+
+    public void addGainedStuff(Stuff stuff) {
+        this.gainedStuffs.add(stuff);
     }
 }

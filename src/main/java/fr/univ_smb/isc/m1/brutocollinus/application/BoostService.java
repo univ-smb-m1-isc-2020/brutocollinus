@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Boost;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.FightStatistics;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Stuff;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BoostRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +17,16 @@ public class BoostService {
         this.repository = repository;
     }
 
+    private void create(String name, int atk, int hp, int ini) {
+        FightStatistics statistics = new FightStatistics(atk, hp, ini);
+        Boost boost = new Boost(name, statistics);
+        this.repository.save(boost);
+    }
+
     @PostConstruct
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
-            FightStatistics bowStatistics = new FightStatistics(100, 100, 40);
-            Boost benediction = new Boost("benediction", bowStatistics);
-            this.repository.saveAndFlush(benediction);
+            this.create("benediction", 100, 100, 40);
         }
     }
 

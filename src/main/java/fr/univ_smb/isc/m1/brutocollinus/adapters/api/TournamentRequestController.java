@@ -10,6 +10,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -60,7 +61,7 @@ public class TournamentRequestController {
         TournamentRequest request = this.tournamentService.get(uuid);
 
         Bruto bruto = this.brutoService.get(form.selectedBruto);
-        List<Boost> boosts = this.boostService.findAllByUuid(form.selectedBoosts);
+        Set<Boost> boosts = new HashSet<>(this.boostService.findAllByUuid(form.selectedBoosts));
 
         ArmedBruto armedBruto = this.armedBrutoService.create(bruto, boosts);
         this.tournamentService.accept(request, bruto.owner(), armedBruto);

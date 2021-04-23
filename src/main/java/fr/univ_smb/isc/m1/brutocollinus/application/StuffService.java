@@ -17,20 +17,18 @@ public class StuffService {
         this.repository = repository;
     }
 
+    private void create(String name, int atk, int hp, int ini) {
+        FightStatistics statistics = new FightStatistics(atk, hp, ini);
+        Stuff stuff = new Stuff(name, statistics);
+        this.repository.save(stuff);
+    }
+
     @PostConstruct
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
-            FightStatistics bowStatistics = new FightStatistics(300, 0, 0);
-            Stuff bow = new Stuff("bow", bowStatistics);
-            this.repository.saveAndFlush(bow);
-
-            FightStatistics swordStatistics = new FightStatistics(300, 0, 0);
-            Stuff sword = new Stuff("sword", swordStatistics);
-            this.repository.saveAndFlush(sword);
-
-            FightStatistics shieldStatistics = new FightStatistics(300, 0, 0);
-            Stuff shield = new Stuff("shield", shieldStatistics);
-            this.repository.saveAndFlush(shield);
+            this.create("bow", 300, 0, 0);
+            this.create("sword", 400, 0, 0);
+            this.create("shield", 0, 200, 0);
         }
     }
 

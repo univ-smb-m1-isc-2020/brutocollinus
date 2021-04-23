@@ -15,7 +15,7 @@ public class ArmedBrutoResponse extends RepresentationModel<ArmedBrutoResponse> 
     public ArmedBrutoResponse(ArmedBruto armedBruto) {
         this.uuid = armedBruto.uuid();
         this.bruto = armedBruto.bruto().uuid();
-        this.stuffs = armedBruto.stuffs().stream().map(StuffResponse::new).collect(Collectors.toList());
-        this.boosts = armedBruto.boosts().stream().map(BoostResponse::new).collect(Collectors.toList());
+        this.stuffs = armedBruto.equipedStuffs().stream().map(StuffResponse::new).collect(Collectors.toList());
+        this.boosts = armedBruto.equipedBoosts().stream().map(BoostResponse::new).collect(Collectors.toList());
     }
 }
