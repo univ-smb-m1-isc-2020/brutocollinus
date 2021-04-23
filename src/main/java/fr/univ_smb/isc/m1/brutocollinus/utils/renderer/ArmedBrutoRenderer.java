@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ArmedBrutoRenderer extends ArmedBrutoAbstractRenderer {
-    public List<StuffRenderer> stuffs;
-    public List<BoostRenderer> boosts;
+    public List<StuffRenderer> equipedStuffs;
+    public List<BoostRenderer> equipedBoosts;
 
     public ArmedBrutoRenderer(ArmedBruto participant) {
         super(participant);
 
-        this.stuffs = participant.equipedStuffs().stream()
+        this.equipedStuffs = participant.equipedStuffs().stream()
                 .map(StuffRenderer::new)
                 .collect(Collectors.toList());
-        this.boosts = participant.equipedBoosts().stream()
+        this.equipedBoosts = participant.equipedBoosts().stream()
                 .map(BoostRenderer::new)
                 .collect(Collectors.toList());
     }
