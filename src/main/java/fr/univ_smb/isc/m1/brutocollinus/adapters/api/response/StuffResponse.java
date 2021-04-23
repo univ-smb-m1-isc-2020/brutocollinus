@@ -6,9 +6,11 @@ import org.springframework.hateoas.RepresentationModel;
 public class StuffResponse extends RepresentationModel<StuffResponse> {
     public final String uuid;
     public final String name;
+    public final FightStatisticsResponse fightStatistics;
 
     public StuffResponse(Stuff stuff) {
         this.uuid = stuff.uuid();
         this.name = stuff.name();
+        this.fightStatistics = new FightStatisticsResponse(stuff.fightStatistics());
     }
 }
