@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.AttackRecord;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,11 @@ public class TestAttackRecordRenderer {
 
     @BeforeEach
     void setup() {
-        this.attacker = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
-        this.defender = new ArmedBruto(null, new ArrayList<>(), new ArrayList<>());
+
+        Bruto brutoAttacker = new Bruto("a", null, null);
+        Bruto brutoDefender = new Bruto("b", null, null);
+        this.attacker = new ArmedBruto(brutoAttacker, new ArrayList<>(), new ArrayList<>());
+        this.defender = new ArmedBruto(brutoDefender, new ArrayList<>(), new ArrayList<>());
     }
 
     @Test
@@ -25,8 +29,8 @@ public class TestAttackRecordRenderer {
 
         AttackRecordRenderer rendered = new AttackRecordRenderer(record);
 
-        assertEquals(this.attacker.uuid(), rendered.attacker);
-        assertEquals(this.defender.uuid(), rendered.defender);
+        assertEquals("a", rendered.attacker.name);
+        assertEquals("b", rendered.defender.name);
         assertEquals(100, rendered.damage);
         assertEquals(1300, rendered.defenderHp);
     }
