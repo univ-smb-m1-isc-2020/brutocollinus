@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 public class Tournament extends Identifiable {
-
     public enum State {
         ACTIVE,
         OVER
@@ -66,5 +65,9 @@ public class Tournament extends Identifiable {
 
     public int nbTourProcessed() {
         return this.nbTourProcessed;
+    }
+
+    public void setTourProcessed(int nbTourProcessed) {
+        this.nbTourProcessed = nbTourProcessed;
     }
 }

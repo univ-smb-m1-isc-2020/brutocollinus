@@ -1,5 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
+import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentRenderService;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedTournament;
@@ -9,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class TournamentController {
@@ -26,5 +30,14 @@ public class TournamentController {
         RenderedTournament renderedTournament = this.tournamentRenderService.findByTournament(tournament);
 
         return ResponseEntity.ok(renderedTournament.content());
+    }
+
+    @GetMapping(value="/api/tournament/all")
+    public List<TournamentResponse> all() {
+        List<Tournament> allTournaments = this.tournamentService.all();
+
+        return allTournaments.stream()
+                .map(TournamentResponse::new)
+                .collect(Collectors.toList());
     }
 }
