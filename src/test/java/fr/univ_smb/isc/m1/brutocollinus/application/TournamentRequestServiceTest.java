@@ -7,7 +7,6 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.To
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import static java.util.Set.of;
@@ -26,7 +25,8 @@ class TournamentRequestServiceTest {
     @BeforeEach
     void setup() {
         TournamentRequestRepository repository = mock(TournamentRequestRepository.class);
-        this.tournamentRequestService = new TournamentRequestService(repository, null);
+        EmailService emailService = mock(EmailService.class);
+        this.tournamentRequestService = new TournamentRequestService(repository, null, emailService);
 
         this.player1 = new Player("billy", "", "");
         this.player2 = new Player("roger", "", "");

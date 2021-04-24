@@ -14,15 +14,18 @@ import java.util.Set;
 public class TournamentRequestService {
     private final TournamentRequestRepository repository;
     private final TournamentService tournamentService;
+    private final EmailService emailService;
 
-    public TournamentRequestService(TournamentRequestRepository repository, TournamentService tournamentService) {
+    public TournamentRequestService(TournamentRequestRepository repository, TournamentService tournamentService, EmailService emailService) {
         this.repository = repository;
         this.tournamentService = tournamentService;
+        this.emailService = emailService;
     }
 
     public TournamentRequest create(String name, Set<Player> guests) {
         TournamentRequest request = new TournamentRequest(name, guests);
         this.repository.save(request);
+        this.emailService.sendTournamentRequestByEmailToAllGuests(request);
         return request;
     }
 
