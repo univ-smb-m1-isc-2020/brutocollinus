@@ -29,7 +29,7 @@ public class ArmedBrutoService {
         return armedBruto;
     }
 
-    public FightStatisticsVector totalStatistics(ArmedBruto armedBruto) {
+    public static FightStatisticsVector totalStatistics(ArmedBruto armedBruto) {
         FightStatisticsVector totalStatistics = new FightStatisticsVector(armedBruto.bruto().brutoClass().fightStatistics());
 
         totalStatistics = armedBruto.equipedStuffs().stream()
