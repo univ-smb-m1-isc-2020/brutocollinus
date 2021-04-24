@@ -5,6 +5,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tourna
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -18,7 +19,8 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    private void sendTo(String content, String subject, String to) {
+    @Async
+    public void sendTo(String content, String subject, String to) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setText(content);
