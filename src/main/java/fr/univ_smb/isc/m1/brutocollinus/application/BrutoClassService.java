@@ -18,7 +18,7 @@ public class BrutoClassService {
     @PostConstruct
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
-            FightStatistics assassinStatistics = new FightStatistics(100, 15, 110);
+            FightStatistics assassinStatistics = new FightStatistics(100, 15, 150);
             this.repository.saveAndFlush(new BrutoClass("assassin", assassinStatistics));
 
             FightStatistics valkyrieStatistics = new FightStatistics(300, 25, 80);
