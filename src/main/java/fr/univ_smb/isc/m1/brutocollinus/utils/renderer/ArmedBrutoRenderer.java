@@ -22,7 +22,9 @@ public class ArmedBrutoRenderer extends ArmedBrutoAbstractRenderer {
                 .map(BoostRenderer::new)
                 .collect(Collectors.toList());
 
-        FightStatisticsVector totalFightStatistics = ArmedBrutoService.totalStatistics(participant);
+        FightStatisticsVector totalFightStatistics = ArmedBrutoService.totalFightStatistics(participant);
         this.totalFightStatistics = new FightStatisticsRenderer(totalFightStatistics);
+
+
     }
 }

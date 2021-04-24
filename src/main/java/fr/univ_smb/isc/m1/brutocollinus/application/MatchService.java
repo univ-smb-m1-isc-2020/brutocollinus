@@ -2,8 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.MatchRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.Battle;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.BattleResult;
@@ -23,8 +21,8 @@ public class MatchService {
     }
 
     private BattleResult processBattle(ArmedBruto firstOpponent, ArmedBruto secondOpponent) {
-        FightStatisticsVector firstOpponentStatistics = this.armedBrutoService.totalStatistics(firstOpponent);
-        FightStatisticsVector secondOpponentStatistics = this.armedBrutoService.totalStatistics(secondOpponent);
+        FightStatisticsVector firstOpponentStatistics = this.armedBrutoService.totalFightStatistics(firstOpponent);
+        FightStatisticsVector secondOpponentStatistics = this.armedBrutoService.totalFightStatistics(secondOpponent);
 
         Battle battle = new Battle(firstOpponent, firstOpponentStatistics, secondOpponent, secondOpponentStatistics);
         return battle.fight();
