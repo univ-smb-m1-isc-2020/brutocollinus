@@ -18,14 +18,16 @@ public class TournamentService {
     private final TournamentRenderService tournamentRenderService;
     private final MatchRenderService matchRenderService;
     private final ArmedBrutoService armedBrutoService;
+    private final LastOverMatchService lastOverMatchService;
 
     public TournamentService(TournamentRepository repository, MatchService matchService, TournamentRenderService tournamentRenderService,
-                             MatchRenderService matchRenderService, ArmedBrutoService armedBrutoService) {
+                             MatchRenderService matchRenderService, ArmedBrutoService armedBrutoService, LastOverMatchService lastOverMatchService) {
         this.repository = repository;
         this.matchService = matchService;
         this.matchRenderService = matchRenderService;
         this.tournamentRenderService = tournamentRenderService;
         this.armedBrutoService = armedBrutoService;
+        this.lastOverMatchService = lastOverMatchService;
     }
 
     public Tournament create(String name, Set<ArmedBruto> participants) {
@@ -61,15 +63,16 @@ public class TournamentService {
     public void processNextTour(Tournament tournament) {
         Tour nextTour = this.nextTour(tournament);
         List<Match> matches = this.allMatchesInTour(nextTour);
-        /*this.matchService.processAll(matches);
+        //this.matchService.processAll(matches);
 
         //tournament.setTourProcessed(tournament.nbTourProcessed() + 1);
-        if (this.isFinished(tournament)) {
+        /*if (this.isFinished(tournament)) {
             tournament.setState(Tournament.State.OVER);
         }*/
 
         // Render only matches that were processed in tour
         this.matchRenderService.renderAll(matches);
+        this.lastOverMatchService.updateAllWithLatestMatch(matches, tournament);
         this.tournamentRenderService.render(tournament);
     }
 

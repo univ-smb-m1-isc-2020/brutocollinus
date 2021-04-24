@@ -17,6 +17,9 @@ public class Match extends Node {
     @OneToMany(cascade = CascadeType.ALL)
     private List<AttackRecord> attackRecords;
 
+    @ManyToOne
+    private ArmedBruto looser;
+
     public Match() {
         super();
 
@@ -36,8 +39,9 @@ public class Match extends Node {
         return this.leftChild;
     }
 
-    public void setSelectedBruto(ArmedBruto selectedBruto) {
-        this.selectedBruto = selectedBruto;
+    public void setWinnerAndLooser(ArmedBruto winner, ArmedBruto looser) {
+        this.selectedBruto = winner;
+        this.looser = looser;
     }
 
     public void setAttackRecords(List<AttackRecord> attackRecords) {
@@ -46,5 +50,13 @@ public class Match extends Node {
 
     public List<AttackRecord> attackRecords() {
         return this.attackRecords;
+    }
+
+    public ArmedBruto winner() {
+        return this.selectedBruto();
+    }
+
+    public ArmedBruto looser() {
+        return this.looser;
     }
 }

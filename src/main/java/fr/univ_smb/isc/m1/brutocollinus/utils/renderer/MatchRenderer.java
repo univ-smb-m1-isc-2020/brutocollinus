@@ -12,6 +12,7 @@ public class MatchRenderer extends MatchAbstractRenderer {
     public ArmedBrutoRenderer firstOpponent;
     public ArmedBrutoRenderer secondOpponent;
     public ArmedBrutoRenderer winner;
+    public ArmedBrutoRenderer looser;
 
     public MatchRenderer(Match match) {
         super(match);
@@ -30,9 +31,14 @@ public class MatchRenderer extends MatchAbstractRenderer {
             this.secondOpponent = new ArmedBrutoRenderer(rightChildSelectedBruto);
         }
 
-        ArmedBruto selectedBruto = match.selectedBruto();
-        if (selectedBruto != null) {
-            this.winner = new ArmedBrutoRenderer(selectedBruto);
+        ArmedBruto winner = match.winner();
+        if (winner != null) {
+            this.winner = new ArmedBrutoRenderer(winner);
+        }
+
+        ArmedBruto looser = match.looser();
+        if (looser != null) {
+            this.winner = new ArmedBrutoRenderer(looser);
         }
     }
 }

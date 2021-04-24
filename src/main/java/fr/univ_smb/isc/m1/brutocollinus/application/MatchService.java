@@ -2,6 +2,8 @@ package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.MatchRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.Battle;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.BattleResult;
@@ -29,7 +31,7 @@ public class MatchService {
     }
 
     private void updateMatchWithBattleResult(Match match, BattleResult battleResult) {
-        match.setSelectedBruto(battleResult.winner());
+        match.setWinnerAndLooser(battleResult.winner(), battleResult.looser());
         match.setAttackRecords(battleResult.attackRecords());
     }
 

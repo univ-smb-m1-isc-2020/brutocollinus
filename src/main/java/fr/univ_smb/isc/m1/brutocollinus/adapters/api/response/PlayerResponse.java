@@ -20,7 +20,8 @@ public class PlayerResponse extends RepresentationModel<PlayerResponse> {
 
         Link allBrutoLink = linkTo(methodOn(MeController.class).allBruto(this.uuid)).withRel("all_bruto");
         Link createBrutoLink = linkTo(methodOn(MeController.class).createBruto(this.uuid, null)).withRel("create_bruto");
-        Link allTournamentLink = linkTo(methodOn(MeController.class).allTournament(this.uuid)).withRel("all_in_progress_tournament");
-        this.add(allBrutoLink, createBrutoLink, allTournamentLink);
+        Link allTournamentLink = linkTo(methodOn(MeController.class).allTournamentInProgress(this.uuid)).withRel("all_in_progress_tournament");
+        Link allLastOverMatchLink = linkTo(methodOn(MeController.class).allLastOverMatch(this.uuid)).withRel("all_last_over_match");
+        this.add(allBrutoLink, createBrutoLink, allTournamentLink, allLastOverMatchLink);
     }
 }
