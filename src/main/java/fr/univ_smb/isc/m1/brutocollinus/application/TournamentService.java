@@ -63,12 +63,12 @@ public class TournamentService {
     public void processNextTour(Tournament tournament) {
         Tour nextTour = this.nextTour(tournament);
         List<Match> matches = this.allMatchesInTour(nextTour);
-        //this.matchService.processAll(matches);
+        this.matchService.processAll(matches);
 
-        //tournament.setTourProcessed(tournament.nbTourProcessed() + 1);
-        /*if (this.isFinished(tournament)) {
+        tournament.setTourProcessed(tournament.nbTourProcessed() + 1);
+        if (this.isFinished(tournament)) {
             tournament.setState(Tournament.State.OVER);
-        }*/
+        }
 
         // Render only matches that were processed in tour
         this.matchRenderService.renderAll(matches);
