@@ -28,11 +28,6 @@ public class MatchService {
         return battle.fight();
     }
 
-    private void updateMatchWithBattleResult(Match match, BattleResult battleResult) {
-        match.setWinnerAndLooser(battleResult.winner(), battleResult.looser());
-        match.setAttackRecords(battleResult.attackRecords());
-    }
-
     private void process(Match match) {
         ArmedBruto firstOpponent = match.leftChild().selectedBruto();
         ArmedBruto secondOpponent = match.rightChild().selectedBruto();
@@ -40,7 +35,7 @@ public class MatchService {
         BattleResult battleResult = this.processBattle(firstOpponent, secondOpponent);
 
         this.armedBrutoService.gainOneStuffFromOther(battleResult.winner(), battleResult.looser());
-        this.updateMatchWithBattleResult(match, battleResult);
+        battleResult.copyToMatch(match);
     }
 
     public void processAll(List<Match> matches) {

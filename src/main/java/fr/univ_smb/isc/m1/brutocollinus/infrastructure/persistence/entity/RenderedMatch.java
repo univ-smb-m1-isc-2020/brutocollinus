@@ -26,4 +26,8 @@ public class RenderedMatch {
     public String content() {
         return this.content;
     }
+
+    public Match match() {
+        return this.match;
+    }
 }

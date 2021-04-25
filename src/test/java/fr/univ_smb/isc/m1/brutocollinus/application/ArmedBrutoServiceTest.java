@@ -1,7 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Stuff;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,5 +49,19 @@ class ArmedBrutoServiceTest {
 
         this.armedBrutoService.gainOneStuffFromOther(armedBruto1, armedBruto2);
         assertEquals(3, armedBruto1.gainedStuffs().size());
+    }
+
+    @Test
+    void shouldTotalFightStatisticsBeSumOfClassBoostStuffStatistics() {
+        Stuff stuff = new Stuff("", new FightStatistics(100, 200, 300));
+        Boost boost = new Boost("", new FightStatistics(400, 500, 600));
+        BrutoClass brutoClass = new BrutoClass("", new FightStatistics(700, 800, 900));
+        Bruto bruto = new Bruto("", brutoClass, null);
+        ArmedBruto armedBruto = new ArmedBruto(bruto, Set.of(stuff), Set.of(boost));
+
+        FightStatisticsVector totalFightStatistics = this.armedBrutoService.totalFightStatistics(armedBruto);
+        assertEquals(1200, totalFightStatistics.atk());
+        assertEquals(1500, totalFightStatistics.hp());
+        assertEquals(1800, totalFightStatistics.ini());
     }
 }
