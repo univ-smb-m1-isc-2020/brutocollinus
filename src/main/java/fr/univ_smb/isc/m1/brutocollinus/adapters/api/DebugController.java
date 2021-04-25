@@ -40,10 +40,14 @@ public class DebugController {
     @PostMapping(value="/api/debug/tournament/create")
     @ResponseBody
     public TournamentResponse createTournament() {
-        ArmedBruto b1 = this.createArmedBruto("toto", "billy");
-        ArmedBruto b2 = this.createArmedBruto("tata", "bouboul");
+        Set<ArmedBruto> participants = new HashSet<>();
 
-        Tournament tournament = this.tournamentService.create("la finale", Set.of(b1, b2));
+        for (int i = 0; i < 25; ++i) {
+            ArmedBruto armedBruto = this.createArmedBruto("toto" + i, "billy" + i);
+            participants.add(armedBruto);
+        }
+
+        Tournament tournament = this.tournamentService.create("la finale", participants);
 
         return new TournamentResponse(tournament);
     }
