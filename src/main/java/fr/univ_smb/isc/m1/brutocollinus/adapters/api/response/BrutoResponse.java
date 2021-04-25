@@ -7,12 +7,12 @@ public class BrutoResponse extends RepresentationModel<BrutoResponse> {
     public final String uuid;
     public final String name;
     public final String owner;
-    public final FightStatisticsResponse fightStatistics;
+    public final BrutoClassResponse brutoClass;
 
     public BrutoResponse(Bruto bruto) {
         this.uuid = bruto.uuid();
         this.name = bruto.name();
         this.owner = bruto.owner().uuid();
-        this.fightStatistics = new FightStatisticsResponse(bruto.brutoClass().fightStatistics());
+        this.brutoClass = new BrutoClassResponse(bruto.brutoClass());
     }
 }
