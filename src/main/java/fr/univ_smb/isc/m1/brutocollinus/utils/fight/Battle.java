@@ -54,7 +54,7 @@ public class Battle {
     }
 
     public void recordAfterAttack(ArmedBrutoFighter attacker, ArmedBrutoFighter defender, int damage) {
-        AttackRecord record = new AttackRecord(attacker.armedBruto(), defender.armedBruto(), damage, defender.remainingHp());
-        this.attackRecords.add(record);
+        AttackRecord attackRecord = new AttackRecord(attacker.armedBruto(), defender.armedBruto(), damage, defender.remainingHp());
+        this.attackRecords.add(attackRecord);
     }
 }

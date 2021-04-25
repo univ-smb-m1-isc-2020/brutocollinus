@@ -4,7 +4,6 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedB
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MatchRenderer extends MatchAbstractRenderer {
@@ -31,14 +30,14 @@ public class MatchRenderer extends MatchAbstractRenderer {
             this.secondOpponent = new ArmedBrutoRenderer(rightChildSelectedBruto);
         }
 
-        ArmedBruto winner = match.winner();
-        if (winner != null) {
-            this.winner = new ArmedBrutoRenderer(winner);
+        ArmedBruto winnerBruto = match.winner();
+        if (winnerBruto != null) {
+            this.winner = new ArmedBrutoRenderer(winnerBruto);
         }
 
-        ArmedBruto looser = match.looser();
-        if (looser != null) {
-            this.winner = new ArmedBrutoRenderer(looser);
+        ArmedBruto looserBruto = match.looser();
+        if (looserBruto != null) {
+            this.winner = new ArmedBrutoRenderer(looserBruto);
         }
     }
 }

@@ -33,11 +33,13 @@ public class ArmedBrutoService {
         FightStatisticsVector totalStatistics = new FightStatisticsVector(armedBruto.bruto().brutoClass().fightStatistics());
 
         totalStatistics = armedBruto.equipedStuffs().stream()
-                .map((stuff) -> new FightStatisticsVector(stuff.fightStatistics()))
+                .map(Stuff::fightStatistics)
+                .map(FightStatisticsVector::new)
                 .reduce(totalStatistics, FightStatisticsVector::plus);
 
         totalStatistics = armedBruto.equipedBoosts().stream()
-                .map((boost) -> new FightStatisticsVector(boost.fightStatistics()))
+                .map(Boost::fightStatistics)
+                .map(FightStatisticsVector::new)
                 .reduce(totalStatistics, FightStatisticsVector::plus);
 
         return totalStatistics;

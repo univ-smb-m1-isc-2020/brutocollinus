@@ -23,7 +23,7 @@ public class Match extends Node {
     public Match() {
         super();
 
-        this.attackRecords = new ArrayList<AttackRecord>();
+        this.attackRecords = new ArrayList<>();
     }
 
     public void setChildren(Node leftChild, Node rightChild) {

@@ -19,9 +19,9 @@ public class TournamentRenderer {
 
         this.renderParticipants(tournament.participants());
 
-        List<Tour> tours = tournament.tours();
-        this.renderNodes(tours);
-        this.renderTours(tours);
+        List<Tour> allTours = tournament.tours();
+        this.renderNodes(allTours);
+        this.renderTours(allTours);
     }
 
     private void renderNodes(List<Tour> tours) {

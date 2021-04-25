@@ -4,7 +4,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.LastOv
 
 public class MeLastOverMatchResponse {
     public final MatchResponse match;
-    public boolean hasWon;
+    public final boolean hasWon;
 
     public MeLastOverMatchResponse(LastOverMatch lastOverMatch) {
         this.match = new MatchResponse(lastOverMatch.match());

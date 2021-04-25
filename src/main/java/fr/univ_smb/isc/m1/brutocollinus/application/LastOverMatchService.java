@@ -1,6 +1,9 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.LastOverMatch;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.LastOverMatchRepository;
 import org.springframework.stereotype.Service;
 

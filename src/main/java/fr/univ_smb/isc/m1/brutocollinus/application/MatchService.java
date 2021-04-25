@@ -21,8 +21,8 @@ public class MatchService {
     }
 
     private BattleResult processBattle(ArmedBruto firstOpponent, ArmedBruto secondOpponent) {
-        FightStatisticsVector firstOpponentStatistics = this.armedBrutoService.totalFightStatistics(firstOpponent);
-        FightStatisticsVector secondOpponentStatistics = this.armedBrutoService.totalFightStatistics(secondOpponent);
+        FightStatisticsVector firstOpponentStatistics = ArmedBrutoService.totalFightStatistics(firstOpponent);
+        FightStatisticsVector secondOpponentStatistics = ArmedBrutoService.totalFightStatistics(secondOpponent);
 
         Battle battle = new Battle(firstOpponent, firstOpponentStatistics, secondOpponent, secondOpponentStatistics);
         return battle.fight();

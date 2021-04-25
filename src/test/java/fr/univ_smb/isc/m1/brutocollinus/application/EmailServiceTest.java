@@ -1,19 +1,17 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.TournamentRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class EmailServiceTest {

@@ -6,7 +6,6 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

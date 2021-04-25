@@ -8,9 +8,9 @@ public class NodeRenderer extends RepresentationModel<NodeRenderer> {
     public String selectedBruto;
 
     public NodeRenderer(Node node) {
-        ArmedBruto selectedBruto = node.selectedBruto();
-        if (selectedBruto != null) {
-            this.selectedBruto = selectedBruto.uuid();
+        ArmedBruto selectedBrutoInNode = node.selectedBruto();
+        if (selectedBrutoInNode != null) {
+            this.selectedBruto = selectedBrutoInNode.uuid();
         }
     }
 }

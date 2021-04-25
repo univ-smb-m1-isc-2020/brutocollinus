@@ -2,7 +2,6 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.MeCreateBrutoForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MatchResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeLastOverMatchResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;

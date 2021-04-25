@@ -1,16 +1,14 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
-import fr.univ_smb.isc.m1.brutocollinus.utils.fight.BattleResult;
-import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 class MatchServiceTest {
