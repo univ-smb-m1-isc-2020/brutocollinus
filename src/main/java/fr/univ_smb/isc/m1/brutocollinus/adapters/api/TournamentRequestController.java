@@ -3,7 +3,6 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.TournamenRequestCreateForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.TournamentRequestAcceptForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestAcceptResponse;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestCreateResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentRequestResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
@@ -35,11 +34,11 @@ public class TournamentRequestController {
 
     @PostMapping(value="/api/tournament/request/create")
     @ResponseBody
-    public TournamentRequestCreateResponse create(@RequestBody @Valid TournamenRequestCreateForm form) {
+    public TournamentRequestResponse create(@RequestBody @Valid TournamenRequestCreateForm form) {
         Set<Player> guests = form.guests.stream().map(this.playerService::get).collect(Collectors.toSet());
         TournamentRequest request = this.tournamentService.create(form.name, guests);
 
-        return new TournamentRequestCreateResponse(request);
+        return new TournamentRequestResponse(request);
     }
 
     @GetMapping(value="/api/tournament/request/{uuid}")
