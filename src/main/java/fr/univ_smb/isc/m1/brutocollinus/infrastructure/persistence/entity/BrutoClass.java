@@ -20,12 +20,8 @@ public class BrutoClass extends Identifiable {
         this.fightStatistics = fightStatistics;
     }
 
-    public String getName() {
+    public String name() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public FightStatistics fightStatistics() {

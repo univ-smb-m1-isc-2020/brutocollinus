@@ -8,8 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BrutoRepository extends JpaRepository<Bruto, Long> {
-
-    Bruto findByName(String name);
-
     Optional<Bruto> findByUuid(String uuid);
 }
