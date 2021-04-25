@@ -18,17 +18,21 @@ export default function Tournament(props) {
         const selectedBruto = node.selectedBruto;
         const name = selectedBruto ? selectedBruto.name : "";
 
-        return {name, children};
+        return {name, children, node};
     }
 
     const data = formatNode(tournament.tree);
 
-    console.log(data);
+    function onClick(event, nodeKey) {
+        if (nodeKey.isMatch) {
+            window.location.href = '/match/?matchUrl=' + nodeKey._links.detail.href;
+        }
+    }
 
     return (
         <>
             <h1>{tournament.name}</h1>
-            <Tree data={data} height={400} width={400}/>
+            <Tree data={data} height={400} width={400} gProps={{onClick}} keyProp="node"/>
         </>
     );
 }
