@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import AuthService from '../services/Auth.js';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import AttackRecord from './AttackRecord.js';
+import ArmedBruto from './ArmedBruto.js';
 
 export default function Match(props) {
     const [match, setMatch] = useState();
@@ -33,6 +34,15 @@ export default function Match(props) {
                     }
                 </Card.Subtitle>
                 <Card.Text>
+
+                    <div className="container">
+                        <div className="row">
+                            <ArmedBruto className="col" armedBruto={firstOpponent}/>
+                            <ArmedBruto className="col" armedBruto={secondOpponent}/>
+                        </div>
+                    </div>
+
+                    <hr />
                     <ListGroup>
                         {match.attackRecords.map(record => {
                             return (

@@ -4,8 +4,8 @@ export default function AttackRecord(props) {
     const record = props.record;
 
     return (
-        <div>
-            { record.attacker.name + " influge " + record.damage + " dégàt à " + record.defender.name + " il lui reste " + record.defenderHp}
+        <div className={props.className}>
+            { record.attacker.name + " inflige " + record.damage + " dégàt à " + record.defender.name + " il lui reste " + record.defenderHp}
         </div>
     );
 }
