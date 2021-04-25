@@ -8,14 +8,11 @@ import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-public class PlayerResponse extends RepresentationModel<PlayerResponse> {
-    public final String uuid;
-    public final String name;
+public class PlayerResponse extends NameableResponse {
     public final String email;
 
     public PlayerResponse(Player player) {
-        this.uuid = player.uuid();
-        this.name = player.name();
+        super(player);
         this.email = player.email();
 
         Link allBrutoLink = linkTo(methodOn(MeController.class).allBruto(this.uuid)).withRel("all_bruto");

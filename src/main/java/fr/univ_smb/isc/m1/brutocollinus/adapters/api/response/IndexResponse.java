@@ -10,7 +10,7 @@ import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-public class IndexResponse extends RepresentationModel<BrutoResponse> {
+public class IndexResponse extends RepresentationModel<IndexResponse> {
     public IndexResponse() {
         Link loginLink = linkTo(methodOn(AuthController.class).login(null)).withRel("login");
         Link registerLink = linkTo(methodOn(AuthController.class).register(null)).withRel("register");

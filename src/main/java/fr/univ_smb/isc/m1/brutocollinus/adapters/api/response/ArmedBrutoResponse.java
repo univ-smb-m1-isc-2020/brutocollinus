@@ -7,8 +7,7 @@ import org.springframework.hateoas.RepresentationModel;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ArmedBrutoResponse extends RepresentationModel<ArmedBrutoResponse> {
-    public final String uuid;
+public class ArmedBrutoResponse extends IdentifiableResponse {
     public final String bruto;
     public final List<StuffResponse> equipedStuffs;
     public final List<StuffResponse> gainedStuffs;
@@ -16,7 +15,7 @@ public class ArmedBrutoResponse extends RepresentationModel<ArmedBrutoResponse> 
     public final FightStatisticsResponse totalFightStatistics;
     
     public ArmedBrutoResponse(ArmedBruto armedBruto) {
-        this.uuid = armedBruto.uuid();
+        super(armedBruto);
         this.bruto = armedBruto.bruto().uuid();
         this.equipedStuffs = armedBruto.equipedStuffs().stream().map(StuffResponse::new).collect(Collectors.toList());
         this.gainedStuffs = armedBruto.gainedStuffs().stream().map(StuffResponse::new).collect(Collectors.toList());

@@ -8,13 +8,9 @@ import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-public class TournamentRequestResponse extends RepresentationModel<TournamentRequestResponse> {
-    public final String uuid;
-    public final String name;
-
+public class TournamentRequestResponse extends NameableResponse {
     public TournamentRequestResponse(TournamentRequest request) {
-        this.uuid = request.uuid();
-        this.name = request.name();
+        super(request);
 
         Link acceptLink = linkTo(methodOn(TournamentRequestController.class).accept(uuid, null)).withRel("accept");
         Link getLink = linkTo(methodOn(TournamentRequestController.class).get(uuid)).withSelfRel();

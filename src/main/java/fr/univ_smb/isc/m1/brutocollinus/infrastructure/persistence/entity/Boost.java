@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Boost extends Identifiable {
-    private String name;
-
+public class Boost extends Nameable {
     @OneToOne(cascade = CascadeType.ALL)
     private FightStatistics fightStatistics;
 
@@ -16,12 +14,8 @@ public class Boost extends Identifiable {
     }
 
     public Boost(String name, FightStatistics fightStatistics) {
-        this.name = name;
+        super(name);
         this.fightStatistics = fightStatistics;
-    }
-
-    public String name() {
-        return name;
     }
 
     public FightStatistics fightStatistics() {

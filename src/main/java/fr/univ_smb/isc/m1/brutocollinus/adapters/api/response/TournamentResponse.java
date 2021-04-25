@@ -8,13 +8,10 @@ import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-public class TournamentResponse extends RepresentationModel<TournamentResponse> {
-    public final String uuid;
-    public final String name;
+public class TournamentResponse extends NameableResponse {
 
     public TournamentResponse(Tournament tournament) {
-        this.uuid = tournament.uuid();
-        this.name = tournament.name();
+        super(tournament);
 
         Link detailLink = linkTo(methodOn(TournamentController.class).get(this.uuid)).withRel("detail");
         this.add(detailLink);

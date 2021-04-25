@@ -8,11 +8,9 @@ import org.springframework.hateoas.RepresentationModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-public class MatchResponse extends RepresentationModel<MatchResponse> {
-    public final String uuid;
-
+public class MatchResponse extends IdentifiableResponse {
     public MatchResponse(Match match) {
-        this.uuid = match.uuid();
+        super(match);
 
         Link detailLink = linkTo(methodOn(MatchController.class).get(this.uuid)).withRel("detail");
         this.add(detailLink);
