@@ -50,25 +50,6 @@ class TournamentRequestControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"un pont trop loin\", \"guests\": [1, 2]}"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"links\":[{\"rel\":\"self\",\"href\":\"http://localhost/api/tournament/request/" + request.uuid() + "\"}]}"));
+                .andExpect(content().json("{\"uuid\": \"" +request.uuid() + "\", \"name\": \"un pont trop loin\"}]}"));
     }
-
-    /*@Test
-    public void shouldAcceptCreateArmedBruto() {
-        Stuff stuff1 = new Stuff("a", null);
-        Stuff stuff2 = new Stuff("b", null);
-
-        List<Stuff> stuffs = List.of(stuff1, stuff2);
-        List<Boost> boosts = new ArrayList<>();
-
-        when(this.stuffService.findAllByUuid(anyList()))
-                .thenReturn(stuffs);
-        when(this.boostService.findAllByUuid(anyList()))
-                .thenReturn(boosts);
-        when(this.armedBrutoService.create(any(), anyList(), anyList()))
-                .thenReturn(new ArmedBruto(null, stuffs, boosts));
-
-        verify(this.armedBrutoService).create(null, );
-
-    }*/
 }
