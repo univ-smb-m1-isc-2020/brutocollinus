@@ -7,7 +7,7 @@ export default function Boost(props) {
     return (
         <div>
             {boost.name}
-            <FightStatistics className="float_right" fightStatistics={boost.fightStatistics}/>
+            <FightStatistics className="float-right" fightStatistics={boost.fightStatistics}/>
         </div>
     );
 }

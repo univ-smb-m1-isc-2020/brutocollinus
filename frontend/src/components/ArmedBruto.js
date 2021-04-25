@@ -3,6 +3,7 @@ import { Button, Card, ListGroup } from 'react-bootstrap';
 import FightStatistics from './FightStatistics.js';
 import Boost from './Boost.js';
 import Stuff from './Stuff.js';
+import BrutoClass from './BrutoClass.js';
 
 export default function ArmedBruto(props) {
     const armedBruto = props.armedBruto;
@@ -13,6 +14,8 @@ export default function ArmedBruto(props) {
                 <h4>{ armedBruto.name }</h4>
                 <FightStatistics fightStatistics={armedBruto.totalFightStatistics} />
             </div>
+
+            <BrutoClass brutoClass={armedBruto.brutoClass}/>
 
             <div>Boosts</div>
             <ListGroup>
