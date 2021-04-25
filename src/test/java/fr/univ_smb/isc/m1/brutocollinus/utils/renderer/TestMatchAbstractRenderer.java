@@ -29,8 +29,7 @@ class TestMatchAbstractRenderer {
 
         MatchAbstractRenderer matchAbstractRenderer = new MatchAbstractRenderer(match);
 
-        assertEquals(this.dummyEntry1.uuid(), matchAbstractRenderer.leftChild);
-        assertEquals(this.dummyEntry2.uuid(), matchAbstractRenderer.rightChild);
+        assertEquals(2, matchAbstractRenderer.children.size());
         assertTrue(matchAbstractRenderer.isMatch);
     }
 }
