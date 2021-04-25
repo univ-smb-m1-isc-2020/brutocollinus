@@ -39,7 +39,7 @@ public class MatchRenderer extends MatchAbstractRenderer {
 
         ArmedBruto looserBruto = match.looser();
         if (looserBruto != null) {
-            this.winner = new ArmedBrutoRenderer(looserBruto);
+            this.looser = new ArmedBrutoRenderer(looserBruto);
         }
     }
 }
