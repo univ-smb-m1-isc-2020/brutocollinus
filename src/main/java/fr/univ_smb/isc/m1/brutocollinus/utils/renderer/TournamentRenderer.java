@@ -8,10 +8,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class TournamentRenderer {
+    public String name;
     public Map<String, ArmedBrutoAbstractRenderer> participants;
     public NodeRenderer tree;
 
     public TournamentRenderer(Tournament tournament) {
+        this.name = tournament.name();
         this.participants = new HashMap<>();
 
         this.renderParticipants(tournament.participants());

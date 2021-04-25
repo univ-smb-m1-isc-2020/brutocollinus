@@ -13,20 +13,21 @@ export default function Tournament(props) {
         return ('Loading');
     }
 
-    let data = {
-        name: 'Parent',
-        children: [{
-            name: 'Child One'
-        }, {
-            name: 'Child Two'
-        }]
-    };
+    function formatNode(node) {
+        const children = node.children ? node.children.map(formatNode) : [];
+        const selectedBruto = node.selectedBruto;
+        const name = selectedBruto ? selectedBruto.name : "";
 
-    console.log(tournament);
+        return {name, children};
+    }
+
+    const data = formatNode(tournament.tree);
+
+    console.log(data);
 
     return (
         <>
-            <>{props.url}</>
+            <h1>{tournament.name}</h1>
             <Tree data={data} height={400} width={400}/>
         </>
     );
