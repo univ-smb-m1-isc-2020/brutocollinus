@@ -32,7 +32,8 @@ export default function Tournament(props) {
     return (
         <>
             <h1>{tournament.name}</h1>
-            <Tree data={data} height={400} width={400} gProps={{onClick}} keyProp="node"/>
+            <Tree data={data} height={800} width={1200} gProps={{onClick}} keyProp="node" pathFunc={(x1, y1, x2, y2) =>
+                `M${y1},${x1} ${y2},${x2}`}/>
         </>
     );
 }
