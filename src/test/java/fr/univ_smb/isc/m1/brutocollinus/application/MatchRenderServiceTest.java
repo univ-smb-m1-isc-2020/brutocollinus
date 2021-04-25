@@ -5,11 +5,8 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Re
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -52,7 +49,7 @@ class MatchRenderServiceTest {
             RenderedMatch renderedMatch = renderedMatchesCaptur.getAllValues().get(i);
             Match match = matchesCaptur.getAllValues().get(i);
             assertEquals(match, renderedMatch.match());
-            assertTrue(renderedMatch.content().length() >= 0);
+            assertTrue(renderedMatch.content().length() > 0);
         }
     }
 }
