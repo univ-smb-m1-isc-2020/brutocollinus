@@ -2,10 +2,12 @@ import React from 'react';
 
 import LoginPage from './pages/Login.js'
 import RegisterPage from './pages/Register.js'
+import TournamentPage from './pages/Tournament.js'
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-tree-graph/dist/style.css'
 import './App.css';
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
     <Switch>
       <Route path="/login" exact><LoginPage /></Route>
       <Route path="/register" exact><RegisterPage /></Route>
+      <Route path="/tournament" exact><TournamentPage /></Route>
     </Switch>
   </Router>
 );
