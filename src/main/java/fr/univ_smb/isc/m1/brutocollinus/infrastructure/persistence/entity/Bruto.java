@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Bruto extends Identifiable {
-    private String name;
-
+public class Bruto extends Nameable {
     @ManyToOne
     private BrutoClass brutoClass;
 
@@ -19,13 +17,9 @@ public class Bruto extends Identifiable {
     }
 
     public Bruto(String name, BrutoClass brutoClass, Player owner) {
-        this.name = name;
+        super(name);
         this.brutoClass = brutoClass;
         this.owner = owner;
-    }
-
-    public String name() {
-        return name;
     }
 
     public Player owner() {

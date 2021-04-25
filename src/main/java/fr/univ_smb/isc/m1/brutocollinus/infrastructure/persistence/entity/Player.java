@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Player extends Identifiable {
-    private String name;
+public class Player extends Nameable {
     private String email;
     private String password;
 
@@ -21,14 +20,10 @@ public class Player extends Identifiable {
     }
 
     public Player(String name, String email, String password) {
-        this.name = name;
+        super(name);
         this.email = email;
         this.password = password;
         this.brutos = new ArrayList<>();
-    }
-
-    public String name() {
-        return name;
     }
 
     public String email() {

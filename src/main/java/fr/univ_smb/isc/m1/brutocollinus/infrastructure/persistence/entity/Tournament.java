@@ -5,15 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Tournament extends Identifiable {
+public class Tournament extends Nameable {
     public enum State {
         ACTIVE,
         OVER
     }
 
     private State state;
-
-    private String name;
 
     @ManyToMany
     @JoinTable(name = "tournament_armedbruto")
@@ -35,8 +33,8 @@ public class Tournament extends Identifiable {
     }
 
     public Tournament(String name, Set<ArmedBruto> participants, List<Tour> tours, List<Match> matches, List<Entry> entries) {
+        super(name);
         this.state = State.ACTIVE;
-        this.name = name;
         this.participants = participants;
         this.tours = tours;
         this.matches = matches;
@@ -47,16 +45,13 @@ public class Tournament extends Identifiable {
     public List<Tour> tours() {
         return this.tours;
     }
+
     public List<Match> matches() {
         return this.matches;
     }
 
     public Set<ArmedBruto> participants() {
         return this.participants;
-    }
-
-    public String name() {
-        return this.name;
     }
 
     public void setState(State state) {

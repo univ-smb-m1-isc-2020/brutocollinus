@@ -6,9 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
-public class TournamentRequest extends Identifiable {
-    private String name;
-
+public class TournamentRequest extends Nameable {
     @ManyToMany
     @JoinTable(name="tournamentrequest_player")
     private Set<Player> guests;
@@ -24,17 +22,13 @@ public class TournamentRequest extends Identifiable {
     }
 
     public TournamentRequest(String name, Set<Player> guests) {
-        this.name = name;
+        super(name);
         this.guests = guests;
         this.preparedGuests = new HashSet<>();
     }
 
     public Set<Player> guests() {
         return this.guests;
-    }
-
-    public String name() {
-        return this.name;
     }
 
     public Set<Player> acceptedGuests() {
