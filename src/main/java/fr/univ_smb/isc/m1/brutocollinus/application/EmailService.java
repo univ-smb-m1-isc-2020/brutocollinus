@@ -30,6 +30,7 @@ public class EmailService {
         this.mailSender.send(mailMessage);
     }
 
+    @Async
     public void sendTournamentRequestByEmailToAllGuests(TournamentRequest request) {
         String tournamentName = request.name();
         WebMvcLinkBuilder acceptTournamentRequestLink = linkTo(methodOn(TournamentRequestController.class).accept(request.uuid(), null));
