@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Node;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ public class MatchRenderer extends MatchAbstractRenderer {
                 .map(AttackRecordRenderer::new)
                 .collect(Collectors.toList());
 
+
         ArmedBruto leftChildSelectedBruto = match.leftChild().selectedBruto();
         if (leftChildSelectedBruto != null) {
             this.firstOpponent = new ArmedBrutoRenderer(leftChildSelectedBruto);
@@ -37,7 +39,7 @@ public class MatchRenderer extends MatchAbstractRenderer {
 
         ArmedBruto looserBruto = match.looser();
         if (looserBruto != null) {
-            this.winner = new ArmedBrutoRenderer(looserBruto);
+            this.looser = new ArmedBrutoRenderer(looserBruto);
         }
     }
 }

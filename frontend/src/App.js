@@ -4,10 +4,14 @@ import HeaderBar from './components/HeaderBar.js'
 import LoginPage from './pages/Login.js'
 import RegisterPage from './pages/Register.js'
 import HomePage from './pages/Home.js'
+import TournamentPage from './pages/Tournament.js'
+import MatchPage from './pages/Match.js'
+
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-tree-graph/dist/style.css'
 import './App.css';
 
 function App() {
@@ -18,6 +22,8 @@ function App() {
       <Route path="/login" exact><LoginPage /></Route>
       <Route path="/register" exact><RegisterPage /></Route>
       <Route path="/" exact><HomePage /></Route>
+      <Route path="/tournament" exact><TournamentPage /></Route>
+      <Route path="/match" exact><MatchPage /></Route>
     </Switch>
   </Router>
 );

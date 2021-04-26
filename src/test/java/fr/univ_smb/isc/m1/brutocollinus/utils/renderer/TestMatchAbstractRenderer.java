@@ -1,8 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.utils.renderer;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.ArmedBruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Entry;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +15,11 @@ class TestMatchAbstractRenderer {
 
     @BeforeEach
     void setup() {
-        ArmedBruto bruto = new ArmedBruto(null, new HashSet<>(), new HashSet<>());
-        this.dummyEntry1 = new Entry(bruto);
-        this.dummyEntry2 = new Entry(bruto);
+        BrutoClass brutoClass = new BrutoClass("", new FightStatistics(1, 2, 3));
+        Bruto bruto = new Bruto("", brutoClass, null);
+        ArmedBruto armedBruto = new ArmedBruto(bruto, new HashSet<>(), new HashSet<>());
+        this.dummyEntry1 = new Entry(armedBruto);
+        this.dummyEntry2 = new Entry(armedBruto);
     }
 
     @Test
@@ -29,8 +29,7 @@ class TestMatchAbstractRenderer {
 
         MatchAbstractRenderer matchAbstractRenderer = new MatchAbstractRenderer(match);
 
-        assertEquals(this.dummyEntry1.uuid(), matchAbstractRenderer.leftChild);
-        assertEquals(this.dummyEntry2.uuid(), matchAbstractRenderer.rightChild);
+        assertEquals(2, matchAbstractRenderer.children.size());
         assertTrue(matchAbstractRenderer.isMatch);
     }
 }

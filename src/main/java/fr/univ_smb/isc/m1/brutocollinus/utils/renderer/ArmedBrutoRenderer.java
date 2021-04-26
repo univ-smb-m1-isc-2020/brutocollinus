@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class ArmedBrutoRenderer extends ArmedBrutoAbstractRenderer {
     public List<StuffRenderer> equipedStuffs;
     public List<BoostRenderer> equipedBoosts;
+    public BrutoClassRenderer brutoClass;
     public FightStatisticsRenderer totalFightStatistics;
 
     public ArmedBrutoRenderer(ArmedBruto participant) {
@@ -22,9 +23,9 @@ public class ArmedBrutoRenderer extends ArmedBrutoAbstractRenderer {
                 .map(BoostRenderer::new)
                 .collect(Collectors.toList());
 
+        this.brutoClass = new BrutoClassRenderer(participant.bruto().brutoClass());
+
         FightStatisticsVector totalFightStatisticsVector = ArmedBrutoService.totalFightStatistics(participant);
         this.totalFightStatistics = new FightStatisticsRenderer(totalFightStatisticsVector);
-
-
     }
 }

@@ -21,8 +21,13 @@ public class TournamentScheduler {
         this.tournamentService = tournamentService;
         log.info("Start scheduler");
     }
+    
+    @Scheduled(fixedDelay = 120000)
+    public void processRequestsAndTournaments() {
+        this.createTournamentsFromAcceptedRequests();
+        this.processNextTournamentsTour();
+    }
 
-    @Scheduled(fixedDelay = 5000)
     @Transactional
     public void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.allWithoutTournament();
@@ -37,7 +42,6 @@ public class TournamentScheduler {
         }
     }
 
-    @Scheduled(fixedDelay = 5000)
     @Transactional
     public void processNextTournamentsTour() {
         List<Tournament> tournaments = this.tournamentService.allInProgress();
