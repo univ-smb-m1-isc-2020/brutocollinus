@@ -6,6 +6,7 @@ import RegisterPage from './pages/Register.js'
 import HomePage from './pages/Home.js'
 import TournamentPage from './pages/Tournament.js'
 import AcceptTournamentRequestPage from './pages/AcceptTournamentRequest.js'
+import CreateTournamentRequestPage from './pages/CreateTournamentRequest.js'
 import MatchPage from './pages/Match.js'
 import ProfilePage from './pages/Profile.js'
 import CreateBrutoPage from './pages/CreateBruto.js'
@@ -27,6 +28,7 @@ function App() {
       <Route path="/" exact><HomePage /></Route>
       <Route path="/tournament" exact><TournamentPage /></Route>
       <Route path="/tournament/request/accept" exact><AcceptTournamentRequestPage /></Route>
+      <Route path="/tournament/request/create" exact><CreateTournamentRequestPage /></Route>
       <Route path="/match" exact><MatchPage /></Route>
       <Route path="/bruto/create" exact><CreateBrutoPage /></Route>
     </Switch>

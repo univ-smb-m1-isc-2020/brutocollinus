@@ -4,6 +4,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,5 +28,9 @@ public class PlayerService {
 
     public Optional<Player> findByEmailAndPassword(String email, String password) {
         return this.repository.findByEmailAndPassword(email, password);
+    }
+
+    public List<Player> findByTermInName(String term) {
+        return this.repository.findTop10ByNameContainsOrderByNameAsc(term);
     }
 }
