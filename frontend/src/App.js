@@ -5,6 +5,7 @@ import LoginPage from './pages/Login.js'
 import RegisterPage from './pages/Register.js'
 import HomePage from './pages/Home.js'
 import TournamentPage from './pages/Tournament.js'
+import AcceptTournamentRequestPage from './pages/AcceptTournamentRequest.js'
 import MatchPage from './pages/Match.js'
 
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/register" exact><RegisterPage /></Route>
       <Route path="/" exact><HomePage /></Route>
       <Route path="/tournament" exact><TournamentPage /></Route>
+      <Route path="/tournament/request/accept" exact><AcceptTournamentRequestPage /></Route>
       <Route path="/match" exact><MatchPage /></Route>
     </Switch>
   </Router>

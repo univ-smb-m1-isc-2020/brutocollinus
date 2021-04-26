@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 
-const URL = '/api/player/';
+const API_URL = '/api/';
 
 // Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {
@@ -25,8 +25,12 @@ class AuthService {
     })
   }
 
+  index() {
+    return this.get(API_URL);
+  }
+
   login(email, password) {
-    return this.post(URL + 'login', {
+    return this.post(API_URL + 'player/login', {
         email,
         password
       })
@@ -39,7 +43,7 @@ class AuthService {
 
   register(email, name, password) {
     console.log(email, password)
-    return this.post(URL + 'register', {
+    return this.post(API_URL + 'player/register', {
         email,
         name,
         password
