@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.StuffResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.StuffService;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +21,9 @@ public class StuffController {
 
     @GetMapping(value="/api/stuff/all")
     @ResponseBody
-    public List<StuffResponse> allStuff() {
-        return this.stuffService.all().stream()
+    public CollectionModel<StuffResponse> allStuff() {
+        return CollectionModel.of(this.stuffService.all().stream()
                 .map(StuffResponse::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

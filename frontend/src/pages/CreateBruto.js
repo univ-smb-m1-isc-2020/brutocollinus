@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Form, Container, ListGroup, Col, Button} from 'react-bootstrap'
 import AuthService from "../services/Auth";
-import Boost from "../components/Boost";
 
 export default function CreateBrutoPage() {
     const [name, setName] = useState();
@@ -9,10 +8,8 @@ export default function CreateBrutoPage() {
     const [brutoClasses, setBrutoClasses] = useState([]);
 
     useEffect(() => {
-        AuthService.index().then(response => AuthService.get(response._links.all_bruto_class.href)).then(brutoClasses => {
-            setBrutoClass(brutoClasses[0]);
-            setBrutoClasses(brutoClasses);
-        });
+        AuthService.index().then(response => AuthService.get(response._links.all_bruto_class.href))
+            .then(response => setBrutoClasses(response._embedded.brutoClassResponseList));
     }, [])
 
     function onSubmit(e) {

@@ -8,22 +8,20 @@ export default function MyBrutoList(props) {
     const [brutos, setBrutos] = useState([]);
 
     useEffect(() => {
-        AuthService.get(allBrutoUrl).then(setBrutos);
+        AuthService.get(allBrutoUrl).then(response => setBrutos(response._embedded.brutoResponseList));
     }, [allBrutoUrl]);
 
     return (
-        <Card>
-            <Card.Body>
-                <h2>Mes brutos</h2>
-                <ListGroup>
-                    {brutos.map(bruto => {
-                        return (
-                            <ListGroup.Item><Bruto bruto={bruto}/></ListGroup.Item>
-                        )
-                    })}
-                </ListGroup>
-                <a href="bruto/create">Créer un bruto</a>
-            </Card.Body>
-        </Card>
+        <div>
+            <h2>Mes brutos</h2>
+            <ListGroup>
+                {brutos.map(bruto => {
+                    return (
+                        <ListGroup.Item><Bruto bruto={bruto}/></ListGroup.Item>
+                    )
+                })}
+            </ListGroup>
+            <a href="bruto/create">Créer un bruto</a>
+        </div>
     );
 }

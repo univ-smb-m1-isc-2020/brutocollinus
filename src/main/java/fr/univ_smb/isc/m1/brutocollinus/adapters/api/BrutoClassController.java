@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoClassResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +21,9 @@ public class BrutoClassController {
 
     @GetMapping(value="/api/brutoclass/all")
     @ResponseBody
-    public List<BrutoClassResponse> allBrutoClass() {
-        return this.brutoClassService.all().stream()
+    public CollectionModel<BrutoClassResponse> allBrutoClass() {
+        return CollectionModel.of(this.brutoClassService.all().stream()
                 .map(BrutoClassResponse::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

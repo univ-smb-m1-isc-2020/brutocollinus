@@ -24,12 +24,13 @@ export default function AcceptTournamentRequestPage() {
   }, [tournamentRequestUrl])
 
   useEffect(() => {
-    AuthService.index().then(response => AuthService.get(response._links.all_boost.href)).then(setBoosts);
+    AuthService.index().then(response => AuthService.get(response._links.all_boost.href))
+        .then(response => setBoosts(response._embedded.boostResponseList));
   }, []);
 
   useEffect(() => {
     if (user) {
-      AuthService.get(user._links.all_bruto.href).then(setBrutos);
+      AuthService.get(user._links.all_bruto.href).then(response => setBrutos(response._embedded.brutoResponseList));
     }
   }, [])
 

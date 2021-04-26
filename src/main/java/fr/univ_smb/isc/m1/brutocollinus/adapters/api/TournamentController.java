@@ -5,6 +5,7 @@ import fr.univ_smb.isc.m1.brutocollinus.application.TournamentRenderService;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.RenderedTournament;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +34,11 @@ public class TournamentController {
     }
 
     @GetMapping(value="/api/tournament/all")
-    public List<TournamentResponse> all() {
+    public CollectionModel<TournamentResponse> all() {
         List<Tournament> allTournaments = this.tournamentService.all();
 
-        return allTournaments.stream()
+        return CollectionModel.of(allTournaments.stream()
                 .map(TournamentResponse::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }
