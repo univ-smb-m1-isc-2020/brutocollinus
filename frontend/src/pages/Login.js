@@ -14,7 +14,7 @@ export default function LoginPage() {
   function onSubmit(e) {
     e.preventDefault();
     AuthService.login(email, password).then(() => {
-      window.location.href = redirectUrl;
+      window.location.href = redirectUrl ? redirectUrl : "/";
     }).catch(error => console.log(error));
   }
 

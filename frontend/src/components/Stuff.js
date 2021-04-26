@@ -7,7 +7,7 @@ export default function Stuff(props) {
     return (
         <div>
             {stuff.name}
-            <FightStatistics className="float-right" fightStatistics={stuff.fightStatistics}/>
+            <FightStatistics fightStatistics={stuff.fightStatistics}/>
         </div>
     );
 }

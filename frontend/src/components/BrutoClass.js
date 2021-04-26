@@ -7,7 +7,7 @@ export default function BrutoClass(props) {
     return (
         <div>
             {brutoClass.name}
-            <FightStatistics className="float-right" fightStatistics={brutoClass.fightStatistics}/>
+            <FightStatistics fightStatistics={brutoClass.fightStatistics}/>
         </div>
     );
 }

@@ -1,19 +1,29 @@
 import React, {useState, useEffect} from 'react'
-
 import AuthService from '../services/Auth.js';
-import BrutoList from '../components/BrutoList.js';
+import Bruto from '../components/MyBrutoList.js';
+import {ListGroup, Container, Row, Col, Card} from "react-bootstrap";
+import {Redirect, useLocation} from "react-router-dom";
+import MyBrutoList from "../components/MyBrutoList.js";
+//import MyLastOverMatchList from "../components/MyLastOverMatchList.js";
 
 export default function HomePage() {
-  const [brutos, setBrutos] = useState([]);
   const user = AuthService.user;
 
-  useEffect(() => {
-    if (user) {
-      AuthService.get(user._links.all_bruto.href).then(setBrutos);
-    }
-  }, [user]);
+  //<MyLastOverMatchList lastOverMatches={lastOverMatches} />
+
+  if (!user) {
+    return (<Redirect to="/login" />);
+  }
 
   return (
-    <BrutoList brutos={brutos}/>
+      <Container fluid>
+        <Row>
+          <Col xs={3}>
+            <MyBrutoList allBrutoUrl={user._links.all_bruto.href}/>
+          </Col>
+          <Col>
+          </Col>
+        </Row>
+      </Container>
   );
 }
