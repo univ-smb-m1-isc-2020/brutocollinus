@@ -17,11 +17,13 @@ export default function CreateBrutoPage() {
 
     function onSubmit(e) {
         e.preventDefault();
-        AuthService.post(AuthService.user._links.create_bruto.href, {
-            name, brutoClass: brutoClass.uuid
-        }).then(() => {
-            window.location.href = '/'
-        });
+        if (name && brutoClass) {
+            AuthService.post(AuthService.user._links.create_bruto.href, {
+                name, brutoClass: brutoClass.uuid
+            }).then(() => {
+                window.location.href = '/'
+            });
+        }
     }
 
     return (

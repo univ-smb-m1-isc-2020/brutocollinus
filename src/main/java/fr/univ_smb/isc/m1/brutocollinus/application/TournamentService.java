@@ -88,6 +88,7 @@ public class TournamentService {
     public List<Tournament> allInProgressByParticipant(Player participant) {
         Set<ArmedBruto> armedBrutos = participant.brutos().stream()
                 .map(this.armedBrutoService::findByBruto)
+                .flatMap(List<ArmedBruto>::stream)
                 .collect(Collectors.toSet());
 
         return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);

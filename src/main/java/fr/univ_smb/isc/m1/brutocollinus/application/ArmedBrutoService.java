@@ -9,6 +9,7 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Ar
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -49,8 +50,8 @@ public class ArmedBrutoService {
         return this.repository.findByUuid(uuid).orElse(null);
     }
 
-    public ArmedBruto findByBruto(Bruto bruto) {
-        return this.repository.findByBruto(bruto).orElse(null);
+    public List<ArmedBruto> findByBruto(Bruto bruto) {
+        return this.repository.findByBruto(bruto);
     }
 
     public void gainOneStuffFromOther(ArmedBruto receivingArmedBruto, ArmedBruto givingArmedBruto) {

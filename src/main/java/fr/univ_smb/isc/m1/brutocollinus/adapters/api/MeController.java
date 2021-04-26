@@ -5,15 +5,13 @@ import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.MeLastOverMatchResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -60,11 +58,7 @@ public class MeController {
     @ResponseBody
     public List<MeLastOverMatchResponse> allLastOverMatch(@PathVariable String uuid) {
         Player me = this.playerService.get(uuid);
-        List<Tournament> myActiveTournaments = this.tournamentService.allInProgressByParticipant(me);
-
-        return myActiveTournaments.stream()
-                .map(tournament -> this.lastOverMatchService.findByTournamentAndParticipant(tournament, me))
-                .filter(Objects::nonNull)
+        return this.lastOverMatchService.findAllByParticipant(me).stream()
                 .map(MeLastOverMatchResponse::new)
                 .collect(Collectors.toList());
     }

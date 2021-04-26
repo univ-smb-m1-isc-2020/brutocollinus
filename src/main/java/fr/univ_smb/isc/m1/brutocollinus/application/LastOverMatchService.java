@@ -1,24 +1,25 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.LastOverMatch;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Match;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.LastOverMatchRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class LastOverMatchService {
-    private LastOverMatchRepository repository;
+    private final LastOverMatchRepository repository;
+    private final ArmedBrutoService armedBrutoService;
 
-    public LastOverMatchService(LastOverMatchRepository repository) {
+    public LastOverMatchService(LastOverMatchRepository repository, ArmedBrutoService armedBrutoService) {
         this.repository = repository;
+        this.armedBrutoService = armedBrutoService;
     }
 
-    public LastOverMatch findByTournamentAndParticipant(Tournament tournament, Player participant) {
-        return this.repository.findByTournamentAndParticipant(tournament, participant).orElse(null);
+    public List<LastOverMatch> findAllByParticipant(Player participant) {
+        return this.repository.findAllByParticipant(participant);
     }
 
     public void updateAllWithLatestMatch(List<Match> matches, Tournament tournament) {

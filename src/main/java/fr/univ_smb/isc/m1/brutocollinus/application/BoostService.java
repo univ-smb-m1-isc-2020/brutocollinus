@@ -26,6 +26,7 @@ public class BoostService {
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
             this.create("benediction", 100, 100, 40);
+            this.create("paix", 0, 200, 0);
         }
     }
 

@@ -39,7 +39,7 @@ public class TournamentRequest extends Nameable {
         return this.preparedGuests.stream().map(TournamentRequestPreparedGuest::armedBruto).collect(Collectors.toSet());
     }
 
-    public void addAcceptedGuest(Player player, ArmedBruto armedBruto) {
+    public void addPreparedGuest(Player player, ArmedBruto armedBruto) {
         this.preparedGuests.add(new TournamentRequestPreparedGuest(player, armedBruto));
     }
 }

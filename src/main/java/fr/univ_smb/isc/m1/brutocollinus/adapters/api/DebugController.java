@@ -42,7 +42,7 @@ public class DebugController {
     public TournamentResponse createTournament() {
         Set<ArmedBruto> participants = new HashSet<>();
 
-        for (int i = 0; i < 25; ++i) {
+        for (int i = 0; i < 2; ++i) {
             ArmedBruto armedBruto = this.createArmedBruto("toto" + i, "billy" + i);
             participants.add(armedBruto);
         }
