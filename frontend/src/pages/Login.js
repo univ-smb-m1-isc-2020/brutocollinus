@@ -1,18 +1,20 @@
 import React, {useState} from 'react'
 import {Button, Form} from 'react-bootstrap';
 import AuthService from '../services/Auth.js';
+import useQuery from "../utils/Query";
+import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
+  const urlQuery = useQuery();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const redirectUrl = urlQuery.get('redirectUrl');
+  const history = useHistory();
 
   function onSubmit(e) {
     e.preventDefault();
     AuthService.login(email, password).then(() => {
-      const user = AuthService.user;
-      console.log(user._links.all_bruto.href);
-      AuthService.get(user._links.all_bruto.href).then(response => console.log(response));
-      //window.location.href = '/'; // TODO verifier si erreur
+      window.location.href = redirectUrl;
     }).catch(error => console.log(error));
   }
 

@@ -30,10 +30,10 @@ class AuthService {
   }
 
   login(email, password) {
-    return this.post(API_URL + 'player/login', {
+    return this.index().then(response => this.post(response._links.login.href, {
         email,
         password
-      })
+      }))
       .then(response => {
         sessionStorage.setItem('user', JSON.stringify(response));
 
@@ -42,19 +42,14 @@ class AuthService {
   }
 
   register(email, name, password) {
-    console.log(email, password)
-    return this.post(API_URL + 'player/register', {
+    return this.index().then(response => this.post(response._links.login.href, {
         email,
         name,
         password
-      })
+      }))
       .then(response => {
-          //if (response) {
-            console.log(response)
-            /*console.log('Logged');
-            sessionStorage.setItem('token', response.token);
-            sessionStorage.setItem('user', JSON.stringify(response.user));
-          }*/
+          //sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('user', JSON.stringify(response.user));
 
           return response;
       });

@@ -7,6 +7,7 @@ import HomePage from './pages/Home.js'
 import TournamentPage from './pages/Tournament.js'
 import AcceptTournamentRequestPage from './pages/AcceptTournamentRequest.js'
 import MatchPage from './pages/Match.js'
+import ProfilePage from './pages/Profile.js'
 
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -22,6 +23,7 @@ function App() {
     <Switch>
       <Route path="/login" exact><LoginPage /></Route>
       <Route path="/register" exact><RegisterPage /></Route>
+      <Route path="/profile" exact><ProfilePage /></Route>
       <Route path="/" exact><HomePage /></Route>
       <Route path="/tournament" exact><TournamentPage /></Route>
       <Route path="/tournament/request/accept" exact><AcceptTournamentRequestPage /></Route>

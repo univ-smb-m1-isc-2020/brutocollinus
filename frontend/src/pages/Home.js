@@ -8,10 +8,10 @@ export default function HomePage() {
   const user = AuthService.user;
 
   useEffect(() => {
-    //  AuthService.get(user._links.all_bruto.href).then(response => setBrutos(response));
-    //}, [user._links.all_bruto.href]);
-    AuthService.get(user._links.all_bruto.href).then(setBrutos);
-  }, [user._links.all_bruto.href]);
+    if (user) {
+      AuthService.get(user._links.all_bruto.href).then(setBrutos);
+    }
+  }, [user]);
 
   return (
     <BrutoList brutos={brutos}/>

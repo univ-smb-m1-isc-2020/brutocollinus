@@ -3,10 +3,13 @@ import useQuery from '../utils/Query.js';
 import AuthService from '../services/Auth.js';
 import Boost from '../components/Boost.js';
 import { ListGroup, Button, Row, Col, Form } from 'react-bootstrap';
+import {Redirect, useLocation} from "react-router-dom";
 
 export default function AcceptTournamentRequestPage() {
+  const user = AuthService.user;
   const urlQuery = useQuery();
   const tournamentRequestUrl = urlQuery.get('tournamentRequestUrl');
+  const location = useLocation();
 
   const [tournamentRequest, setTournamentRequest] = useState();
   const [boosts, setBoosts] = useState();
@@ -22,6 +25,10 @@ export default function AcceptTournamentRequestPage() {
 
   function onClick(e) {
     e.preventDefault();
+  }
+
+  if (!user) {
+    return (<Redirect to={"/login?redirectUrl=" + location.pathname + location.search}/>);
   }
 
   if (!tournamentRequest || !boosts) {

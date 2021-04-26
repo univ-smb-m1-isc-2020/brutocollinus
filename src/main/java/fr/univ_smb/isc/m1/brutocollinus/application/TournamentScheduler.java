@@ -24,7 +24,7 @@ public class TournamentScheduler {
     }
 
     @Scheduled(fixedDelay = 120000)
-    public void processRequestsAndTournaments() {
+    public void processTournamentRequestsAndTournaments() {
         this.createTournamentsFromAcceptedRequests();
         this.processNextTournamentsTour();
     }
