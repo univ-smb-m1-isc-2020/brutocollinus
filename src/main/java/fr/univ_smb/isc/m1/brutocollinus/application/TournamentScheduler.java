@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class TournamentScheduler {
     private static final Logger log = LoggerFactory.getLogger(TournamentScheduler.class);
     private final TournamentRequestService tournamentRequestService;
@@ -28,7 +29,6 @@ public class TournamentScheduler {
         this.processNextTournamentsTour();
     }
 
-    @Transactional
     public void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.allWithoutTournament();
         log.info("{} awaiting requests", requests.size());
@@ -42,7 +42,6 @@ public class TournamentScheduler {
         }
     }
 
-    @Transactional
     public void processNextTournamentsTour() {
         List<Tournament> tournaments = this.tournamentService.allInProgress();
         log.info("{} tournaments in progress", tournaments.size());
