@@ -6,6 +6,8 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.Br
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Collection;
+import java.util.List;
 
 @Service
 public class BrutoClassService {
@@ -28,5 +30,13 @@ public class BrutoClassService {
 
     public BrutoClass findByName(String name) {
         return this.repository.findByName(name);
+    }
+
+    public BrutoClass get(String uuid) {
+        return this.repository.findByUuid(uuid).orElse(null);
+    }
+
+    public List<BrutoClass> all() {
+        return this.repository.findAll();
     }
 }

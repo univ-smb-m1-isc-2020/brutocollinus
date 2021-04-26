@@ -73,7 +73,7 @@ public class MeController {
     @ResponseBody
     public BrutoResponse createBruto(@PathVariable String uuid, @RequestBody @Valid MeCreateBrutoForm form) {
         Player me = this.playerService.get(uuid);
-        BrutoClass brutoClass = this.brutoClassService.findByName(form.className);
+        BrutoClass brutoClass = this.brutoClassService.get(form.brutoClass);
         Bruto bruto = this.brutoService.create(form.name, brutoClass, me);
 
         return new BrutoResponse(bruto);

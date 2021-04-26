@@ -22,6 +22,7 @@ export default function MyBrutoList(props) {
                         )
                     })}
                 </ListGroup>
+                <a href="bruto/create">Créer un bruto</a>
             </Card.Body>
         </Card>
     );

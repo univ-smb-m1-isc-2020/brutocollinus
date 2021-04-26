@@ -6,5 +6,5 @@ public class MeCreateBrutoForm {
     @NotBlank
     public String name;
     @NotBlank
-    public String className;
+    public String brutoClass;
 }

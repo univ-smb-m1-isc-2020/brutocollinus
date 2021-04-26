@@ -8,7 +8,7 @@ import TournamentPage from './pages/Tournament.js'
 import AcceptTournamentRequestPage from './pages/AcceptTournamentRequest.js'
 import MatchPage from './pages/Match.js'
 import ProfilePage from './pages/Profile.js'
-
+import CreateBrutoPage from './pages/CreateBruto.js'
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -28,6 +28,7 @@ function App() {
       <Route path="/tournament" exact><TournamentPage /></Route>
       <Route path="/tournament/request/accept" exact><AcceptTournamentRequestPage /></Route>
       <Route path="/match" exact><MatchPage /></Route>
+      <Route path="/bruto/create" exact><CreateBrutoPage /></Route>
     </Switch>
   </Router>
 );
