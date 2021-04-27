@@ -40,14 +40,13 @@ class AuthService {
   }
 
   register(email, name, password) {
-    return this.index().then(response => this.post(response._links.login.href, {
+    return this.index().then(response => this.post(response._links.register.href, {
         email,
         name,
         password
       }))
       .then(response => {
-          //sessionStorage.setItem('token', response.token);
-          sessionStorage.setItem('user', JSON.stringify(response.user));
+          sessionStorage.setItem('user', JSON.stringify(response));
 
           return response;
       });
