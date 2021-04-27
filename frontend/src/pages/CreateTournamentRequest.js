@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import {Form, Container, ListGroup, Col, Button, InputGroup} from 'react-bootstrap'
+import {Form, Container, ListGroup, Col, Button, InputGroup, Modal} from 'react-bootstrap'
 import AuthService from "../services/Auth";
 import { BsSearch, BsArrowReturnLeft, BsX } from 'react-icons/bs';
 
 export default function CreateTournamentRequestPage() {
     const [name, setName] = useState();
-    const [guests, setGuests] = useState([]);
+    const [guests, setGuests] = useState([AuthService.user]);
     const [searchResults, setSearchResults] = useState([]);
     const [term, setTerm] = useState('');
     const [display, setDisplay] = useState(false);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         if (term.length > 2) {
@@ -37,20 +38,23 @@ export default function CreateTournamentRequestPage() {
         if (name) {
             AuthService.index().then(response => AuthService.post(response._links.create_tournament_request.href, {
                 name, guests: guests.map(guest => guest.uuid)
-            })).then(() => {
-                window.location.href = '/'
-            });
+            })).then(() => setShow(true));
         }
     }
 
+    function handleClose() {
+        setShow(false);
+        window.location.href = "/";
+    }
+
     function addGuest(player) {
-        console.log(guests.indexOf(player));
-        if (guests.indexOf(player) == -1) {
+        if (!guests.find(guest => guest.uuid === player.uuid)) {
             setGuests([...guests, player])
         }
     }
 
     return (
+        <>
         <Container>
             <h2>Création d'un tournoi</h2>
             <Form onSubmit={onSubmit}>
@@ -91,5 +95,20 @@ export default function CreateTournamentRequestPage() {
                 </Button>
             </Form>
         </Container>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Tournoi crée</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Une invitation pour accepter le tournoi a été envoyé par email à tous les participants
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 }

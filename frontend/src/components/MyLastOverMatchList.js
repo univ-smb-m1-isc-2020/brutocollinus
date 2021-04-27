@@ -17,7 +17,7 @@ export default function MyLastOverMatchList(props) {
 
     return (
         <div>
-                <h2>Mes dernier matches</h2>
+                <h2>Mes derniers matches</h2>
                 <ListGroup>
                     {lastOverMatches.map(lastMatchOver => {
                         return (
