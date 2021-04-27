@@ -10,7 +10,7 @@ export default function LastOverMatch(props) {
 
     useEffect(() => {
         AuthService.get(matchUrl).then(setMatch);
-    }, []);
+    }, [matchUrl]);
 
     if (!match) {
         return ('Loading')

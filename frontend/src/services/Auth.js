@@ -1,9 +1,7 @@
-import React from 'react'
 import axios from 'axios';
 
 const API_URL = '/api/';
 
-// Service de connexion/deconnexion enregistrant le token et l'utilisateur courant'
 class AuthService {
   post(url, params) {
     return axios.post(url, Object.assign({headers: this.headers}, params)).then(response => {

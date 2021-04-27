@@ -36,7 +36,7 @@ export default function AcceptTournamentRequestPage() {
         }
       });
     }
-  }, [])
+  }, [user])
 
   function onSubmit(e) {
     e.preventDefault();

@@ -20,8 +20,6 @@ export default function Match(props) {
     const winner = match.winner;
     const looser = match.looser;
 
-    console.log(match.attackRecords);
-
     return (
         <Card>
             <Card.Body>
