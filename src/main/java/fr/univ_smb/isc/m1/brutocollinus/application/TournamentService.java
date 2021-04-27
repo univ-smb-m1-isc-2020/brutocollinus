@@ -86,16 +86,22 @@ public class TournamentService {
     }
 
     public List<Tournament> allInProgressByParticipant(Player participant) {
-        Set<ArmedBruto> armedBrutos = participant.brutos().stream()
-                .map(this.armedBrutoService::findByBruto)
+        List<ArmedBruto> armedBrutos = participant.brutos().stream()
+                .map(this.armedBrutoService::findAllByBruto)
                 .flatMap(List<ArmedBruto>::stream)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
 
-        return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);
+        return this.repository.findAllDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos);
     }
 
 
     public List<Tournament> all() {
         return this.repository.findAll();
+    }
+
+    public Tournament getInProgressByBruto(Bruto bruto) {
+        List<ArmedBruto> armedBrutos = this.armedBrutoService.findAllByBruto(bruto);
+
+        return this.repository.findDistinctByStateAndParticipantsIn(Tournament.State.ACTIVE, armedBrutos).orElse(null);
     }
 }

@@ -50,7 +50,7 @@ public class ArmedBrutoService {
         return this.repository.findByUuid(uuid).orElse(null);
     }
 
-    public List<ArmedBruto> findByBruto(Bruto bruto) {
+    public List<ArmedBruto> findAllByBruto(Bruto bruto) {
         return this.repository.findByBruto(bruto);
     }
 

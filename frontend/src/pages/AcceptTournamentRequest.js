@@ -13,8 +13,8 @@ export default function AcceptTournamentRequestPage() {
   const location = useLocation();
 
   const [tournamentRequest, setTournamentRequest] = useState();
-  const [boosts, setBoosts] = useState();
-  const [brutos, setBrutos] = useState();
+  const [boosts, setBoosts] = useState([]);
+  const [brutos, setBrutos] = useState([]);
   const [selectedBruto, setSelectedBruto] = useState();
   const [selectedBoost, setSelectedBoost] = useState();
   const [show, setShow] = useState(false);
@@ -30,7 +30,11 @@ export default function AcceptTournamentRequestPage() {
 
   useEffect(() => {
     if (user) {
-      AuthService.get(user._links.all_bruto.href).then(response => setBrutos(response._embedded.brutoResponseList));
+      AuthService.get(user._links.all_available_bruto.href).then(response => {
+        if (response._embedded) {
+          setBrutos(response._embedded.brutoResponseList)
+        }
+      });
     }
   }, [])
 
@@ -87,7 +91,7 @@ export default function AcceptTournamentRequestPage() {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Tournoi accepté validée</Modal.Title>
+            <Modal.Title>Invitation au tournoi acceptée</Modal.Title>
           </Modal.Header>
           <Modal.Body>Le tournoi commencera une fois que tous les participants auront validé</Modal.Body>
           <Modal.Footer>

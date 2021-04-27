@@ -23,7 +23,7 @@ public class TournamentScheduler {
         log.info("Start scheduler");
     }
 
-    @Scheduled(fixedDelay = 120000)
+    @Scheduled(fixedDelay = 1200000)
     public void processTournamentRequestsAndTournaments() {
         this.createTournamentsFromAcceptedRequests();
         this.processNextTournamentsTour();

@@ -16,5 +16,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
 
     Optional<Tournament> findByUuid(String uuid);
 
-    List<Tournament> findDistinctByStateAndParticipantsIn(Tournament.State state, Set<ArmedBruto> participants);
+    List<Tournament> findAllDistinctByStateAndParticipantsIn(Tournament.State state, List<ArmedBruto> participants);
+
+    Optional<Tournament> findDistinctByStateAndParticipantsIn(Tournament.State active, List<ArmedBruto> armedBrutos);
 }

@@ -42,6 +42,17 @@ public class MeController {
                 .collect(Collectors.toList()));
     }
 
+    @GetMapping(value="/api/me/{uuid}/bruto/allavailable")
+    @ResponseBody
+    public CollectionModel<BrutoResponse> allBrutoAvailable(@PathVariable String uuid) {
+        Player me = this.playerService.get(uuid);
+
+        return CollectionModel.of(me.brutos().stream()
+                .filter(bruto -> this.tournamentService.getInProgressByBruto(bruto) == null)
+                .map(BrutoResponse::new)
+                .collect(Collectors.toList()));
+    }
+
     @GetMapping(value="/api/me/{uuid}/tournament/allinprogress")
     @ResponseBody
     public CollectionModel<TournamentResponse> allTournamentInProgress(@PathVariable String uuid) {

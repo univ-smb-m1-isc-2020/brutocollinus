@@ -8,7 +8,11 @@ export default function MyLastOverMatchList(props) {
     const [lastOverMatches, setLastOverMatches] = useState([]);
 
     useEffect(() => {
-        AuthService.get(allLastOverMatchUrl).then(response => setLastOverMatches(response._embedded.lastOverMatchResponseList));
+        AuthService.get(allLastOverMatchUrl).then(response => {
+            if (response._embedded) {
+                setLastOverMatches(response._embedded.lastOverMatchResponseList)
+            }
+        });
     }, [allLastOverMatchUrl]);
 
     return (
