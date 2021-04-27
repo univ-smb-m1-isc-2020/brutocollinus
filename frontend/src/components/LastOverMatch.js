@@ -18,8 +18,6 @@ export default function LastOverMatch(props) {
 
     const firstOpponent = match.firstOpponent;
     const secondOpponent = match.secondOpponent;
-    const winner = match.winner;
-    const looser = match.looser;
 
     return (
       <div>
@@ -34,6 +32,7 @@ export default function LastOverMatch(props) {
             <ArmedBruto armedBruto={secondOpponent}/>
         </Col>
         </Row>
+          <a href={"/tournament?tournamentUrl=" + lastOverMatch.tournament._links.detail.href}>Acceder au tournoi</a>
       </div>
   );
 }

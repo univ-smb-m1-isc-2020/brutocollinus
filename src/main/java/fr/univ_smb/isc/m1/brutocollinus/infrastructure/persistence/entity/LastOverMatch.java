@@ -40,4 +40,8 @@ public class LastOverMatch {
     public boolean hasWon() {
         return this.hasWon;
     }
+
+    public Tournament tournament() {
+        return this.tournament;
+    }
 }

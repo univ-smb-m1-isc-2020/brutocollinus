@@ -27,7 +27,7 @@ public class PlayerController {
 
     @PostMapping(value="/api/player/search")
     @ResponseBody
-    public CollectionModel<PlayerResponse> login(@RequestBody @Valid SearchPlayerForm form) {
+    public CollectionModel<PlayerResponse> search(@RequestBody @Valid SearchPlayerForm form) {
         List<Player> players = this.playerService.findByTermInName(form.term);
 
         return CollectionModel.of(players.stream()
