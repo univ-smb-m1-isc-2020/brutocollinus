@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import React from 'react'
+import {ListGroup} from 'react-bootstrap';
 import FightStatistics from './FightStatistics.js';
 import Boost from './Boost.js';
 import Stuff from './Stuff.js';

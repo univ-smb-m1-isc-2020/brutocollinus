@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {Form, Container, ListGroup, Col, Button} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
+import {Button, Container, Form, ListGroup} from 'react-bootstrap'
 import AuthService from "../services/Auth";
 
 export default function CreateBrutoPage() {

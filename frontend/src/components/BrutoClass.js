@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import FightStatistics from './FightStatistics.js';
 
 export default function BrutoClass(props) {

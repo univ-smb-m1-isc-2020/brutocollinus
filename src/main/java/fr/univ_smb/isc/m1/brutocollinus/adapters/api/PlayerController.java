@@ -1,7 +1,5 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.LoginForm;
-import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.RegisterForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.SearchPlayerForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.PlayerResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController

@@ -6,8 +6,6 @@ import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.BrutoRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class BrutoService {
     private final BrutoRepository repository;

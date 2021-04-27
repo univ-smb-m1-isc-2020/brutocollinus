@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Badge } from 'react-bootstrap';
+import React from 'react'
+import {Badge} from 'react-bootstrap';
 
 export default function FightStatistics(props) {
     const fightStatistics = props.fightStatistics;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar } from 'react-bootstrap'
+import {Navbar} from 'react-bootstrap'
 import ProfileBar from './ProfileBar.js'
 
 export default function HeaderBar() {

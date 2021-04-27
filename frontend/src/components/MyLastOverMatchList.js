@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Card, Col, ListGroup} from 'react-bootstrap'
+import {ListGroup} from 'react-bootstrap'
 import LastOverMatch from './LastOverMatch.js';
 import AuthService from "../services/Auth";
 

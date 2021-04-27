@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import AuthService from '../services/Auth.js';
-import Bruto from '../components/MyBrutoList.js';
-import {ListGroup, Container, Row, Col, Card} from "react-bootstrap";
-import {Redirect, useLocation} from "react-router-dom";
-import MyBrutoList from "../components/MyBrutoList.js";
+import MyBrutoList from '../components/MyBrutoList.js';
+import {Col, Container, Row} from "react-bootstrap";
+import {Redirect} from "react-router-dom";
 import MyLastOverMatchList from "../components/MyLastOverMatchList.js";
 
 export default function HomePage() {

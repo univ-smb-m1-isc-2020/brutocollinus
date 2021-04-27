@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import {Form, Container, ListGroup, Col, Button, InputGroup, Modal} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
+import {Button, Container, Form, InputGroup, ListGroup, Modal} from 'react-bootstrap'
 import AuthService from "../services/Auth";
-import { BsSearch, BsArrowReturnLeft, BsX } from 'react-icons/bs';
+import {BsX} from 'react-icons/bs';
 
 export default function CreateTournamentRequestPage() {
     const [name, setName] = useState();

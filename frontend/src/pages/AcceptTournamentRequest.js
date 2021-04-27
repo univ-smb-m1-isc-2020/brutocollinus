@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import useQuery from '../utils/Query.js';
 import AuthService from '../services/Auth.js';
 import Boost from '../components/Boost.js';
 import Bruto from '../components/Bruto.js';
-import { ListGroup, Button, Row, Col, Form, Container, Modal } from 'react-bootstrap';
+import {Button, Container, Form, ListGroup, Modal} from 'react-bootstrap';
 import {Redirect, useLocation} from "react-router-dom";
 
 export default function AcceptTournamentRequestPage() {

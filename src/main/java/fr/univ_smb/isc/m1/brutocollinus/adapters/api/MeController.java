@@ -5,7 +5,10 @@ import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.BrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.LastOverMatchResponse;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.*;
-import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.BrutoClass;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Player;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Tournament;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.*;
 

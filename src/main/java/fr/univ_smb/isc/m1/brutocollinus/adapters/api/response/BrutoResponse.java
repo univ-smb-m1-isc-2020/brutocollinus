@@ -1,7 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api.response;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.Bruto;
-import org.springframework.hateoas.RepresentationModel;
 
 public class BrutoResponse extends NameableResponse {
     public final String owner;

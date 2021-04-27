@@ -1,6 +1,6 @@
 import React from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
-import { BsFillBellFill, BsFillChatDotsFill } from 'react-icons/bs';
+import {Nav, Navbar} from 'react-bootstrap'
+import {BsFillBellFill} from 'react-icons/bs';
 
 import AuthService from '../services/Auth.js';
 

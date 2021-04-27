@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Button, Form} from 'react-bootstrap';
 import AuthService from '../services/Auth.js';
 import useQuery from "../utils/Query";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default function LoginPage() {
   const urlQuery = useQuery();
