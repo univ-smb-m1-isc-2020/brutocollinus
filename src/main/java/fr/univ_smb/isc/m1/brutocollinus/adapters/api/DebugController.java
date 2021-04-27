@@ -3,6 +3,7 @@ package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
 import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
+import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
 import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
 import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
