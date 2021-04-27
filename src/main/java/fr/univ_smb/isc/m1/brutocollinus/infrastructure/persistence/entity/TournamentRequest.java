@@ -42,4 +42,8 @@ public class TournamentRequest extends Nameable {
     public void addPreparedGuest(Player player, ArmedBruto armedBruto) {
         this.preparedGuests.add(new TournamentRequestPreparedGuest(player, armedBruto));
     }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
+    }
 }

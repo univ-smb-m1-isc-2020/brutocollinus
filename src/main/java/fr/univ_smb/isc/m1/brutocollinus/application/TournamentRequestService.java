@@ -50,8 +50,8 @@ public class TournamentRequestService {
     }
 
     public Tournament transformToTournament(TournamentRequest request) {
-        //request TODO
         Tournament tournament = this.tournamentService.create(request.name(), request.armedBrutos());
+        request.setTournament(tournament);
         return tournament;
     }
 }

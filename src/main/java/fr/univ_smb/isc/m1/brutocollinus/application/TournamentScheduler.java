@@ -23,7 +23,7 @@ public class TournamentScheduler {
         log.info("Start scheduler");
     }
 
-    @Scheduled(fixedDelay = 1200000)
+    @Scheduled(fixedDelay = 120000)
     public void processTournamentRequestsAndTournaments() {
         this.createTournamentsFromAcceptedRequests();
         this.processNextTournamentsTour();
@@ -37,7 +37,7 @@ public class TournamentScheduler {
             if (this.tournamentRequestService.allGuestAccepted(request)) {
                 String requestName = request.name();
                 log.info("Create tournament for request: {}", requestName);
-                //this.tournamentRequestService.transformToTournament(request));
+                this.tournamentRequestService.transformToTournament(request);
             }
         }
     }
