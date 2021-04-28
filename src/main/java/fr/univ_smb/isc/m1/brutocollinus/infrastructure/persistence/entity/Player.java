@@ -2,6 +2,7 @@ package fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 public class Player extends Nameable {
+    @Column(unique=true)
     private String email;
     private String password;
 
