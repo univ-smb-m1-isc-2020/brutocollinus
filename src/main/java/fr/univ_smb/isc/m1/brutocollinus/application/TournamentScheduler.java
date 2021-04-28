@@ -29,7 +29,7 @@ public class TournamentScheduler {
         this.processNextTournamentsTour();
     }
 
-    public void createTournamentsFromAcceptedRequests() {
+    private void createTournamentsFromAcceptedRequests() {
         List<TournamentRequest> requests = this.tournamentRequestService.allWithoutTournament();
         log.info("{} awaiting requests", requests.size());
 
@@ -42,7 +42,7 @@ public class TournamentScheduler {
         }
     }
 
-    public void processNextTournamentsTour() {
+    private void processNextTournamentsTour() {
         List<Tournament> tournaments = this.tournamentService.allInProgress();
         log.info("{} tournaments in progress", tournaments.size());
 

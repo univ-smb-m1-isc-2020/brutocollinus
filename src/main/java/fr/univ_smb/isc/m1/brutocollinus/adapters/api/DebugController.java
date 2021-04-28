@@ -1,11 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.TournamentResponse;
-import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoService;
-import fr.univ_smb.isc.m1.brutocollinus.application.BrutoClassService;
-import fr.univ_smb.isc.m1.brutocollinus.application.PlayerService;
-import fr.univ_smb.isc.m1.brutocollinus.application.TournamentService;
+import fr.univ_smb.isc.m1.brutocollinus.application.*;
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,14 +19,16 @@ public class DebugController {
     private final BrutoClassService brutoClassService;
     private final TournamentService tournamentService;
     private final ArmedBrutoService armedBrutoService;
+    private final TournamentScheduler tournamentScheduler;
 
     public DebugController(BrutoService brutoService, PlayerService playerService, BrutoClassService brutoClassService,
-                           TournamentService tournamentService, ArmedBrutoService armedBrutoService) {
+                           TournamentService tournamentService, ArmedBrutoService armedBrutoService, TournamentScheduler tournamentScheduler) {
         this.brutoService = brutoService;
         this.playerService = playerService;
         this.brutoClassService = brutoClassService;
         this.tournamentService = tournamentService;
         this.armedBrutoService = armedBrutoService;
+        this.tournamentScheduler = tournamentScheduler;
     }
 
     private ArmedBruto createArmedBruto(String playerName, String brutoName) {
@@ -54,5 +52,10 @@ public class DebugController {
         Tournament tournament = this.tournamentService.create("la finale", participants);
 
         return new TournamentResponse(tournament);
+    }
+
+    @PostMapping(value="/api/debug/tournament/trigger")
+    public void triggerTournament() {
+        this.tournamentScheduler.processTournamentRequestsAndTournaments();
     }
 }
