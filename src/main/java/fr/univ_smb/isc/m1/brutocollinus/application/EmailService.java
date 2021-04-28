@@ -8,12 +8,17 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.text.MessageFormat;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class EmailService {
     private final JavaMailSender mailSender;
+
+    private final static String HOST = "https://brutocollinus.oups.net";
+    private final static String TOURNAMENT_REQUEST_ACCEPT_URL_TEMPLATE = "{0}/tournament/request/accept?tournamentRequestUrl={0}/api/tournament/request/{1}";
 
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
@@ -37,7 +42,8 @@ public class EmailService {
         String acceptTournamentRequestHref = acceptTournamentRequestLink.toString();
 
         String subject = String.format("Request on tournament \"%s\"", tournamentName);
-        String content = String.format("You have been invited to tournament \"%s\", go to this link to accept: %s", tournamentName, acceptTournamentRequestHref);
+        String acceptLink = MessageFormat.format(TOURNAMENT_REQUEST_ACCEPT_URL_TEMPLATE, HOST, request.uuid());
+        String content = String.format("You have been invited to tournament \"%s\", go to this link to accept: %s", tournamentName, acceptLink);
 
         request.guests().forEach(guest -> this.sendTo(content, subject, guest.email()));
     }
