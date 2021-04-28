@@ -1,6 +1,7 @@
 package fr.univ_smb.isc.m1.brutocollinus.application;
 
 import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.entity.*;
+import fr.univ_smb.isc.m1.brutocollinus.infrastructure.persistence.repository.ArmedBrutoRepository;
 import fr.univ_smb.isc.m1.brutocollinus.utils.fight.FightStatisticsVector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
 class ArmedBrutoServiceTest {
     private ArmedBrutoService armedBrutoService;
@@ -25,7 +27,8 @@ class ArmedBrutoServiceTest {
         this.stuff3 = new Stuff("stuff3", null);
         this.stuff4 = new Stuff("stuff4", null);
 
-        this.armedBrutoService = new ArmedBrutoService(null, null);
+        ArmedBrutoRepository repository = mock(ArmedBrutoRepository.class);
+        this.armedBrutoService = new ArmedBrutoService(repository, null);
     }
 
     @Test
