@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import AuthService from '../services/Auth.js';
-import {Card, Container, ListGroup, Row} from 'react-bootstrap';
+import {Container, ListGroup, Row} from 'react-bootstrap';
 import AttackRecord from './AttackRecord.js';
 import ArmedBruto from './ArmedBruto.js';
 
