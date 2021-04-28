@@ -16,23 +16,36 @@ export default function LastOverMatch(props) {
         return ('Loading')
     }
 
-    const firstOpponent = match.firstOpponent;
-    const secondOpponent = match.secondOpponent;
+    const winner = match.winner;
+    const looser = match.looser;
+    const hasWon = lastOverMatch.hasWon;
+    const tournament = lastOverMatch.tournament;
 
     return (
       <div>
-        <div className="justify-content-center d-flex">
-          <h1>{lastOverMatch.hasWon ? "Gagné" : "Perdu"}</h1>
+        <div className="text-center">
+            <h1><a href={"/tournament?tournamentUrl=" + tournament._links.detail.href}>{tournament.name}</a> : {hasWon ? "Gagné" : "Perdu"}</h1>
+            <a href={"/match?matchUrl=" + match._links.detail.href}>Détails du match</a>
         </div>
-        <Row>
-          <Col>
-              <ArmedBruto armedBruto={firstOpponent}/>
+          <Row>
+            <Col>
+              <div className="text-center">
+                Gagnant
+              </div>
+              <ArmedBruto armedBruto={winner}/>
+                <div className="text-center">
+                    {hasWon &&
+                    <a href={"/armedbruto/reequip?armedBrutoUrl=" + winner._links.current_state.href}>Ré-équipper</a>
+                    }
+                </div>
           </Col>
         <Col>
-            <ArmedBruto armedBruto={secondOpponent}/>
+            <div className="text-center">
+                Perdant
+            </div>
+            <ArmedBruto armedBruto={looser}/>
         </Col>
         </Row>
-          <a href={"/tournament?tournamentUrl=" + lastOverMatch.tournament._links.detail.href}>Acceder au tournoi</a>
       </div>
   );
 }

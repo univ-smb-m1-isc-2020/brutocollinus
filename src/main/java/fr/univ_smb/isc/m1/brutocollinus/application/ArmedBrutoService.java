@@ -61,11 +61,15 @@ public class ArmedBrutoService {
             Stuff oneNewStuff = newStuffs.iterator().next();
             receivingArmedBruto.addGainedStuff(oneNewStuff);
         }
+
+        this.repository.save(receivingArmedBruto);
     }
 
     public void reequip(ArmedBruto armedBruto, Set<Stuff> equipedStuffs) {
         if (armedBruto.gainedStuffs().containsAll(equipedStuffs)) {
             armedBruto.setEquippedStuffs(equipedStuffs);
         }
+
+        this.repository.save(armedBruto);
     }
 }

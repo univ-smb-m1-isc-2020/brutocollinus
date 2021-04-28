@@ -1,5 +1,6 @@
 package fr.univ_smb.isc.m1.brutocollinus.adapters.api;
 
+import com.google.common.collect.Sets;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.form.ReequipStuffArmedBrutoForm;
 import fr.univ_smb.isc.m1.brutocollinus.adapters.api.response.ArmedBrutoResponse;
 import fr.univ_smb.isc.m1.brutocollinus.application.ArmedBrutoService;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 public class ArmedBrutoController {
@@ -35,10 +35,7 @@ public class ArmedBrutoController {
     public ArmedBrutoResponse reequip(@PathVariable String uuid, @RequestBody @Valid ReequipStuffArmedBrutoForm form) {
         ArmedBruto armedBruto = this.armedBrutoService.get(uuid);
 
-        Set<Stuff> equipedStuffs = form.equipedStuffs.stream()
-                .map(this.stuffService::findByName)
-                .collect(Collectors.toSet());
-
+        Set<Stuff> equipedStuffs = Sets.newHashSet(this.stuffService.findAllByUuid(form.equipedStuffs));
         this.armedBrutoService.reequip(armedBruto, equipedStuffs);
 
         return new ArmedBrutoResponse(armedBruto);

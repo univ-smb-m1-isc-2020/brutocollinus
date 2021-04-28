@@ -21,35 +21,29 @@ export default function Match(props) {
     const looser = match.looser;
 
     return (
-        <Card>
-            <Card.Body>
-                <Card.Title>
-                    {firstOpponent.name + " vs " + secondOpponent.name}
-                </Card.Title>
-                <Card.Subtitle>
+        <Container>
+            <div className="text-center">
+                <h1>{firstOpponent.name + " vs " + secondOpponent.name}</h1>
                     {winner && looser &&
-                        "Gagnant :" + winner.name + " Perdant : " + looser.name
+                        "Gagnant : " + winner.name + ", Perdant : " + looser.name
                     }
-                </Card.Subtitle>
-                <Card.Text>
+            </div>
+            <Container>
+                <Row>
+                    <ArmedBruto className="col" armedBruto={firstOpponent}/>
+                    <ArmedBruto className="col" armedBruto={secondOpponent}/>
+                </Row>
+            </Container>
 
-                    <Container>
-                        <Row>
-                            <ArmedBruto className="col" armedBruto={firstOpponent}/>
-                            <ArmedBruto className="col" armedBruto={secondOpponent}/>
-                        </Row>
-                    </Container>
-
-                    <hr />
-                    <ListGroup>
-                        {match.attackRecords.map(record => {
-                            return (
-                                <ListGroup.Item><AttackRecord record={record} /></ListGroup.Item>
-                            );
-                        })}
-                    </ListGroup>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+            <hr />
+            <h6>Historique de bataille</h6>
+            <ListGroup>
+                {match.attackRecords.map(record => {
+                    return (
+                        <ListGroup.Item><AttackRecord record={record} /></ListGroup.Item>
+                    );
+                })}
+            </ListGroup>
+        </Container>
     );
 }

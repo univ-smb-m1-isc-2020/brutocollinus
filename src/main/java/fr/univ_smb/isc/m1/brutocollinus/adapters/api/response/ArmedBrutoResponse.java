@@ -14,6 +14,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 public class ArmedBrutoResponse extends IdentifiableResponse {
     public final String bruto;
+    public final String name;
     public final List<StuffResponse> equipedStuffs;
     public final List<StuffResponse> gainedStuffs;
     public final List<BoostResponse> equipedBoosts;
@@ -22,6 +23,7 @@ public class ArmedBrutoResponse extends IdentifiableResponse {
     public ArmedBrutoResponse(ArmedBruto armedBruto) {
         super(armedBruto);
         this.bruto = armedBruto.bruto().uuid();
+        this.name = armedBruto.bruto().name();
         this.equipedStuffs = armedBruto.equipedStuffs().stream().map(StuffResponse::new).collect(Collectors.toList());
         this.gainedStuffs = armedBruto.gainedStuffs().stream().map(StuffResponse::new).collect(Collectors.toList());
         this.equipedBoosts = armedBruto.equipedBoosts().stream().map(BoostResponse::new).collect(Collectors.toList());

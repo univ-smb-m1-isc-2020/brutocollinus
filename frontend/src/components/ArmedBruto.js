@@ -15,9 +15,10 @@ export default function ArmedBruto(props) {
                 <FightStatistics fightStatistics={armedBruto.totalFightStatistics} />
             </div>
 
+            <h6>Classe</h6>
             <BrutoClass brutoClass={armedBruto.brutoClass}/>
 
-            <div>Boosts</div>
+            <h6>Boosts</h6>
             <ListGroup>
                 {armedBruto.equipedBoosts.map(boost =>
                     (<ListGroup.Item>
@@ -25,7 +26,7 @@ export default function ArmedBruto(props) {
                     </ListGroup.Item>))}
             </ListGroup>
 
-            <div>Stuffs</div>
+            <h6>Stuffs</h6>
             <ListGroup>
                 {armedBruto.equipedStuffs.map(stuff =>
                     (<ListGroup.Item>
