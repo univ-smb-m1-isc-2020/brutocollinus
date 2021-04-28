@@ -26,13 +26,13 @@ public class StuffService {
     @PostConstruct
     public void initialize() {
         if (this.repository.findAll().isEmpty()) {
-            this.create("bow", 300, 0, 0);
-            this.create("sword", 400, 0, 10);
-            this.create("shield", 0, 200, 0);
-            this.create("long sword", 400, 0, 0);
-            this.create("short sword", 200, 0, 40);
-            this.create("dagger", 150, 0, 60);
-            this.create("helmet", 0, 100, 0);
+            this.create("bow", 30, 0, 0);
+            this.create("sword", 40, 0, 10);
+            this.create("shield", 0, 100, 0);
+            this.create("long sword", 40, 0, 0);
+            this.create("short sword", 20, 0, 40);
+            this.create("dagger", 15, 0, 60);
+            this.create("helmet", 0, 60, 0);
         }
     }
 

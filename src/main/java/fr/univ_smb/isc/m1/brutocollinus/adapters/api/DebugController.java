@@ -17,15 +17,20 @@ public class DebugController {
     private final PlayerService playerService;
     private final BrutoService brutoService;
     private final BrutoClassService brutoClassService;
+    private final BoostService boostService;
+    private final StuffService stuffService;
     private final TournamentService tournamentService;
     private final ArmedBrutoService armedBrutoService;
     private final TournamentScheduler tournamentScheduler;
 
     public DebugController(BrutoService brutoService, PlayerService playerService, BrutoClassService brutoClassService,
-                           TournamentService tournamentService, ArmedBrutoService armedBrutoService, TournamentScheduler tournamentScheduler) {
+                           BoostService boostService, StuffService stuffService, TournamentService tournamentService, ArmedBrutoService armedBrutoService,
+                           TournamentScheduler tournamentScheduler) {
         this.brutoService = brutoService;
         this.playerService = playerService;
         this.brutoClassService = brutoClassService;
+        this.boostService = boostService;
+        this.stuffService = stuffService;
         this.tournamentService = tournamentService;
         this.armedBrutoService = armedBrutoService;
         this.tournamentScheduler = tournamentScheduler;
@@ -57,5 +62,12 @@ public class DebugController {
     @PostMapping(value="/api/debug/tournament/trigger")
     public void triggerTournament() {
         this.tournamentScheduler.processTournamentRequestsAndTournaments();
+    }
+
+    @PostMapping(value="/api/debug/initialize")
+    public void initialize() {
+        this.stuffService.initialize();
+        this.boostService.initialize();
+        this.brutoClassService.initialize();
     }
 }
