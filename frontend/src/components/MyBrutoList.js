@@ -8,7 +8,10 @@ export default function MyBrutoList(props) {
     const [brutos, setBrutos] = useState([]);
 
     useEffect(() => {
-        AuthService.get(allBrutoUrl).then(response => setBrutos(response._embedded.brutoResponseList));
+        AuthService.get(allBrutoUrl).then(response => {
+            if (response._embedded) {
+                setBrutos(response._embedded.brutoResponseList)
+            }});
     }, [allBrutoUrl]);
 
     return (
