@@ -62,4 +62,10 @@ public class ArmedBrutoService {
             receivingArmedBruto.addGainedStuff(oneNewStuff);
         }
     }
+
+    public void reequip(ArmedBruto armedBruto, Set<Stuff> equipedStuffs) {
+        if (armedBruto.gainedStuffs().containsAll(equipedStuffs)) {
+            armedBruto.setEquippedStuffs(equipedStuffs);
+        }
+    }
 }

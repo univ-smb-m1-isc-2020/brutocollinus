@@ -60,4 +60,20 @@ class ArmedBrutoServiceTest {
         assertEquals(1500, totalFightStatistics.hp());
         assertEquals(1800, totalFightStatistics.ini());
     }
+
+    @Test
+    void shouldReequipArmedBrutoEquipWithNewStuff() {
+        Stuff stuff1 = new Stuff("", null);
+        Stuff stuff2 = new Stuff("", null);
+        ArmedBruto armedBruto = new ArmedBruto(null, Set.of(stuff1), new HashSet<>());
+
+        armedBruto.addGainedStuff(stuff2);
+        assertEquals(2, armedBruto.gainedStuffs().size());
+
+        this.armedBrutoService.reequip(armedBruto, Set.of(stuff1, stuff2));
+        assertEquals(2, armedBruto.equipedStuffs().size());
+
+        assertTrue(armedBruto.equipedStuffs().contains(stuff1));
+        assertTrue(armedBruto.equipedStuffs().contains(stuff2));
+    }
 }

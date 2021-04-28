@@ -44,6 +44,10 @@ public class ArmedBruto extends Identifiable {
         return this.equipedStuffs;
     }
 
+    public void setEquippedStuffs(Set<Stuff> equipedStuffs) {
+        this.equipedStuffs = equipedStuffs;
+    }
+
     public Set<Boost> equipedBoosts() {
         return this.equipedBoosts;
     }
